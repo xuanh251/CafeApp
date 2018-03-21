@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CafeApp
+namespace CafeManager
 {
     static class Program
     {
@@ -16,8 +16,7 @@ namespace CafeApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
-            //sjfdh
+            Application.Run(new Form1());
         }
     }
 }
