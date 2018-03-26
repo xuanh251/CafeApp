@@ -8,12 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CafeApp.Winform.Properties {
+namespace CafeApp.Model.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -26,24 +26,24 @@ namespace CafeApp.Winform.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TaiKhoan {
+        public string taikhoan {
             get {
-                return ((string)(this["TaiKhoan"]));
+                return ((string)(this["taikhoan"]));
             }
             set {
-                this["TaiKhoan"] = value;
+                this["taikhoan"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string MatKhau {
+        public string matkhau {
             get {
-                return ((string)(this["MatKhau"]));
+                return ((string)(this["matkhau"]));
             }
             set {
-                this["MatKhau"] = value;
+                this["matkhau"] = value;
             }
         }
     }

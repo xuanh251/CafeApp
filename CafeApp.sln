@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeApp.Model", "CafeApp.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeApp.Common", "CafeApp.Common\CafeApp.Common.csproj", "{40EFE533-C8C1-428C-9583-F37666540158}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{E7EF5644-26C9-4D19-8CF5-520EAFC93063}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{40EFE533-C8C1-428C-9583-F37666540158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40EFE533-C8C1-428C-9583-F37666540158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40EFE533-C8C1-428C-9583-F37666540158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EF5644-26C9-4D19-8CF5-520EAFC93063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EF5644-26C9-4D19-8CF5-520EAFC93063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EF5644-26C9-4D19-8CF5-520EAFC93063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EF5644-26C9-4D19-8CF5-520EAFC93063}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

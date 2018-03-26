@@ -15,21 +15,22 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace CafeApp.Winform.Views
 {
-    public partial class frmTaiKhoan : DevExpress.XtraEditors.XtraForm
+    public partial class FrmTaiKhoan : DevExpress.XtraEditors.XtraForm
     {
-        public ModelQuanLiCafeDbContext db { get; set; }
-        public frmTaiKhoan()
+        public ModelQuanLiCafeDbContext Db { get; set; }
+        public FrmTaiKhoan()
         {
             InitializeComponent();
-            db = new ModelQuanLiCafeDbContext();
-            db.LoaiTaiKhoans.Load();
-            repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = db.LoaiTaiKhoans.Local.ToBindingList();
+            
+            Db = new ModelQuanLiCafeDbContext();
+            Db.LoaiTaiKhoans.Load();
+            repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = Db.LoaiTaiKhoans.Local.ToBindingList();
             repositoryItemSearchLookUpEditLoaiTaiKhoan.View.Columns.AddField("Ten").Visible = true;
             NapDuLieu();
             KeyPreview = true;
         }
 
-        private void frmTaiKhoan_Load(object sender, EventArgs e)
+        private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
         
         }
@@ -37,9 +38,9 @@ namespace CafeApp.Winform.Views
         {
             try
             {
-                db = new ModelQuanLiCafeDbContext();
-                db.TaiKhoans.Load();
-                gridControlTaiKhoan.DataSource = db.TaiKhoans.Local.ToBindingList();
+                Db = new ModelQuanLiCafeDbContext();
+                Db.TaiKhoans.Load();
+                gridControlTaiKhoan.DataSource = Db.TaiKhoans.Local.ToBindingList();
                 gridViewTaiKhoan.RefreshData();
                 gridViewTaiKhoan.BestFitColumns();
             }
@@ -53,7 +54,7 @@ namespace CafeApp.Winform.Views
             try
             {
                 gridControlTaiKhoan.EmbeddedNavigator.Buttons.DoClick(gridControlTaiKhoan.EmbeddedNavigator.Buttons.EndEdit);
-                int dem = db.SaveChanges();
+                int dem = Db.SaveChanges();
                 if (dem > 0)
                 {
                     XtraMessageBox.Show("Đã lưu " + dem + " mẩu tin!", "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,17 +70,17 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
         }
 
-        private void btnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NapDuLieu();
         }
         private TaiKhoan vitri;
-        private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Xoa();
         }
@@ -89,14 +90,14 @@ namespace CafeApp.Winform.Views
             {
                 vitri = (TaiKhoan)gridViewTaiKhoan.GetFocusedRow();
                 if (vitri == null) return;
-                else if (db.ChangeTracker.HasChanges())
+                else if (Db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi xoá!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + TaiKhoan.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    db.TaiKhoans.Remove(vitri);
-                    db.SaveChanges();
+                    Db.TaiKhoans.Remove(vitri);
+                    Db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá thành công!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
                 }
@@ -116,15 +117,15 @@ namespace CafeApp.Winform.Views
             {
                 vitri = (TaiKhoan)gridViewTaiKhoan.GetFocusedRow();
                 if (vitri == null) return;
-                else if (db.ChangeTracker.HasChanges())
+                else if (Db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi khôi phục mật khẩu!", "Khôi phục mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if ((XtraMessageBox.Show("Bạn có muốn khôi phục mật khẩu cho " + TaiKhoan.TableName + " này không?" + Environment.NewLine + "Mật khẩu mặc định: 123456", "Khôi phục mật khẩu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                else if ((XtraMessageBox.Show("Bạn có muốn khôi phục mật khẩu cho tài khoản " + vitri.TenDangNhap + " này không?" + Environment.NewLine + "Mật khẩu mặc định: 123456", "Khôi phục mật khẩu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    var tk = db.TaiKhoans.Find(vitri.Id);
+                    var tk = Db.TaiKhoans.Find(vitri.Id);
                     tk.MatKhau = Core.Encrypt(Core.MatKhauMacDinh);
-                    db.SaveChanges();
+                    Db.SaveChanges();
                     XtraMessageBox.Show("Đã thiết lập mật khẩu mặc định cho " + TaiKhoan.TableName + " " +tk.TenDangNhap + " thành công!", "Khôi phục mật khẩu!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
                 }
@@ -134,12 +135,12 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Đã xảy ra lỗi!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Khôi phục mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnKhoiPhucMatKhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnKhoiPhucMatKhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             KhoiPhucMatKhau();
         }
 
-        private void gridViewTaiKhoan_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        private void GridViewTaiKhoan_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             GridView view = sender as GridView;
             view.SetRowCellValue(e.RowHandle, view.Columns["MatKhau"], Core.Encrypt(Core.MatKhauMacDinh));

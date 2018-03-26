@@ -61,19 +61,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\frmMain.cs">
+    <Compile Include="Views\FrmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Views\FrmDangNhap.Designer.cs">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmTaiKhoan.cs">
+    <Compile Include="Views\FrmLichSuTruyCap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmTaiKhoan.Designer.cs">
-      <DependentUpon>frmTaiKhoan.cs</DependentUpon>
+    <Compile Include="Views\FrmLichSuTruyCap.Designer.cs">
+      <DependentUpon>FrmLichSuTruyCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTaiKhoan.Designer.cs">
+      <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -84,12 +97,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmDangNhap.resx">
+      <DependentUpon>FrmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmTaiKhoan.resx">
-      <DependentUpon>frmTaiKhoan.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmLichSuTruyCap.resx">
+      <DependentUpon>FrmLichSuTruyCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmTaiKhoan.resx">
+      <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -116,7 +136,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
+    <None Include="Resources\if_user_login_61841.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logout_173050.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

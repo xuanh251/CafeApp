@@ -10,6 +10,7 @@ namespace CafeApp.Model.Models
         public ModelQuanLiCafeDbContext()
             : base("name=ModelQuanLiCafeDbContext")
         {
+            
         }
 
         public virtual DbSet<Ban> Bans { get; set; }
@@ -70,8 +71,8 @@ namespace CafeApp.Model.Models
 
             modelBuilder.Entity<LoaiTaiKhoan>()
                 .HasMany(e => e.TaiKhoans)
-                .WithRequired(e => e.LoaiTaiKhoan1)
-                .HasForeignKey(e => e.LoaiTaiKhoan)
+                .WithRequired(e => e.LoaiTaiKhoan)
+                .HasForeignKey(e => e.QuyenSuDung)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NguyenLieu>()

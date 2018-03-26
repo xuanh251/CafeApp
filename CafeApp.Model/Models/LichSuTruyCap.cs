@@ -14,8 +14,11 @@ namespace CafeApp.Model.Models
 
         public int? IdTaiKhoan { get; set; }
 
-        public DateTime? ThoiDiemDangNhap { get; set; }
+        public DateTime ThoiDiemDangNhap { get; set; }
+
+        public bool? TrangThai { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
+
     }
 }

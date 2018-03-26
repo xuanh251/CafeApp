@@ -28,7 +28,7 @@ namespace CafeApp.Model.Models
         [StringLength(50)]
         public string MatKhau { get; set; }
 
-        public int LoaiTaiKhoan { get; set; }
+        public int QuyenSuDung { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -49,7 +49,7 @@ namespace CafeApp.Model.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuTruyCap> LichSuTruyCaps { get; set; }
 
-        public virtual LoaiTaiKhoan LoaiTaiKhoan1 { get; set; }
+        public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }
