@@ -65,9 +65,9 @@
     <Compile Include="Migrations\201803251524040_003.Designer.cs">
       <DependentUpon>201803251524040_003.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803251618157_004.cs" />
-    <Compile Include="Migrations\201803251618157_004.Designer.cs">
-      <DependentUpon>201803251618157_004.cs</DependentUpon>
+    <Compile Include="Migrations\201803261620473_editModel.cs" />
+    <Compile Include="Migrations\201803261620473_editModel.Designer.cs">
+      <DependentUpon>201803261620473_editModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
@@ -121,8 +121,8 @@
     <EmbeddedResource Include="Migrations\201803251524040_003.resx">
       <DependentUpon>201803251524040_003.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803251618157_004.resx">
-      <DependentUpon>201803251618157_004.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803261620473_editModel.resx">
+      <DependentUpon>201803261620473_editModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,10 +1,8 @@
 namespace CafeApp.Model.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("TaiKhoan")]
     public partial class TaiKhoan
@@ -53,6 +51,7 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }
+
         public const string TableName = "Người dùng";
     }
 }

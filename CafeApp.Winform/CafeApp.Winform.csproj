@@ -61,14 +61,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FrmDoiTac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDoiTac.Designer.cs">
+      <DependentUpon>FrmDoiTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmNguyenLieu.Designer.cs">
+      <DependentUpon>FrmNguyenLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmDonViTinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDonViTinh.Designer.cs">
+      <DependentUpon>FrmDonViTinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmNhomSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmNhomSanPham.Designer.cs">
+      <DependentUpon>FrmNhomSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmNhomNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmNhomNguyenLieu.Designer.cs">
+      <DependentUpon>FrmNhomNguyenLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmBan.Designer.cs">
+      <DependentUpon>FrmBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmDangNhap.Designer.cs">
       <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDoiMatKhau.Designer.cs">
+      <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmLichSuTruyCap.cs">
       <SubType>Form</SubType>
@@ -88,6 +129,12 @@
     <Compile Include="Views\FrmTaiKhoan.Designer.cs">
       <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmThemBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmThemBan.Designer.cs">
+      <DependentUpon>FrmThemBan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,8 +146,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\FrmDoiTac.resx">
+      <DependentUpon>FrmDoiTac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmNguyenLieu.resx">
+      <DependentUpon>FrmNguyenLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmDonViTinh.resx">
+      <DependentUpon>FrmDonViTinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmNhomSanPham.resx">
+      <DependentUpon>FrmNhomSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmNhomNguyenLieu.resx">
+      <DependentUpon>FrmNhomNguyenLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmBan.resx">
+      <DependentUpon>FrmBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmDangNhap.resx">
       <DependentUpon>FrmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmDoiMatKhau.resx">
+      <DependentUpon>FrmDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmLichSuTruyCap.resx">
       <DependentUpon>FrmLichSuTruyCap.cs</DependentUpon>
@@ -110,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmTaiKhoan.resx">
       <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmThemBan.resx">
+      <DependentUpon>FrmThemBan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,6 +211,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\if_logout_173050.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_architecture-interior-28_809102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_038_023_dropbox_storage_cloud_service_android_material_1646928.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_menu-alt_134216.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_simpline_17_2305635.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__coffee-maker2_2324129.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

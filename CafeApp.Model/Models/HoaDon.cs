@@ -5,7 +5,6 @@ namespace CafeApp.Model.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
     using System.Linq;
 
     [Table("HoaDon")]
@@ -46,7 +45,8 @@ namespace CafeApp.Model.Models
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 
         [NotMapped]
-        public double ThanhTien {
+        public double ThanhTien
+        {
             get
             {
                 try

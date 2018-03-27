@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CafeApp.Common
 {
     public class Core
     {
         public const string MatKhauMacDinh = "123456";
-        static readonly string PasswordHash = "P@@Sw0rd";
-        static readonly string SaltKey = "S@LT&KEY";
-        static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+        private static readonly string PasswordHash = "P@@Sw0rd";
+        private static readonly string SaltKey = "S@LT&KEY";
+        private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+
         public static string Encrypt(string plainText)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
@@ -37,6 +35,7 @@ namespace CafeApp.Common
             }
             return Convert.ToBase64String(cipherTextBytes);
         }
+
         public static string Decrypt(string encryptedText)
         {
             byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);

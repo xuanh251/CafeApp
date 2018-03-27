@@ -118,10 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="if_user_login_61841" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_user_login_61841.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_038_023_dropbox_storage_cloud_service_android_material_1646928" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_038_023_dropbox_storage_cloud_service_android_material_1646928.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="if_logout_173050" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_logout_173050.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_menu-alt_134216" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_menu-alt_134216.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_simpline_17_2305635" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_simpline_17_2305635.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_user_login_61841" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_user_login_61841.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_architecture-interior-28_809102" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_architecture-interior-28_809102.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if__coffee-maker2_2324129" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if__coffee-maker2_2324129.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

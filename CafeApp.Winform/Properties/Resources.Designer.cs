@@ -63,9 +63,59 @@ namespace CafeApp.Winform.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if__coffee_maker2_2324129 {
+            get {
+                object obj = ResourceManager.GetObject("if__coffee-maker2_2324129", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_038_023_dropbox_storage_cloud_service_android_material_1646928 {
+            get {
+                object obj = ResourceManager.GetObject("if_038_023_dropbox_storage_cloud_service_android_material_1646928", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_architecture_interior_28_809102 {
+            get {
+                object obj = ResourceManager.GetObject("if_architecture-interior-28_809102", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_logout_173050 {
             get {
                 object obj = ResourceManager.GetObject("if_logout_173050", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_menu_alt_134216 {
+            get {
+                object obj = ResourceManager.GetObject("if_menu-alt_134216", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_simpline_17_2305635 {
+            get {
+                object obj = ResourceManager.GetObject("if_simpline_17_2305635", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

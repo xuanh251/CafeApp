@@ -1,17 +1,13 @@
 namespace CafeApp.Model.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-    using System.Linq;
 
     [Table("HoaDonChiTiet")]
     public partial class HoaDonChiTiet
     {
-        ModelQuanLiCafeDbContext db = new ModelQuanLiCafeDbContext();
+        private ModelQuanLiCafeDbContext db = new ModelQuanLiCafeDbContext();
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -26,6 +22,7 @@ namespace CafeApp.Model.Models
         public virtual ThucDon ThucDon { get; set; }
 
         public double DonGia { get; set; }
+
         [NotMapped]
         public double Tien
         {
@@ -33,7 +30,7 @@ namespace CafeApp.Model.Models
             {
                 try
                 {
-                    return SoLuong*DonGia;
+                    return SoLuong * DonGia;
                 }
                 catch (Exception)
                 {

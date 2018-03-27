@@ -1,10 +1,7 @@
 namespace CafeApp.Model.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("LichSuTruyCap")]
     public partial class LichSuTruyCap
@@ -19,6 +16,5 @@ namespace CafeApp.Model.Models
         public bool? TrangThai { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
-
     }
 }

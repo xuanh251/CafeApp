@@ -1,16 +1,12 @@
 namespace CafeApp.Model.Models
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class ModelQuanLiCafeDbContext : DbContext
     {
         public ModelQuanLiCafeDbContext()
             : base("name=ModelQuanLiCafeDbContext")
         {
-            
         }
 
         public virtual DbSet<Ban> Bans { get; set; }

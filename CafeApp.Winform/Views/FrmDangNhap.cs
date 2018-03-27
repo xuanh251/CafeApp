@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Common;
+﻿using CafeApp.Common;
 using CafeApp.Model.Models;
+using DevExpress.XtraEditors;
+using System;
+using System.Data;
+using System.Linq;
 using System.Threading;
-using CafeApp.Winform.Models;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmDangNhap : XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmDangNhap()
         {
             InitializeComponent();
@@ -27,6 +22,7 @@ namespace CafeApp.Winform.Views
             txtTaiKhoan.Text = Properties.Settings.Default.TaiKhoan;
             txtMatKhau.Text = Properties.Settings.Default.MatKhau;
         }
+
         public void LuuMatKhau(string un, string pw)
         {
             if (CkeNhoMatKhau.Checked)
@@ -42,13 +38,15 @@ namespace CafeApp.Winform.Views
                 Properties.Settings.Default.Save();
             }
         }
+
         public static int IdPhienDangNhap { get; set; }
         public static int IdTaiKhoan { get; set; }
+
         private bool DangNhap(string tk, string mk)
         {
             db = new ModelQuanLiCafeDbContext();
             var isUser = db.TaiKhoans.Where(s => s.TenDangNhap == tk && s.MatKhau == mk).FirstOrDefault();
-            if (isUser==null)
+            if (isUser == null)
             {
                 return false;
             }
@@ -66,13 +64,13 @@ namespace CafeApp.Winform.Views
                 return true;
             }
         }
+
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
             string taikhoan = txtTaiKhoan.Text;
             string matkhau = Core.Encrypt(txtMatKhau.Text);
             if (DangNhap(taikhoan, matkhau))
             {
-                XtraMessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadFormMain();
             }
             else
@@ -80,10 +78,12 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Đăng nhập thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static void OpenFrmMain()
         {
             Application.Run(new FrmMain());
         }
+
         private void LoadFormMain()
         {
             FrmMain fm = new FrmMain();

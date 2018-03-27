@@ -36,7 +36,6 @@
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnKhoiPhucMatKhau = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -72,8 +71,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -88,7 +86,6 @@
             this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -144,18 +141,6 @@
             this.btnKhoiPhucMatKhau.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnKhoiPhucMatKhau.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnKhoiPhucMatKhau_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -168,9 +153,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 333);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 355);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(625, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(625, 0);
             // 
             // barDockControlLeft
             // 
@@ -178,7 +163,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 307);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 329);
             // 
             // barDockControlRight
             // 
@@ -186,7 +171,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(625, 26);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 307);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 329);
             // 
             // btnThemTaiKhoan
             // 
@@ -208,7 +193,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 26);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(625, 307);
+            this.layoutControl1.Size = new System.Drawing.Size(625, 329);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -220,7 +205,7 @@
             this.gridControlTaiKhoan.Name = "gridControlTaiKhoan";
             this.gridControlTaiKhoan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan});
-            this.gridControlTaiKhoan.Size = new System.Drawing.Size(601, 283);
+            this.gridControlTaiKhoan.Size = new System.Drawing.Size(601, 305);
             this.gridControlTaiKhoan.TabIndex = 4;
             this.gridControlTaiKhoan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTaiKhoan});
@@ -267,7 +252,7 @@
             // 
             this.gridColumn3.Caption = "Loại tài khoản";
             this.gridColumn3.ColumnEdit = this.repositoryItemSearchLookUpEditLoaiTaiKhoan;
-            this.gridColumn3.FieldName = "LoaiTaiKhoan";
+            this.gridColumn3.FieldName = "QuyenSuDung";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -340,7 +325,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(625, 307);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(625, 329);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -348,7 +333,7 @@
             this.layoutControlItem1.Control = this.gridControlTaiKhoan;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(605, 287);
+            this.layoutControlItem1.Size = new System.Drawing.Size(605, 309);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -383,7 +368,6 @@
 
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;

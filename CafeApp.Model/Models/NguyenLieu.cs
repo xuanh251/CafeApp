@@ -1,10 +1,8 @@
 namespace CafeApp.Model.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("NguyenLieu")]
     public partial class NguyenLieu
@@ -25,8 +23,9 @@ namespace CafeApp.Model.Models
         public int IdNhom { get; set; }
 
         public int IdDVT { get; set; }
+        public int SoLuong { get; set; }
 
-        public double Gia { get; set; }
+        public double DonGia { get; set; }
 
         [StringLength(200)]
         public string GhiChu { get; set; }
@@ -37,5 +36,6 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKhoChiTiet> PhieuNhapKhoChiTiets { get; set; }
+        public const string TableName = "Nguyên Liệu";
     }
 }
