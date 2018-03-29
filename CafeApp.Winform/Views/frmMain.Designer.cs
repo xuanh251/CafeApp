@@ -53,7 +53,7 @@
             this.BtnThucDon = new DevExpress.XtraBars.BarButtonItem();
             this.BtnDonViTinh = new DevExpress.XtraBars.BarButtonItem();
             this.BtnDoiTac = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnPhaChe = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnDinhLuong = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -103,7 +103,7 @@
             this.BtnThucDon,
             this.BtnDonViTinh,
             this.BtnDoiTac,
-            this.BtnPhaChe});
+            this.BtnDinhLuong});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 22;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -269,13 +269,13 @@
             this.BtnDoiTac.Name = "BtnDoiTac";
             this.BtnDoiTac.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDoiTac_ItemClick);
             // 
-            // BtnPhaChe
+            // BtnDinhLuong
             // 
-            this.BtnPhaChe.Caption = "Pha chế";
-            this.BtnPhaChe.Id = 21;
-            this.BtnPhaChe.ImageOptions.LargeImage = global::CafeApp.Winform.Properties.Resources.if__coffee_maker2_2324129;
-            this.BtnPhaChe.Name = "BtnPhaChe";
-            this.BtnPhaChe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnPhaChe_ItemClick);
+            this.BtnDinhLuong.Caption = "Định Lượng";
+            this.BtnDinhLuong.Id = 21;
+            this.BtnDinhLuong.ImageOptions.LargeImage = global::CafeApp.Winform.Properties.Resources.if__coffee_maker2_2324129;
+            this.BtnDinhLuong.Name = "BtnDinhLuong";
+            this.BtnDinhLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDinhLuong_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -330,7 +330,7 @@
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.BtnDonViTinh);
-            this.ribbonPageGroup7.ItemLinks.Add(this.BtnPhaChe);
+            this.ribbonPageGroup7.ItemLinks.Add(this.BtnDinhLuong);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
             // ribbonPage3
@@ -423,7 +423,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem BtnDonViTinh;
         private DevExpress.XtraBars.BarButtonItem BtnDoiTac;
-        private DevExpress.XtraBars.BarButtonItem BtnPhaChe;
+        private DevExpress.XtraBars.BarButtonItem BtnDinhLuong;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
     }
 }

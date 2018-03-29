@@ -151,9 +151,9 @@ namespace CafeApp.Winform.Views
             f.Show();
         }
 
-        private void BtnPhaChe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnDinhLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmPhaChe f = new FrmPhaChe
+            FrmDinhLuong f = new FrmDinhLuong
             {
                 MdiParent = this
             };

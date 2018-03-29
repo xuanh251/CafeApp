@@ -11,7 +11,7 @@ namespace CafeApp.Model.Models
         public ThucDon()
         {
             HoaDonChiTiets = new HashSet<HoaDonChiTiet>();
-            PhaChes = new HashSet<PhaChe>();
+            DinhLuongs = new HashSet<DinhLuong>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -38,7 +38,7 @@ namespace CafeApp.Model.Models
         public virtual NhomThucDon NhomThucDon { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhaChe> PhaChes { get; set; }
+        public virtual ICollection<DinhLuong> DinhLuongs { get; set; }
         public const string TableName = "Thực đơn";
     }
 }

@@ -73,6 +73,18 @@
     <Compile Include="Migrations\201803270823214_005.Designer.cs">
       <DependentUpon>201803270823214_005.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803291102087_updatePhaChe.cs" />
+    <Compile Include="Migrations\201803291102087_updatePhaChe.Designer.cs">
+      <DependentUpon>201803291102087_updatePhaChe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291419550_editKhoaNgoai.cs" />
+    <Compile Include="Migrations\201803291419550_editKhoaNgoai.Designer.cs">
+      <DependentUpon>201803291419550_editKhoaNgoai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803291425205_0012.cs" />
+    <Compile Include="Migrations\201803291425205_0012.Designer.cs">
+      <DependentUpon>201803291425205_0012.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\ChucVu.cs" />
@@ -87,7 +99,7 @@
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\NhomNguyenLieu.cs" />
     <Compile Include="Models\NhomThucDon.cs" />
-    <Compile Include="Models\PhaChe.cs" />
+    <Compile Include="Models\DinhLuong.cs" />
     <Compile Include="Models\PhieuNhapKho.cs" />
     <Compile Include="Models\PhieuNhapKhoChiTiet.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
@@ -130,6 +142,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803270823214_005.resx">
       <DependentUpon>201803270823214_005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291102087_updatePhaChe.resx">
+      <DependentUpon>201803291102087_updatePhaChe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291419550_editKhoaNgoai.resx">
+      <DependentUpon>201803291419550_editKhoaNgoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803291425205_0012.resx">
+      <DependentUpon>201803291425205_0012.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

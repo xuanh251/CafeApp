@@ -2,8 +2,8 @@ namespace CafeApp.Model.Models
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("PhaChe")]
-    public partial class PhaChe
+    [Table("DinhLuong")]
+    public partial class DinhLuong
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace CafeApp.Model.Models
 
         public int TiLeMon { get; set; }
 
-        public virtual NhomNguyenLieu NhomNguyenLieu { get; set; }
+        public virtual NguyenLieu NguyenLieu { get; set; }
 
         public virtual ThucDon ThucDon { get; set; }
     }
