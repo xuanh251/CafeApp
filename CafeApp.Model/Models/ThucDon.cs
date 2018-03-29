@@ -25,7 +25,7 @@ namespace CafeApp.Model.Models
 
         public int IdDVT { get; set; }
 
-        public double Gia { get; set; }
+        public double DonGia { get; set; }
 
         [StringLength(100)]
         public string GhiChu { get; set; }
@@ -39,5 +39,6 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhaChe> PhaChes { get; set; }
+        public const string TableName = "Thực đơn";
     }
 }

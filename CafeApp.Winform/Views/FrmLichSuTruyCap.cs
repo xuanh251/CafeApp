@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,20 +21,66 @@ namespace CafeApp.Winform.Views
             comboBoxEditTrangThai.SelectedIndex = 2;
             KiemTraTuyChon();
             NapDuLieu(comboBoxEditKieuLoc.SelectedIndex, comboBoxEditTrangThai.SelectedIndex);
+            //kiểu lọc: 0-trong ngày 1-từ ngày đến ngày 2-tất cả
+            //trạng thái: 0-đang sử dụng 1-đã tắt 2-tất cả
         }
 
         public void NapDuLieu(int KieuLoc, int TrangThai)
         {
-            if (comboBoxEditKieuLoc.SelectedIndex == 0) //trong ngay
+            //lọc trong ngày
+            if (comboBoxEditKieuLoc.SelectedIndex==0)
             {
-                if (comboBoxEditTrangThai.SelectedIndex != 2)
+                if (comboBoxEditTrangThai.SelectedIndex!=2) //trạng thái đang sử dụng/đã tắt
                 {
                     try
                     {
                         var listData = (from lstc in db.LichSuTruyCaps
                                         join tk in db.TaiKhoans
                                         on lstc.IdTaiKhoan equals tk.Id
-                                        where lstc.ThoiDiemDangNhap == DateTime.Today
+                                        where DbFunctions.TruncateTime(lstc.ThoiDiemDangNhap) == DateTime.Today
+                                        && lstc.TrangThai  == (comboBoxEditTrangThai.SelectedIndex==0?true:false)
+                                        select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
+                        gridControlLichSuTruyCap.DataSource = listData;
+                        gridViewLichSuTruyCap.RefreshData();
+                        gridViewLichSuTruyCap.BestFitColumns();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {//trạng thái tất cả
+                    try
+                    {
+                        var listData = (from lstc in db.LichSuTruyCaps
+                                        join tk in db.TaiKhoans
+                                        on lstc.IdTaiKhoan equals tk.Id
+                                        where DbFunctions.TruncateTime(lstc.ThoiDiemDangNhap) == DateTime.Today
+                                        select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
+                        gridControlLichSuTruyCap.DataSource = listData;
+                        gridViewLichSuTruyCap.RefreshData();
+                        gridViewLichSuTruyCap.BestFitColumns();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            //từ ngày đến ngày
+            else if (comboBoxEditKieuLoc.SelectedIndex==1)
+            {
+                var tuNgay = dateTimePickerTuNgay.Value.Date;
+                var denNgay = dateTimePickerDenNgay.Value.Date.AddDays(1);
+                if (comboBoxEditTrangThai.SelectedIndex!=2)
+                {
+                    try
+                    {
+                        var listData = (from lstc in db.LichSuTruyCaps
+                                        join tk in db.TaiKhoans
+                                        on lstc.IdTaiKhoan equals tk.Id
+                                        where lstc.ThoiDiemDangNhap >= tuNgay && lstc.ThoiDiemDangNhap <= denNgay
                                         && lstc.TrangThai == (comboBoxEditTrangThai.SelectedIndex == 0 ? true : false)
                                         select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
                         gridControlLichSuTruyCap.DataSource = listData;
@@ -52,7 +99,7 @@ namespace CafeApp.Winform.Views
                         var listData = (from lstc in db.LichSuTruyCaps
                                         join tk in db.TaiKhoans
                                         on lstc.IdTaiKhoan equals tk.Id
-                                        where lstc.ThoiDiemDangNhap == DateTime.Today
+                                        where lstc.ThoiDiemDangNhap >= tuNgay && lstc.ThoiDiemDangNhap <= denNgay
                                         select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
                         gridControlLichSuTruyCap.DataSource = listData;
                         gridViewLichSuTruyCap.RefreshData();
@@ -64,49 +111,10 @@ namespace CafeApp.Winform.Views
                     }
                 }
             }
-            if (comboBoxEditKieuLoc.SelectedIndex == 1)//từ ngày đến ngày
+            //tất cả
+            else
             {
-                if (comboBoxEditTrangThai.SelectedIndex != 2)
-                {
-                    try
-                    {
-                        var listData = (from lstc in db.LichSuTruyCaps
-                                        join tk in db.TaiKhoans
-                                        on lstc.IdTaiKhoan equals tk.Id
-                                        where lstc.ThoiDiemDangNhap > dateTimePickerTuNgay.Value.Date && lstc.ThoiDiemDangNhap < dateTimePickerDenNgay.Value.Date
-                                        && lstc.TrangThai == (comboBoxEditTrangThai.SelectedIndex == 0 ? true : false)
-                                        select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
-                        gridControlLichSuTruyCap.DataSource = listData;
-                        gridViewLichSuTruyCap.RefreshData();
-                        gridViewLichSuTruyCap.BestFitColumns();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        var listData = (from lstc in db.LichSuTruyCaps
-                                        join tk in db.TaiKhoans
-                                        on lstc.IdTaiKhoan equals tk.Id
-                                        where lstc.ThoiDiemDangNhap > dateTimePickerTuNgay.Value.Date && lstc.ThoiDiemDangNhap < dateTimePickerDenNgay.Value.Date
-                                        select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
-                        gridControlLichSuTruyCap.DataSource = listData;
-                        gridViewLichSuTruyCap.RefreshData();
-                        gridViewLichSuTruyCap.BestFitColumns();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            else//tất cả
-            {
-                if (comboBoxEditTrangThai.SelectedIndex != 2)
+                if (comboBoxEditTrangThai.SelectedIndex!=2)//trạng thái đã tắt/đang sử dụng
                 {
                     try
                     {
@@ -141,7 +149,7 @@ namespace CafeApp.Winform.Views
                         XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-            }
+            } 
         }
 
         private void BtnLoc_Click(object sender, EventArgs e)

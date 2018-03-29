@@ -104,7 +104,7 @@
             // 
             // btnNapDuLieu
             // 
-            this.btnNapDuLieu.Caption = "Nạp dữ liệu";
+            this.btnNapDuLieu.Caption = "Nạp dữ liệu(F5)";
             this.btnNapDuLieu.Id = 0;
             this.btnNapDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNapDuLieu.ImageOptions.Image")));
             this.btnNapDuLieu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNapDuLieu.ImageOptions.LargeImage")));
@@ -114,7 +114,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Caption = "Lưu thay đổi";
+            this.btnLuu.Caption = "Lưu thay đổi(Ctrl+S)";
             this.btnLuu.Id = 1;
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.LargeImage")));
@@ -124,7 +124,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Caption = "Xoá";
+            this.btnXoa.Caption = "Xoá(Delete)";
             this.btnXoa.Id = 4;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
             this.btnXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.LargeImage")));
@@ -133,7 +133,7 @@
             // 
             // btnKhoiPhucMatKhau
             // 
-            this.btnKhoiPhucMatKhau.Caption = "Khôi phục mật khẩu";
+            this.btnKhoiPhucMatKhau.Caption = "Khôi phục mật khẩu(Ctrl+R)";
             this.btnKhoiPhucMatKhau.Id = 2;
             this.btnKhoiPhucMatKhau.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKhoiPhucMatKhau.ImageOptions.Image")));
             this.btnKhoiPhucMatKhau.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnKhoiPhucMatKhau.ImageOptions.LargeImage")));
@@ -350,6 +350,7 @@
             this.Name = "FrmTaiKhoan";
             this.Text = "Tài khoản";
             this.Load += new System.EventHandler(this.FrmTaiKhoan_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmTaiKhoan_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

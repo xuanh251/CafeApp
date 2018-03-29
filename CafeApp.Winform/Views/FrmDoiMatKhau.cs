@@ -1,7 +1,7 @@
-﻿using CafeApp.Model.Models;
-using System;
-using CafeApp.Common;
+﻿using CafeApp.Common;
+using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
+using System;
 using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
@@ -32,7 +32,7 @@ namespace CafeApp.Winform.Views
                 return;
             }
             var curUser = db.TaiKhoans.Find(FrmDangNhap.IdTaiKhoan);
-            if (curUser.MatKhau== Core.Encrypt(txtMatKhauCu.Text))
+            if (curUser.MatKhau == Core.Encrypt(txtMatKhauCu.Text))
             {
                 curUser.MatKhau = Core.Encrypt(txtMatKhauMoi.Text);
                 db.SaveChanges();
@@ -48,6 +48,16 @@ namespace CafeApp.Winform.Views
         private void BtnThoat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FrmDoiMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.K)
+            {
+                txtMatKhauCu.Properties.UseSystemPasswordChar = !txtMatKhauCu.Properties.UseSystemPasswordChar;
+                txtMatKhauMoi.Properties.UseSystemPasswordChar = !txtMatKhauMoi.Properties.UseSystemPasswordChar;
+                txtXacNhan.Properties.UseSystemPasswordChar = !txtXacNhan.Properties.UseSystemPasswordChar;
+            }
         }
     }
 }

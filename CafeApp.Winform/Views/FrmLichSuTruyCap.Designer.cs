@@ -227,10 +227,10 @@
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Location = new System.Drawing.Point(477, 12);
+            this.layoutControl2.Location = new System.Drawing.Point(479, 12);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.Root;
-            this.layoutControl2.Size = new System.Drawing.Size(204, 22);
+            this.layoutControl2.Size = new System.Drawing.Size(202, 22);
             this.layoutControl2.TabIndex = 9;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -240,7 +240,7 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Location = new System.Drawing.Point(0, 0);
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(204, 22);
+            this.Root.Size = new System.Drawing.Size(202, 22);
             this.Root.TextVisible = false;
             // 
             // gridControlLichSuTruyCap
@@ -285,6 +285,8 @@
             // 
             this.gridColumn3.Caption = "Thời điểm đăng nhập";
             this.gridColumn3.FieldName = "SThoiDiemDangNhap";
+            this.gridColumn3.GroupFormat.FormatString = "d";
+            this.gridColumn3.GroupFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -302,7 +304,7 @@
             this.BtnLoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLoc.ImageOptions.Image")));
             this.BtnLoc.Location = new System.Drawing.Point(376, 12);
             this.BtnLoc.Name = "BtnLoc";
-            this.BtnLoc.Size = new System.Drawing.Size(97, 22);
+            this.BtnLoc.Size = new System.Drawing.Size(99, 22);
             this.BtnLoc.StyleController = this.layoutControl1;
             this.BtnLoc.TabIndex = 7;
             this.BtnLoc.Text = "Lọc dữ liệu(F5)";
@@ -356,7 +358,7 @@
             this.layoutControlItem4.Control = this.BtnLoc;
             this.layoutControlItem4.Location = new System.Drawing.Point(364, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(101, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(103, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -372,9 +374,9 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.layoutControl2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(465, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(467, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(208, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(206, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 

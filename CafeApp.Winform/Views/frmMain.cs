@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace CafeApp.Winform.Views
 {
@@ -20,7 +21,7 @@ namespace CafeApp.Winform.Views
         {
             lblThongTin.Caption = "@" + DateTime.Now.Year + " CafeApp Manager";
             var user = db.TaiKhoans.Find(FrmDangNhap.IdTaiKhoan);
-            lblUserInfo.Caption = "Phiên làm việc: " + user.HoTen+" - "+ user.LoaiTaiKhoan.Ten;
+            lblUserInfo.Caption = "Phiên làm việc: " + user.HoTen + " - " + user.LoaiTaiKhoan.Ten;
         }
         private void BtnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -119,6 +120,40 @@ namespace CafeApp.Winform.Views
         private void BtnNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmNguyenLieu f = new FrmNguyenLieu
+            {
+                MdiParent = this
+            };
+            f.Show();
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //XtraMessageBox.Show("fjdhfjdsf");
+            //return;
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CP_NOCLOSE = 0x200;
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE;
+                return myCp;
+            }
+        }
+
+        private void BtnThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmThucDon f = new FrmThucDon
+            {
+                MdiParent = this
+            };
+            f.Show();
+        }
+
+        private void BtnPhaChe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmPhaChe f = new FrmPhaChe
             {
                 MdiParent = this
             };

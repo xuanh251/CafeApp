@@ -15,17 +15,17 @@ using System.Diagnostics;
 
 namespace CafeApp.Winform.Views
 {
-    public partial class FrmNguyenLieu : DevExpress.XtraEditors.XtraForm
+    public partial class FrmThucDon : DevExpress.XtraEditors.XtraForm
     {
         ModelQuanLiCafeDbContext db { get; set; }
-        public FrmNguyenLieu()
+        public FrmThucDon()
         {
             db = new ModelQuanLiCafeDbContext();
             InitializeComponent();
             KeyPreview = true;
-            db.NhomNguyenLieux.Load();
-            repositoryItemSearchLookUpEditNhomNguyenLieu.DataSource = db.NhomNguyenLieux.Local.ToBindingList();
-            repositoryItemSearchLookUpEditNhomNguyenLieu.View.Columns.AddField("Ten").Visible = true;
+            db.NhomThucDons.Load();
+            repositoryItemSearchLookUpEditNhomThucDon.DataSource = db.NhomThucDons.Local.ToBindingList();
+            repositoryItemSearchLookUpEditNhomThucDon.View.Columns.AddField("Ten").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
             repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("Ten").Visible = true;
@@ -33,10 +33,10 @@ namespace CafeApp.Winform.Views
         }
         private void NapDuLieu()
         {
-            db.NguyenLieux.Load();
-            gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
-            gridViewNguyenLieu.RefreshData();
-            gridViewNguyenLieu.BestFitColumns();
+            db.ThucDons.Load();
+            gridControlThucDon.DataSource = db.ThucDons.Local.ToBindingList();
+            gridViewThucDon.RefreshData();
+            gridViewThucDon.BestFitColumns();
         }
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -46,7 +46,7 @@ namespace CafeApp.Winform.Views
         {
             try
             {
-                gridControlNguyenLieu.EmbeddedNavigator.Buttons.DoClick(gridControlNguyenLieu.EmbeddedNavigator.Buttons.EndEdit);
+                gridControlThucDon.EmbeddedNavigator.Buttons.DoClick(gridControlThucDon.EmbeddedNavigator.Buttons.EndEdit);
                 int dem = db.SaveChanges();
                 if (dem > 0)
                 {
@@ -67,20 +67,20 @@ namespace CafeApp.Winform.Views
         {
             Luu();
         }
-        private NguyenLieu vitri;
+        private ThucDon vitri;
         private void Xoa()
         {
             try
             {
-                vitri = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
+                vitri = (ThucDon)gridViewThucDon.GetFocusedRow();
                 if (vitri == null) return;
                 else if (db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi xoá!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + NguyenLieu.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + ThucDon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    db.NguyenLieux.Remove(vitri);
+                    db.ThucDons.Remove(vitri);
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá thành công!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
@@ -97,14 +97,14 @@ namespace CafeApp.Winform.Views
         }
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Xoa();
+
         }
 
         private void BtnXuatExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var fileName = string.Concat(Guid.NewGuid().ToString(), ".xls");
             string exportFilePath = string.Concat(Application.StartupPath, @"\", fileName);
-            gridViewNguyenLieu.ExportToXls(exportFilePath);
+            gridViewThucDon.ExportToXls(exportFilePath);
 
             if (File.Exists(exportFilePath))
             {
@@ -126,7 +126,7 @@ namespace CafeApp.Winform.Views
             }
         }
 
-        private void FrmNguyenLieu_KeyDown(object sender, KeyEventArgs e)
+        private void FrmThucDon_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {
@@ -140,15 +140,10 @@ namespace CafeApp.Winform.Views
             {
                 BtnXoa_ItemClick(null, null);
             }
-            if (e.Control&&e.KeyCode==Keys.Q)
+            if (e.Control && e.KeyCode == Keys.Q)
             {
                 BtnXuatExcel_ItemClick(null, null);
             }
-        }
-
-        private void gridViewNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            
         }
     }
 }

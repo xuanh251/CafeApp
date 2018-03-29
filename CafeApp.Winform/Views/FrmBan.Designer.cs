@@ -263,6 +263,7 @@
             this.gridColumn1.Caption = "Id";
             this.gridColumn1.FieldName = "Id";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 

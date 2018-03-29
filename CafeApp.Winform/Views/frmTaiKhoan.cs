@@ -21,7 +21,7 @@ namespace CafeApp.Winform.Views
         public FrmTaiKhoan()
         {
             InitializeComponent();
-            
+            KeyPreview = true;
             Db = new ModelQuanLiCafeDbContext();
             Db.LoaiTaiKhoans.Load();
             repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = Db.LoaiTaiKhoans.Local.ToBindingList();
@@ -144,6 +144,26 @@ namespace CafeApp.Winform.Views
         {
             GridView view = sender as GridView;
             view.SetRowCellValue(e.RowHandle, view.Columns["MatKhau"], Core.Encrypt(Core.MatKhauMacDinh));
+        }
+
+        private void FrmTaiKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                BtnNapDuLieu_ItemClick(null, null);
+            }
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                BtnLuu_ItemClick(null, null);
+            }
+            if (e.KeyCode == Keys.Delete)
+            {
+                BtnXoa_ItemClick(null, null);
+            }
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                BtnKhoiPhucMatKhau_ItemClick(null, null);
+            }
         }
     }
 }

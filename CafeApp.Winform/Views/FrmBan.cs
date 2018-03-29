@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
+using System;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmBan : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmBan()
         {
             InitializeComponent();
@@ -23,6 +17,7 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             NapDuLieu();
         }
+
         public void NapDuLieu()
         {
             db.Bans.Load();
@@ -46,6 +41,7 @@ namespace CafeApp.Winform.Views
         {
             Luu();
         }
+
         private void Luu()
         {
             try
@@ -72,7 +68,9 @@ namespace CafeApp.Winform.Views
         {
             Xoa();
         }
+
         private Ban vitri;
+
         private void Xoa()
         {
             try
@@ -103,19 +101,19 @@ namespace CafeApp.Winform.Views
 
         private void FrmBan_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.F5)
+            if (e.KeyCode == Keys.F5)
             {
                 BtnNapDuLieu_ItemClick(null, null);
             }
-            if (e.Control&&e.KeyCode==Keys.N)
+            if (e.Control && e.KeyCode == Keys.N)
             {
                 BtnThemTuDong_ItemClick(null, null);
             }
-            if (e.Control&&e.KeyCode==Keys.S)
+            if (e.Control && e.KeyCode == Keys.S)
             {
                 BtnLuu_ItemClick(null, null);
             }
-            if (e.KeyCode==Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 BtnXoa_ItemClick(null, null);
             }

@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201803261620473_editModel.Designer.cs">
       <DependentUpon>201803261620473_editModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803270823214_005.cs" />
+    <Compile Include="Migrations\201803270823214_005.Designer.cs">
+      <DependentUpon>201803270823214_005.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\ChucVu.cs" />
@@ -123,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803261620473_editModel.resx">
       <DependentUpon>201803261620473_editModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803270823214_005.resx">
+      <DependentUpon>201803270823214_005.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

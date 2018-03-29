@@ -117,10 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="password" xml:space="preserve">
-    <value />
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>34</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAASdEVYdFRpdGxlAFNhdmU7U2F2ZUFzO7YdHiIAAACPSURBVDhPzZHBDYAgDEXZiTkYwDHcgHhz
+        Fhfwyp2ZrG0DpDSgaGJikxdD7X9pwADAI9yyWwQQhxhurtMGN0QVntPXVYJORRyU4QxLmoIQgqQVztiR
+        DUjAwyKYz/Ud5GpsIEMlTDzZQEoow3czJNBQOM0PP2OTbwQHNq6Qs1h9gT7rPoH1I4GXPwbxRfAeMCdd
+        l95k2InKlgAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="username" xml:space="preserve">
-    <value />
+  <data name="barButtonItem1.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAASdEVYdFRpdGxlAFNhdmU7U2F2ZUFzO7YdHiIAAAEHSURBVFhH7ZPBDcIwDEXZiQW6AAOwRWfg
+        xiwswK3qJt0k2JFjOWncpsQNQoqlJ5Dj+D8oXJxzzbg93gPgkNBbDZ2FCL9Kiezwt8BSrc+fnGCJaPB5
+        fzlDJiU84CVWAuK1pvbCA8NKIFBRxeFA/BswECgOp7kygXmeS5hwIS6nEA0fjsB702/gUDjNmwtgCP/F
+        Enw47PaPieZNH0EQQFIJDqfdxwQKSwogQSIKp91NBHw4gLs5HMFewFRAAZ8576XdfC4HawU2K9ndBfYF
+        zkRmdoFdgdpSdv6pwNaZVukdutcFuoAqsGSGubbOtErvAAu0VYERB8SwNbh7lJmRwC/INluSbbbDXT4x
+        ljpV9CfJ5wAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

@@ -73,7 +73,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.EnableBonusSkins = true;
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -114,7 +113,7 @@
             this.ribbonPage3,
             this.ribbonPage4});
             this.ribbonControl1.QuickToolbarItemLinks.Add(this.skinRibbonGalleryBarItem1);
-            this.ribbonControl1.Size = new System.Drawing.Size(935, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(935, 144);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // skinRibbonGalleryBarItem1
@@ -251,6 +250,7 @@
             this.BtnThucDon.Id = 18;
             this.BtnThucDon.ImageOptions.LargeImage = global::CafeApp.Winform.Properties.Resources.if_menu_alt_134216;
             this.BtnThucDon.Name = "BtnThucDon";
+            this.BtnThucDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnThucDon_ItemClick);
             // 
             // BtnDonViTinh
             // 
@@ -275,6 +275,7 @@
             this.BtnPhaChe.Id = 21;
             this.BtnPhaChe.ImageOptions.LargeImage = global::CafeApp.Winform.Properties.Resources.if__coffee_maker2_2324129;
             this.BtnPhaChe.Name = "BtnPhaChe";
+            this.BtnPhaChe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnPhaChe_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -362,10 +363,10 @@
             // 
             this.ribbonStatusBar1.ItemLinks.Add(this.lblThongTin);
             this.ribbonStatusBar1.ItemLinks.Add(this.lblUserInfo);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 368);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 369);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(935, 28);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(935, 27);
             // 
             // FrmMain
             // 
@@ -378,6 +379,7 @@
             this.Name = "FrmMain";
             this.Text = "Phần mềm quản lí Cafe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
