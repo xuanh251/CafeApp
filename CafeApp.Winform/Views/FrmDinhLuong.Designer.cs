@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDinhLuong));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.BtnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
             this.BtnLuu = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnXoaMon = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.LblTenNguyenLieu = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -42,6 +44,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlMon = new DevExpress.XtraGrid.GridControl();
             this.gridViewMon = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -76,9 +79,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnXoaMon = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -142,6 +142,15 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // BtnNapDuLieu
+            // 
+            this.BtnNapDuLieu.Caption = "Nạp dữ liệu";
+            this.BtnNapDuLieu.Id = 6;
+            this.BtnNapDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNapDuLieu.ImageOptions.Image")));
+            this.BtnNapDuLieu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnNapDuLieu.ImageOptions.LargeImage")));
+            this.BtnNapDuLieu.Name = "BtnNapDuLieu";
+            this.BtnNapDuLieu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnNapDuLieu_ItemClick);
+            // 
             // BtnLuu
             // 
             this.BtnLuu.Caption = "Lưu(Ctrl+S)";
@@ -150,6 +159,15 @@
             this.BtnLuu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnLuu.ImageOptions.LargeImage")));
             this.BtnLuu.Name = "BtnLuu";
             this.BtnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnLuu_ItemClick);
+            // 
+            // BtnXoaMon
+            // 
+            this.BtnXoaMon.Caption = "Xoá món";
+            this.BtnXoaMon.Id = 5;
+            this.BtnXoaMon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXoaMon.ImageOptions.Image")));
+            this.BtnXoaMon.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnXoaMon.ImageOptions.LargeImage")));
+            this.BtnXoaMon.Name = "BtnXoaMon";
+            this.BtnXoaMon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXoaMon_ItemClick);
             // 
             // barStaticItem1
             // 
@@ -203,6 +221,12 @@
             this.barStaticItem2.Id = 2;
             this.barStaticItem2.Name = "barStaticItem2";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 4;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridControlMon);
@@ -241,6 +265,8 @@
             this.gridViewMon.OptionsBehavior.ReadOnly = true;
             this.gridViewMon.OptionsView.ShowAutoFilterRow = true;
             this.gridViewMon.OptionsView.ShowGroupPanel = false;
+            this.gridViewMon.OptionsView.ShowViewCaption = true;
+            this.gridViewMon.ViewCaption = "Thực đơn";
             // 
             // gridColumn11
             // 
@@ -263,9 +289,9 @@
             // repositoryItemButtonEditChonMon
             // 
             this.repositoryItemButtonEditChonMon.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.repositoryItemButtonEditChonMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, true, editorButtonImageOptions1)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, true, editorButtonImageOptions3)});
             this.repositoryItemButtonEditChonMon.Name = "repositoryItemButtonEditChonMon";
             this.repositoryItemButtonEditChonMon.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditChonMon_ButtonPressed);
             // 
@@ -322,6 +348,8 @@
             this.gridViewDinhLuong.GridControl = this.gridControlDinhLuong;
             this.gridViewDinhLuong.Name = "gridViewDinhLuong";
             this.gridViewDinhLuong.OptionsView.ShowGroupPanel = false;
+            this.gridViewDinhLuong.OptionsView.ShowViewCaption = true;
+            this.gridViewDinhLuong.ViewCaption = "Định lượng";
             // 
             // gridColumn3
             // 
@@ -443,6 +471,8 @@
             this.gridViewNguyenLieu.OptionsBehavior.ReadOnly = true;
             this.gridViewNguyenLieu.OptionsView.ShowAutoFilterRow = true;
             this.gridViewNguyenLieu.OptionsView.ShowGroupPanel = false;
+            this.gridViewNguyenLieu.OptionsView.ShowViewCaption = true;
+            this.gridViewNguyenLieu.ViewCaption = "Nguyên liệu";
             this.gridViewNguyenLieu.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewNguyenLieu_FocusedRowChanged);
             // 
             // gridColumn10
@@ -494,9 +524,9 @@
             this.repositoryItemButtonEditNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEditNguyenLieu.Appearance.Image")));
             this.repositoryItemButtonEditNguyenLieu.Appearance.Options.UseImage = true;
             this.repositoryItemButtonEditNguyenLieu.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
             this.repositoryItemButtonEditNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions2)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions4)});
             this.repositoryItemButtonEditNguyenLieu.Name = "repositoryItemButtonEditNguyenLieu";
             // 
             // layoutControlGroup1
@@ -538,30 +568,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(252, 369);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 4;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // BtnXoaMon
-            // 
-            this.BtnXoaMon.Caption = "Xoá món";
-            this.BtnXoaMon.Id = 5;
-            this.BtnXoaMon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image1")));
-            this.BtnXoaMon.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage1")));
-            this.BtnXoaMon.Name = "BtnXoaMon";
-            this.BtnXoaMon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXoaMon_ItemClick);
-            // 
-            // BtnNapDuLieu
-            // 
-            this.BtnNapDuLieu.Caption = "Nạp dữ liệu";
-            this.BtnNapDuLieu.Id = 6;
-            this.BtnNapDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.BtnNapDuLieu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.BtnNapDuLieu.Name = "BtnNapDuLieu";
-            this.BtnNapDuLieu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnNapDuLieu_ItemClick);
             // 
             // FrmDinhLuong
             // 

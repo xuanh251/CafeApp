@@ -42,7 +42,7 @@ namespace CafeApp.Model.Models
         public virtual TaiKhoan TaiKhoan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
+        public virtual BindingList<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 
         [NotMapped]
         public double ThanhTien

@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
+    <Compile Include="Models\BanLe.cs" />
     <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\DoiTac.cs" />
     <Compile Include="Models\DonViTinh.cs" />

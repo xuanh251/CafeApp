@@ -66,6 +66,7 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.BtnBanLe = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
@@ -103,9 +104,10 @@
             this.BtnThucDon,
             this.BtnDonViTinh,
             this.BtnDoiTac,
-            this.BtnDinhLuong});
+            this.BtnDinhLuong,
+            this.BtnBanLe});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 22;
+            this.ribbonControl1.MaxItemId = 23;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -343,8 +345,8 @@
             // 
             // ribbonPageGroup3
             // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.BtnBanLe);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPage4
             // 
@@ -367,6 +369,15 @@
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(935, 27);
+            // 
+            // BtnBanLe
+            // 
+            this.BtnBanLe.Caption = "Bán lẻ";
+            this.BtnBanLe.Id = 22;
+            this.BtnBanLe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.BtnBanLe.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.BtnBanLe.Name = "BtnBanLe";
+            this.BtnBanLe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnBanLe_ItemClick);
             // 
             // FrmMain
             // 
@@ -425,5 +436,6 @@
         private DevExpress.XtraBars.BarButtonItem BtnDoiTac;
         private DevExpress.XtraBars.BarButtonItem BtnDinhLuong;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem BtnBanLe;
     }
 }

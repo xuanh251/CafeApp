@@ -159,5 +159,14 @@ namespace CafeApp.Winform.Views
             };
             f.Show();
         }
+
+        private void BtnBanLe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmBanHang f = new FrmBanHang
+            {
+                MdiParent = this
+            };
+            f.Show();
+        }
     }
 }
