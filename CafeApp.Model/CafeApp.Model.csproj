@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201803291425205_0012.Designer.cs">
       <DependentUpon>201803291425205_0012.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803310756599_changecsdl.cs" />
+    <Compile Include="Migrations\201803310756599_changecsdl.Designer.cs">
+      <DependentUpon>201803310756599_changecsdl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\BanLe.cs" />
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803291425205_0012.resx">
       <DependentUpon>201803291425205_0012.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803310756599_changecsdl.resx">
+      <DependentUpon>201803310756599_changecsdl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

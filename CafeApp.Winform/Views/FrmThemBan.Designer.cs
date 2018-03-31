@@ -60,7 +60,7 @@
             this.BtnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnThem.ImageOptions.Image")));
             this.BtnThem.Location = new System.Drawing.Point(12, 36);
             this.BtnThem.Name = "BtnThem";
-            this.BtnThem.Size = new System.Drawing.Size(151, 36);
+            this.BtnThem.Size = new System.Drawing.Size(151, 38);
             this.BtnThem.StyleController = this.layoutControl1;
             this.BtnThem.TabIndex = 5;
             this.BtnThem.Text = "Thêm Bàn";

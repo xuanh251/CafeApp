@@ -58,5 +58,53 @@ namespace CafeApp.Winform.Properties {
                 this["Skin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TenDonVi {
+            get {
+                return ((string)(this["TenDonVi"]));
+            }
+            set {
+                this["TenDonVi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DiaChi {
+            get {
+                return ((string)(this["DiaChi"]));
+            }
+            set {
+                this["DiaChi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Slogan {
+            get {
+                return ((string)(this["Slogan"]));
+            }
+            set {
+                this["Slogan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LienHe {
+            get {
+                return ((string)(this["LienHe"]));
+            }
+            set {
+                this["LienHe"] = value;
+            }
+        }
     }
 }

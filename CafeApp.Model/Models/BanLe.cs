@@ -23,7 +23,7 @@ namespace CafeApp.Model.Models
         public bool TrangThaiHoaDon { get; set; }
         public string GhiChu { get; set; }
         public string CaLamViec { get; set; }
-        public double? ChietKhau { get; set; }
+        public double ChietKhau { get; set; }
         public BindingList<HoaDonChiTiet> hoaDonChiTiets { get; set; }
 
         public const string TableName = "Hoá đơn bán lẻ";

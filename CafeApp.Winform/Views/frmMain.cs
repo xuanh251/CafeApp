@@ -17,6 +17,76 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             LoadStatusBar();
         }
+        public void XtraTabbedMdiManager_Add_Or_Select_ChildForm(Form pForm, System.Drawing.Image pImage = null, bool pAllowReplaceForm = false)
+        {
+            try
+            {
+                //Cho phép đè lên Form cũ
+                if ((pAllowReplaceForm))
+                {
+                    Form _Form = default(Form);
+
+                    foreach (DevExpress.XtraTabbedMdi.XtraMdiTabPage _Page in this.xtraTabbedMdiManagerMain.Pages)
+                    {
+                        if ((_Page.MdiChild.Name == pForm.Name))
+                        {
+                            this.xtraTabbedMdiManagerMain.Pages.Remove(_Page);
+                            _Form = pForm;
+                            _Form.Text = _Form.Text.ToUpper();
+                            _Form.MdiParent = xtraTabbedMdiManagerMain.MdiParent;
+                            if ((pImage != null))
+                            {
+                                xtraTabbedMdiManagerMain.Pages[_Form].Image = pImage;
+                            }
+                            _Form.Show();
+                            return;
+                        }
+                    }
+
+                    _Form = pForm;
+                    _Form.Text = _Form.Text.ToUpper();
+                    _Form.MdiParent = xtraTabbedMdiManagerMain.MdiParent;
+                    if ((pImage != null))
+                    {
+                        xtraTabbedMdiManagerMain.Pages[_Form].Image = pImage;
+                    }
+                    _Form.Show();
+                    //Không cho phép đè lên Form cũ, mà chỉ hiển thị lại
+                }
+                else
+                {
+                    foreach (DevExpress.XtraTabbedMdi.XtraMdiTabPage _Page in this.xtraTabbedMdiManagerMain.Pages)
+                    {
+                        if ((_Page.MdiChild.Name == pForm.Name))
+                        {
+                            if ((pImage != null))
+                            {
+                                _Page.Image = pImage;
+                            }
+
+                            _Page.MdiChild.Activate();
+                            return;
+                        }
+                    }
+                    Form _Form = pForm;
+                    _Form.Text = _Form.Text.ToUpper();
+                    _Form.MdiParent = xtraTabbedMdiManagerMain.MdiParent;
+                    if ((pImage != null))
+                    {
+                        xtraTabbedMdiManagerMain.Pages[_Form].Image = pImage;
+                    }
+                    _Form.Show();
+                }
+
+
+            }
+            catch (System.Exception _Ex)
+            {
+                XtraMessageBox.Show(_Ex.Message, "XtraTabbedMdiManager_Add_Or_Select_ChildForm", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+        }
         private void LoadStatusBar()
         {
             lblThongTin.Caption = "@" + DateTime.Now.Year + " CafeApp Manager";
@@ -25,20 +95,12 @@ namespace CafeApp.Winform.Views
         }
         private void BtnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmTaiKhoan f = new FrmTaiKhoan
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmTaiKhoan());
         }
 
         private void BtnLichSuTruyCap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmLichSuTruyCap f = new FrmLichSuTruyCap
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmLichSuTruyCap());
         }
 
         private void BtnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -74,63 +136,35 @@ namespace CafeApp.Winform.Views
 
         private void BtnBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmBan f = new FrmBan
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmBan());
         }
 
         private void BtnNhomNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmNhomNguyenLieu f = new FrmNhomNguyenLieu
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhomNguyenLieu());
         }
 
         private void BtnNhomThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmNhomSanPham f = new FrmNhomSanPham
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhomSanPham());
         }
 
         private void BtnDonViTinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmDonViTinh f = new FrmDonViTinh
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDonViTinh());
         }
 
         private void BtnDoiTac_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmDoiTac f = new FrmDoiTac
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDoiTac());
         }
 
         private void BtnNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmNguyenLieu f = new FrmNguyenLieu
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNguyenLieu());
         }
 
-        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //XtraMessageBox.Show("fjdhfjdsf");
-            //return;
-        }
+       
         protected override CreateParams CreateParams
         {
             get
@@ -144,29 +178,17 @@ namespace CafeApp.Winform.Views
 
         private void BtnThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmThucDon f = new FrmThucDon
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmThucDon());
         }
 
         private void BtnDinhLuong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmDinhLuong f = new FrmDinhLuong
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDinhLuong());
         }
 
         private void BtnBanLe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmBanHang f = new FrmBanHang
-            {
-                MdiParent = this
-            };
-            f.Show();
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmBanHang());
         }
     }
 }

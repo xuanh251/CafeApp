@@ -25,6 +25,26 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
-        public const string TableName = "B�n";
+        public const string TableName = "Bàn";
+    }
+    public class ChuyenBanModel
+    {
+        public int IdBan { get; set; }
+        public string TenBan { get; set; }
+        public string GhiChu { get; set; }
+        private string thongTinBan;
+        [NotMapped]
+        public string ThongTinBan
+        {
+            get
+            {
+                return string.Concat("<b>", this.TenBan, "</b><br>Sẵn sàng");
+            }
+            set
+            {
+                this.thongTinBan = value;
+            }
+        }
+
     }
 }

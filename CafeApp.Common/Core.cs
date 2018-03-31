@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,11 +8,17 @@ namespace CafeApp.Common
 {
     public class Core
     {
+        public static List<string> CaLamViecs = new List<string> { "Sáng", "Chiều", "Tối" };
         public const string MatKhauMacDinh = "123456";
         private static readonly string PasswordHash = "P@@Sw0rd";
         private static readonly string SaltKey = "S@LT&KEY";
         private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
-
+        public static string SetCaLamViec()
+        {
+            if (DateTime.Now.Hour<=11) return CaLamViecs[0];
+            if (DateTime.Now.Hour <= 17) return CaLamViecs[1];
+            else return CaLamViecs[2];
+        }
         public static string Encrypt(string plainText)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);

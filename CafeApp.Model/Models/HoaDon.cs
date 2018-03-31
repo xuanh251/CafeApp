@@ -31,9 +31,19 @@ namespace CafeApp.Model.Models
         [Required]
         [StringLength(50)]
         public string CaLamViec { get; set; }
+        [Display(Name = "Chiết khấu", Description = "Giảm giá theo % trên tổng tiền của phiếu")]
+        [Required, DefaultValue(0)]
+        public double ChietKhau { get; set; }
+        [NotMapped]
+        [Display(Name = "Tiền CK", Description = "Tổng tiền giờ và tiền sản phẩm")]
+        public double TienChietKhau
+        {
+            get
+            {
+                return (this.TongTien) * ChietKhau / 100;
+            }
 
-        public double? ChietKhau { get; set; }
-
+        }
         [StringLength(200)]
         public string GhiChu { get; set; }
 
@@ -45,7 +55,7 @@ namespace CafeApp.Model.Models
         public virtual BindingList<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 
         [NotMapped]
-        public double ThanhTien
+        public double TongTien
         {
             get
             {
@@ -59,6 +69,17 @@ namespace CafeApp.Model.Models
                     return 0;
                 }
             }
+        }
+
+        [NotMapped]
+        [Display(Name = "Thành tiền", Description = "Tổng tiền giờ và tiền sản phẩm")]
+        public double ThanhTien
+        {
+            get
+            {
+                return this.TongTien - TienChietKhau;
+            }
+
         }
     }
 }

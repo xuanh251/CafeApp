@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.xtraTabbedMdiManagerMain = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.btnTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
@@ -54,6 +54,7 @@
             this.BtnDonViTinh = new DevExpress.XtraBars.BarButtonItem();
             this.BtnDoiTac = new DevExpress.XtraBars.BarButtonItem();
             this.BtnDinhLuong = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnBanLe = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,8 +67,7 @@
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.BtnBanLe = new DevExpress.XtraBars.BarButtonItem();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,9 +75,13 @@
             // 
             this.defaultLookAndFeel1.EnableBonusSkins = true;
             // 
-            // xtraTabbedMdiManager1
+            // xtraTabbedMdiManagerMain
             // 
-            this.xtraTabbedMdiManager1.MdiParent = this;
+            this.xtraTabbedMdiManagerMain.HeaderButtons = ((DevExpress.XtraTab.TabButtons)((((DevExpress.XtraTab.TabButtons.Prev | DevExpress.XtraTab.TabButtons.Next) 
+            | DevExpress.XtraTab.TabButtons.Close) 
+            | DevExpress.XtraTab.TabButtons.Default)));
+            this.xtraTabbedMdiManagerMain.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom;
+            this.xtraTabbedMdiManagerMain.MdiParent = this;
             // 
             // ribbonControl1
             // 
@@ -279,6 +283,15 @@
             this.BtnDinhLuong.Name = "BtnDinhLuong";
             this.BtnDinhLuong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDinhLuong_ItemClick);
             // 
+            // BtnBanLe
+            // 
+            this.BtnBanLe.Caption = "Bán lẻ";
+            this.BtnBanLe.Id = 22;
+            this.BtnBanLe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnBanLe.ImageOptions.Image")));
+            this.BtnBanLe.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnBanLe.ImageOptions.LargeImage")));
+            this.BtnBanLe.Name = "BtnBanLe";
+            this.BtnBanLe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnBanLe_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -370,15 +383,6 @@
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(935, 27);
             // 
-            // BtnBanLe
-            // 
-            this.BtnBanLe.Caption = "Bán lẻ";
-            this.BtnBanLe.Id = 22;
-            this.BtnBanLe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.BtnBanLe.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.BtnBanLe.Name = "BtnBanLe";
-            this.BtnBanLe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnBanLe_ItemClick);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,8 +394,7 @@
             this.Name = "FrmMain";
             this.Text = "Phần mềm quản lí Cafe";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -401,7 +404,7 @@
         #endregion
 
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
-        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManagerMain;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
