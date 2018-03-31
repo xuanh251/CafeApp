@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChietKhau));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.BtnXacNhan = new DevExpress.XtraEditors.SimpleButton();
             this.spinEditChietKhau = new DevExpress.XtraEditors.SpinEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.BtnXacNhan = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditChietKhau.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -57,18 +57,16 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // layoutControlGroup1
+            // BtnXacNhan
             // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.emptySpaceItem1,
-            this.layoutControlItem2});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(149, 103);
-            this.layoutControlGroup1.TextVisible = false;
+            this.BtnXacNhan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXacNhan.ImageOptions.Image")));
+            this.BtnXacNhan.Location = new System.Drawing.Point(12, 42);
+            this.BtnXacNhan.Name = "BtnXacNhan";
+            this.BtnXacNhan.Size = new System.Drawing.Size(125, 38);
+            this.BtnXacNhan.StyleController = this.layoutControl1;
+            this.BtnXacNhan.TabIndex = 5;
+            this.BtnXacNhan.Text = "Xác nhận";
+            this.BtnXacNhan.Click += new System.EventHandler(this.BtnXacNhan_Click);
             // 
             // spinEditChietKhau
             // 
@@ -91,6 +89,19 @@
             this.spinEditChietKhau.StyleController = this.layoutControl1;
             this.spinEditChietKhau.TabIndex = 4;
             // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.emptySpaceItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(149, 103);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.spinEditChietKhau;
@@ -107,17 +118,6 @@
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(129, 11);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // BtnXacNhan
-            // 
-            this.BtnXacNhan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXacNhan.ImageOptions.Image")));
-            this.BtnXacNhan.Location = new System.Drawing.Point(12, 42);
-            this.BtnXacNhan.Name = "BtnXacNhan";
-            this.BtnXacNhan.Size = new System.Drawing.Size(125, 38);
-            this.BtnXacNhan.StyleController = this.layoutControl1;
-            this.BtnXacNhan.TabIndex = 5;
-            this.BtnXacNhan.Text = "Xác nhận";
-            this.BtnXacNhan.Click += new System.EventHandler(this.BtnXacNhan_Click);
             // 
             // layoutControlItem2
             // 
@@ -138,11 +138,12 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmChietKhau";
-            this.Text = "FrmChietKhau";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Chiết khấu";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditChietKhau.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();

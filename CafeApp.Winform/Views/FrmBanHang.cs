@@ -13,6 +13,7 @@ using System.Data.Entity;
 using DevExpress.XtraGrid.Views.Card;
 using CafeApp.Common;
 using DevExpress.XtraGrid;
+using DevExpress.XtraReports.UI;
 
 namespace CafeApp.Winform.Views
 {
@@ -136,6 +137,8 @@ namespace CafeApp.Winform.Views
                 BtnXoaBan.Enabled = false;
                 BtnThanhToan.Enabled = false;
                 BtnChietKhau.Enabled = false;
+                simpleLabelItemGioVao.Text = Core.NullData;
+               
             }
             if (vitri.ChietKhau!=0)
             {
@@ -359,7 +362,27 @@ namespace CafeApp.Winform.Views
         private void BtnThanhToan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
-            
+            if (vitri == null) return;
+            if ((XtraMessageBox.Show("Bạn có muốn thực hiện thanh toán cho "+vitri.TenBan+" ?","Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
+            {
+                db = new ModelQuanLiCafeDbContext();
+                var report = new Reports.ReportPhieuThanhToan();
+                var hd = db.HoaDons.Find(vitri.Id);
+                report.NapDuLieu(hd);
+                var printTool = new ReportPrintTool(report);
+                printTool.Report.CreateDocument(true);
+                printTool.ShowPreview();
+                DaThanhToan(vitri.Id);
+            }
+        }
+        private void DaThanhToan(int idHD)
+        {
+            db = new ModelQuanLiCafeDbContext();
+            var hd=db.HoaDons.Find(idHD);
+            hd.TrangThai = true;
+            db.SaveChanges();
+            NapDuLieu();
+            NapDuLieuChiTiet();
         }
     }
 }
