@@ -1,6 +1,6 @@
 ﻿namespace CafeApp.Winform.Views
 {
-    partial class FrmThucDon
+    partial class FrmMon
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmThucDon));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMon));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.BtnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
@@ -135,7 +135,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(703, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(703, 26);
             // 
             // barDockControlBottom
             // 
@@ -149,29 +149,29 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 237);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 235);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(703, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(703, 26);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 237);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 235);
             // 
             // gridControlThucDon
             // 
             this.gridControlThucDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlThucDon.Location = new System.Drawing.Point(0, 24);
+            this.gridControlThucDon.Location = new System.Drawing.Point(0, 26);
             this.gridControlThucDon.MainView = this.gridViewThucDon;
             this.gridControlThucDon.MenuManager = this.barManager1;
             this.gridControlThucDon.Name = "gridControlThucDon";
             this.gridControlThucDon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEditNhomThucDon,
             this.repositoryItemSearchLookUpEditDonViTinh});
-            this.gridControlThucDon.Size = new System.Drawing.Size(703, 237);
+            this.gridControlThucDon.Size = new System.Drawing.Size(703, 235);
             this.gridControlThucDon.TabIndex = 4;
             this.gridControlThucDon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewThucDon});
@@ -189,12 +189,11 @@
             this.gridViewThucDon.Name = "gridViewThucDon";
             this.gridViewThucDon.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridViewThucDon.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewThucDon.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Id";
-            this.gridColumn1.FieldName = "Id";
+            this.gridColumn1.FieldName = "IdMon";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
@@ -213,6 +212,7 @@
             this.gridColumn3.Caption = "Nhóm";
             this.gridColumn3.ColumnEdit = this.repositoryItemSearchLookUpEditNhomThucDon;
             this.gridColumn3.FieldName = "IdNhom";
+            this.gridColumn3.Image = ((System.Drawing.Image)(resources.GetObject("gridColumn3.Image")));
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -224,7 +224,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSearchLookUpEditNhomThucDon.DisplayMember = "Ten";
             this.repositoryItemSearchLookUpEditNhomThucDon.Name = "repositoryItemSearchLookUpEditNhomThucDon";
-            this.repositoryItemSearchLookUpEditNhomThucDon.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEditNhomThucDon.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditNhomThucDon.View = this.repositoryItemSearchLookUpEdit1View;
             // 
             // repositoryItemSearchLookUpEdit1View
@@ -250,7 +250,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSearchLookUpEditDonViTinh.DisplayMember = "Ten";
             this.repositoryItemSearchLookUpEditDonViTinh.Name = "repositoryItemSearchLookUpEditDonViTinh";
-            this.repositoryItemSearchLookUpEditDonViTinh.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEditDonViTinh.ValueMember = "IdDVT";
             this.repositoryItemSearchLookUpEditDonViTinh.View = this.gridView1;
             // 
             // gridView1
@@ -279,7 +279,7 @@
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
             // 
-            // FrmThucDon
+            // FrmMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -289,8 +289,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "FrmThucDon";
-            this.Text = "Thực đơn";
+            this.Name = "FrmMon";
+            this.Text = "Danh sách món";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmThucDon_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlThucDon)).EndInit();

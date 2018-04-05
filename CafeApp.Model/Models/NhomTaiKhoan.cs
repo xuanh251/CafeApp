@@ -4,27 +4,26 @@ namespace CafeApp.Model.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("NhomThucDon")]
-    public partial class NhomThucDon
+    [Table("NhomTaiKhoan")]
+    public partial class NhomTaiKhoan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhomThucDon()
+        public NhomTaiKhoan()
         {
-            ThucDons = new HashSet<ThucDon>();
+            TaiKhoans = new HashSet<TaiKhoan>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdNhom { get; set; }
 
         [Required]
         [StringLength(100)]
         public string Ten { get; set; }
 
-        [StringLength(100)]
+        [StringLength(200)]
         public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThucDon> ThucDons { get; set; }
-        public const string TableName = "Nhóm thực đơn";
+        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
     }
 }

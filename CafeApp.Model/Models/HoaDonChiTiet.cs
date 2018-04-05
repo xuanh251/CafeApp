@@ -1,6 +1,7 @@
 namespace CafeApp.Model.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("HoaDonChiTiet")]
@@ -8,10 +9,9 @@ namespace CafeApp.Model.Models
     {
         private ModelQuanLiCafeDbContext db = new ModelQuanLiCafeDbContext();
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
+        [Key,Column(Order =1)]
         public int IdHoaDon { get; set; }
+        [Key, Column(Order = 2)]
 
         public int IdMon { get; set; }
 
@@ -19,7 +19,7 @@ namespace CafeApp.Model.Models
 
         public virtual HoaDon HoaDon { get; set; }
 
-        public virtual ThucDon ThucDon { get; set; }
+        public virtual Mon Mon { get; set; }
 
         public double DonGia { get; set; }
 

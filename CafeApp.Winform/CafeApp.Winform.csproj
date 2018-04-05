@@ -111,11 +111,11 @@
     <Compile Include="Views\FrmDinhLuong.Designer.cs">
       <DependentUpon>FrmDinhLuong.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmThucDon.cs">
+    <Compile Include="Views\FrmMon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmThucDon.Designer.cs">
-      <DependentUpon>FrmThucDon.cs</DependentUpon>
+    <Compile Include="Views\FrmMon.Designer.cs">
+      <DependentUpon>FrmMon.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmNguyenLieu.cs">
       <SubType>Form</SubType>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Views\FrmDinhLuong.resx">
       <DependentUpon>FrmDinhLuong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmThucDon.resx">
-      <DependentUpon>FrmThucDon.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmMon.resx">
+      <DependentUpon>FrmMon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmNguyenLieu.resx">
       <DependentUpon>FrmNguyenLieu.cs</DependentUpon>

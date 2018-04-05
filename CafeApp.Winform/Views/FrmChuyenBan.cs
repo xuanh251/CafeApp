@@ -37,10 +37,10 @@ namespace CafeApp.Winform.Views
             var idBanDangSuDung = from a in dangSuDung select a.IdBan;
             //var listBanTrong = db.Bans.Local.Where(s => !dangSuDung.Any(a => a.IdBan == s.Id)).ToList();
             var listBanTrong = (from a in db.Bans
-                               where !idBanDangSuDung.Any(s => s == a.Id)
+                               where !idBanDangSuDung.Any(s => s == a.IdBan)
                                select new ChuyenBanModel
                                {
-                                   IdBan = a.Id,
+                                   IdBan = a.IdBan,
                                    TenBan = a.TenBan,
                                    GhiChu = a.GhiChu
                                }).ToList();

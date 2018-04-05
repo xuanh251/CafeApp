@@ -16,16 +16,16 @@ namespace CafeApp.Model.Models
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<HoaDonChiTiet> HoaDonChiTiets { get; set; }
         public virtual DbSet<LichSuTruyCap> LichSuTruyCaps { get; set; }
-        public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
+        public virtual DbSet<NhomTaiKhoan> NhomTaiKhoans { get; set; }
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NhomNguyenLieu> NhomNguyenLieux { get; set; }
-        public virtual DbSet<NhomThucDon> NhomThucDons { get; set; }
+        public virtual DbSet<NhomMon> NhomMons { get; set; }
         public virtual DbSet<DinhLuong> DinhLuongs { get; set; }
         public virtual DbSet<PhieuNhapKho> PhieuNhapKhoes { get; set; }
         public virtual DbSet<PhieuNhapKhoChiTiet> PhieuNhapKhoChiTiets { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
-        public virtual DbSet<ThucDon> ThucDons { get; set; }
+        public virtual DbSet<Mon> Mons { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace CafeApp.Model.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DonViTinh>()
-                .HasMany(e => e.ThucDons)
+                .HasMany(e => e.Mons)
                 .WithRequired(e => e.DonViTinh)
                 .HasForeignKey(e => e.IdDVT)
                 .WillCascadeOnDelete(false);
@@ -65,9 +65,9 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.IdHoaDon)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<LoaiTaiKhoan>()
+            modelBuilder.Entity<NhomTaiKhoan>()
                 .HasMany(e => e.TaiKhoans)
-                .WithRequired(e => e.LoaiTaiKhoan)
+                .WithRequired(e => e.NhomTaiKhoan)
                 .HasForeignKey(e => e.QuyenSuDung)
                 .WillCascadeOnDelete(false);
 
@@ -89,9 +89,9 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.IdNguyenLieu)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<NhomThucDon>()
-                .HasMany(e => e.ThucDons)
-                .WithRequired(e => e.NhomThucDon)
+            modelBuilder.Entity<NhomMon>()
+                .HasMany(e => e.Mons)
+                .WithRequired(e => e.NhomMon)
                 .HasForeignKey(e => e.IdNhom)
                 .WillCascadeOnDelete(false);
 
@@ -126,15 +126,15 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.NguoiTao)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ThucDon>()
+            modelBuilder.Entity<Mon>()
                 .HasMany(e => e.HoaDonChiTiets)
-                .WithRequired(e => e.ThucDon)
+                .WithRequired(e => e.Mon)
                 .HasForeignKey(e => e.IdMon)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ThucDon>()
+            modelBuilder.Entity<Mon>()
                 .HasMany(e => e.DinhLuongs)
-                .WithRequired(e => e.ThucDon)
+                .WithRequired(e => e.Mon)
                 .HasForeignKey(e => e.IdMon)
                 .WillCascadeOnDelete(false);
         }

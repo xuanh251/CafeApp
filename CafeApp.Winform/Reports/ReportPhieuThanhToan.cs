@@ -24,11 +24,11 @@ namespace CafeApp.Winform.Reports
         {
             db = new ModelQuanLiCafeDbContext();
             var temp= (from a in db.HoaDons
-                                     join b in db.HoaDonChiTiets on a.Id equals b.IdHoaDon
-                                     join c in db.ThucDons on b.IdMon equals c.Id
-                                     where a.Id == hd.Id
+                                     join b in db.HoaDonChiTiets on a.IdHoaDon equals b.IdHoaDon
+                                     join c in db.Mons on b.IdMon equals c.IdMon
+                                     where a.IdHoaDon == hd.IdHoaDon
                                      select new { c.Ten, b.SoLuong, b.DonGia, Tien = (b.SoLuong * b.DonGia) }).ToList();
-            hoaDon = db.HoaDons.Find(hd.Id);
+            hoaDon = db.HoaDons.Find(hd.IdHoaDon);
             listCT = (from hdct in temp select new { hdct.Ten, SoLuong = hdct.SoLuong.ToString("n0"), DonGia = hdct.DonGia.ToString("n0"), Tien = hdct.Tien.ToString("n0") }).ToList();
             //xrTableCellViTri.Text = hd.IdBan.ToString();
         }
@@ -42,10 +42,10 @@ namespace CafeApp.Winform.Reports
             xrTableCellViTri.Text = "Vị trí: "+hoaDon.Ban.TenBan;
             xrTableCellCaLamViec.Text = "Ca làm việc: "+hoaDon.CaLamViec;
             xrTableCellThoiGian.Text = "Giờ vào: "+ hoaDon.NgayTao.ToString("dd-MM-yyy HH:mm:ss");
-            xrTableCellMaHoaDon.Text = "Hoá đơn số: " + hoaDon.Id;
+            xrTableCellMaHoaDon.Text = "Hoá đơn số: " + hoaDon.IdHoaDon;
             DataSource = listCT;
-            xrTableCellTenMon.DataBindings.Add("Text", listCT, nameof(ThucDon.Ten));
-            xrTableCellDonGia.DataBindings.Add("Text", listCT, nameof(ThucDon.DonGia));
+            xrTableCellTenMon.DataBindings.Add("Text", listCT, nameof(Mon.Ten));
+            xrTableCellDonGia.DataBindings.Add("Text", listCT, nameof(Mon.DonGia));
             xrTableCellSoLuong.DataBindings.Add("Text", listCT, nameof(HoaDonChiTiet.SoLuong));
             xrTableCellTien.DataBindings.Add("Text", listCT, nameof(HoaDonChiTiet.Tien));
             xrTableCellGiamGia.Text = hoaDon.TienChietKhau.ToString("n0")+"đ";

@@ -29,11 +29,11 @@ namespace CafeApp.Winform.Views
         private void NapThucDon()
         {
             db = new ModelQuanLiCafeDbContext();
-            db.ThucDons.Load();
-            db.NhomThucDons.Load();
-            repositoryItemSearchLookUpEditNhomMon.DataSource = db.NhomThucDons.Local.ToBindingList();
+            db.Mons.Load();
+            db.NhomMons.Load();
+            repositoryItemSearchLookUpEditNhomMon.DataSource = db.NhomMons.Local.ToBindingList();
             repositoryItemSearchLookUpEditNhomMon.View.Columns.AddField("Ten").Visible = true;
-            gridControlThucDon.DataSource = db.ThucDons.Local.ToBindingList().OrderBy(s => s.NhomThucDon.Id);
+            gridControlThucDon.DataSource = db.Mons.Local.ToBindingList().OrderBy(s => s.NhomMon.IdNhom);
             gridViewThucDon.RefreshData();
             gridViewThucDon.BestFitColumns();
         }
@@ -42,12 +42,12 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             db.Bans.Load();
             var temp = (from hd in db.HoaDons.Include(p => p.HoaDonChiTiets)
-                        join b in db.Bans on hd.IdBan equals b.Id
+                        join b in db.Bans on hd.IdBan equals b.IdBan
                         where hd.TrangThai == false
                         select new BanLe
                         {
-                            Id = hd.Id,
-                            IdBan = b.Id,
+                            IdPhieu = hd.IdHoaDon,
+                            IdBan = b.IdBan,
                             GhiChu = hd.GhiChu,
                             NgayLapHoaDon = hd.NgayTao,
                             hoaDonChiTiets = hd.HoaDonChiTiets,
@@ -58,14 +58,14 @@ namespace CafeApp.Winform.Views
             var listBan = temp.ToList();
             var tempBanDangMo = from bl in temp select bl.IdBan;
             var tempBanChuaMo = from b in db.Bans
-                                where !tempBanDangMo.Any(s => s == b.Id)
+                                where !tempBanDangMo.Any(s => s == b.IdBan)
                                 select b;
             foreach (var item in tempBanChuaMo)
             {
                 var b = new BanLe
                 {
-                    Id = 0,
-                    IdBan = item.Id,
+                    IdPhieu = 0,
+                    IdBan = item.IdBan,
                     GhiChu = item.GhiChu,
                     NgayLapHoaDon = null,
                     hoaDonChiTiets = null,
@@ -149,17 +149,17 @@ namespace CafeApp.Winform.Views
                 simpleLabelItemTenBan.Text = vitri.TenBan;
             }
             
-            gridViewHoaDonChiTiet.ViewCaption = "Dữ liệu chi tiết của hoá đơn " + vitri.Id;
+            gridViewHoaDonChiTiet.ViewCaption = "Dữ liệu chi tiết của hoá đơn " + vitri.IdPhieu;
             var tienchuack = vitri.TongTien;
             simpleLabelItemTongTien.Text = tienchuack.ToString("0 đ");
             simpleLabelItemChietKhau.Text = (tienchuack * vitri.ChietKhau / 100).ToString("0 đ");
             simpleLabelItemThanhTien.Text = (tienchuack * (1 - vitri.ChietKhau / 100)).ToString("0 đ");
 
             db = new ModelQuanLiCafeDbContext();
-            db.ThucDons.Load();
-            repositoryItemSearchLookUpEditHoaDon_ThucDon.DataSource = db.ThucDons.Local.ToBindingList();
+            db.Mons.Load();
+            repositoryItemSearchLookUpEditHoaDon_ThucDon.DataSource = db.Mons.Local.ToBindingList();
             
-            db.HoaDonChiTiets.Where(s=>s.IdHoaDon==vitri.Id).Load();
+            db.HoaDonChiTiets.Where(s=>s.IdHoaDon==vitri.IdPhieu).Load();
             gridControlHoaDonChiTiet.DataSource = db.HoaDonChiTiets.Local.ToBindingList();
             gridViewHoaDonChiTiet.RefreshData();
             gridViewHoaDonChiTiet.BestFitColumns();
@@ -178,7 +178,7 @@ namespace CafeApp.Winform.Views
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
             if (vitri == null) return;
             //phiếu đã tạo hoặc chưa thanh toán
-            if (vitri.Id > 0 || !vitri.TrangThaiHoaDon) return;
+            if (vitri.IdPhieu > 0 || !vitri.TrangThaiHoaDon) return;
             var hoadon = new HoaDon()
             {
                 IdBan = vitri.IdBan,
@@ -198,7 +198,7 @@ namespace CafeApp.Winform.Views
                     for (int i = 0; i < this.cardViewBan.RowCount; i++)
                     {
                         var current = (BanLe)this.cardViewBan.GetRow(i);
-                        if (current.Id == hoadon.Id)
+                        if (current.IdPhieu == hoadon.IdHoaDon)
                         {
                             this.cardViewBan.FocusedRowHandle = i;
                             break;
@@ -216,8 +216,7 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
-            var idCTHD = vitri.Id;
-            var hdct = db.HoaDonChiTiets.Where(s => s.Id == idCTHD).FirstOrDefault();
+            var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon &&s.IdMon==vitri.IdMon).FirstOrDefault();
             hdct.SoLuong = vitri.SoLuong;
             db.SaveChanges();
             LuuViTri();
@@ -229,12 +228,12 @@ namespace CafeApp.Winform.Views
         private void repositoryItemButtonEditChonMon_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             db = new ModelQuanLiCafeDbContext();
-            var thucdon = (ThucDon)gridViewThucDon.GetFocusedRow();
+            var mon = (Mon)gridViewThucDon.GetFocusedRow();
             var hoadon = (BanLe)cardViewBan.GetFocusedRow();
-            var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == hoadon.Id && s.IdMon == thucdon.Id).FirstOrDefault();
+            var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == hoadon.IdPhieu && s.IdMon == mon.IdMon).FirstOrDefault();
             if (hdct==null)//nếu món được chọn chưa có
             {
-                db.HoaDonChiTiets.Add(new HoaDonChiTiet { IdHoaDon = hoadon.Id, IdMon = thucdon.Id, SoLuong = 1, DonGia = thucdon.DonGia });
+                db.HoaDonChiTiets.Add(new HoaDonChiTiet { IdHoaDon = hoadon.IdPhieu, IdMon = mon.IdMon, SoLuong = 1, DonGia = mon.DonGia });
             }
             else
             {//nếu đã có thì cộng số lượng lên
@@ -246,22 +245,22 @@ namespace CafeApp.Winform.Views
             NapDuLieuChiTiet();
             NapViTri();
         }
-        private BanLe banLeVitri;
-        private ThucDon thucDonViTri;
+        private BanLe banLe;
+        private Mon mon;
         int cardViewBanRowHandle = 0;
         int gridViewThucDonRowHandle = 0;
         private void LuuViTri()
         {
             //lưu vị trí hiện tại của các bảng
-            banLeVitri = (BanLe)cardViewBan.GetFocusedRow();
-            thucDonViTri = (ThucDon)gridViewThucDon.GetFocusedRow();
-            if (banLeVitri != null)
+            banLe= (BanLe)cardViewBan.GetFocusedRow();
+            mon = (Mon)gridViewThucDon.GetFocusedRow();
+            if (banLe != null)
             {
-                cardViewBanRowHandle = cardViewBan.LocateByValue("Id", banLeVitri.Id);
+                cardViewBanRowHandle = cardViewBan.LocateByValue("Id", banLe.IdBan);
             }
-            if (thucDonViTri != null)
+            if (mon != null)
             {
-                gridViewThucDonRowHandle = gridViewThucDon.LocateByValue("Id", thucDonViTri.Id);
+                gridViewThucDonRowHandle = gridViewThucDon.LocateByValue("Id", mon.IdMon);
             }
         }
         private void NapViTri()
@@ -284,7 +283,7 @@ namespace CafeApp.Winform.Views
             
             FrmChuyenBan f = new FrmChuyenBan(this);
             f.vitri_old = oldViTri.IdBan;
-            f.idHoaDon = oldViTri.Id;
+            f.idHoaDon = oldViTri.IdPhieu;
             f.ShowDialog();
             
         }
@@ -316,17 +315,17 @@ namespace CafeApp.Winform.Views
                 if (vitri == null) return;
                 if ((XtraMessageBox.Show("Việc này sẽ xoá hoá đơn hiện tại của "+vitri.TenBan+", bạn có muốn thực hiện không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.Id).FirstOrDefault();
+                    var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu).FirstOrDefault();
                     if (hdct == null)//hoá đơn chi tiết chưa có sản phẩm nào thì xoá hoá đơn
                     {
-                        var hd = db.HoaDons.Find(vitri.Id);
+                        var hd = db.HoaDons.Find(vitri.IdPhieu);
                         db.HoaDons.Remove(hd);
                     }
                     else
                     {//ngược lại thì xoá hoá đơn chi tiết và hoá đơn
-                        IEnumerable<HoaDonChiTiet> listHdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.Id);
+                        IEnumerable<HoaDonChiTiet> listHdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu);
                         db.HoaDonChiTiets.RemoveRange(listHdct);
-                        var hoadon = db.HoaDons.Find(vitri.Id);
+                        var hoadon = db.HoaDons.Find(vitri.IdPhieu);
                         db.HoaDons.Remove(hoadon);
                     }
                     db.SaveChanges();
@@ -350,7 +349,7 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
-            var hd = db.HoaDons.Find(vitri.Id);
+            var hd = db.HoaDons.Find(vitri.IdPhieu);
             hd.ChietKhau = chietkhau;
             db.SaveChanges();
             LuuViTri();
@@ -367,12 +366,12 @@ namespace CafeApp.Winform.Views
             {
                 db = new ModelQuanLiCafeDbContext();
                 var report = new Reports.ReportPhieuThanhToan();
-                var hd = db.HoaDons.Find(vitri.Id);
+                var hd = db.HoaDons.Find(vitri.IdPhieu);
                 report.NapDuLieu(hd);
                 var printTool = new ReportPrintTool(report);
                 printTool.Report.CreateDocument(true);
                 printTool.ShowPreview();
-                DaThanhToan(vitri.Id);
+                DaThanhToan(vitri.IdPhieu);
             }
         }
         private void DaThanhToan(int idHD)

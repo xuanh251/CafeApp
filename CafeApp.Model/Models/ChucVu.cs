@@ -12,9 +12,9 @@ namespace CafeApp.Model.Models
         {
             NhanViens = new HashSet<NhanVien>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdChucVu { get; set; }
 
         [StringLength(100)]
         public string Ten { get; set; }

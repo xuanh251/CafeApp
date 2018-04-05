@@ -13,9 +13,9 @@ namespace CafeApp.Model.Models
             NguyenLieux = new HashSet<NguyenLieu>();
             
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdNhom { get; set; }
 
         [Required]
         [StringLength(100)]

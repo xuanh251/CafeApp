@@ -1,14 +1,16 @@
 namespace CafeApp.Model.Models
 {
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("PhieuNhapKhoChiTiet")]
     public partial class PhieuNhapKhoChiTiet
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
+        [Key]
+        [Column(Order =1)]
         public int IdPhieuNhapKho { get; set; }
+        [Key]
+        [Column(Order = 2)]
 
         public int IdNguyenLieu { get; set; }
 

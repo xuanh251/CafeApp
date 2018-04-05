@@ -29,6 +29,8 @@ namespace CafeApp.Winform.Views
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
             repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditDVTQuyDoi.DataSource = db.DonViTinhs.Local.ToBindingList();
+            repositoryItemSearchLookUpEditDVTQuyDoi.View.Columns.AddField("Ten").Visible = true;
             NapDuLieu();
         }
         private void NapDuLieu()

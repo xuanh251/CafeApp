@@ -47,7 +47,7 @@ namespace CafeApp.Model.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuTruyCap> LichSuTruyCaps { get; set; }
 
-        public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }
+        public virtual NhomTaiKhoan NhomTaiKhoan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }

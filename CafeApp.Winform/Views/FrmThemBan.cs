@@ -34,7 +34,7 @@ namespace CafeApp.Winform.Views
             else
             {
                 int sl = int.Parse(txtSoLuong.Text);
-                var LastRecord = db.Bans.OrderByDescending(s => s.Id).FirstOrDefault();
+                var LastRecord = db.Bans.OrderByDescending(s => s.IdBan).FirstOrDefault();
                 if (LastRecord != null)
                 {
                     int getNumber = int.Parse(LastRecord.TenBan.Substring(4, LastRecord.TenBan.Length - 4));

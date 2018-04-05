@@ -15,16 +15,16 @@ using System.Diagnostics;
 
 namespace CafeApp.Winform.Views
 {
-    public partial class FrmThucDon : DevExpress.XtraEditors.XtraForm
+    public partial class FrmMon : DevExpress.XtraEditors.XtraForm
     {
         ModelQuanLiCafeDbContext db { get; set; }
-        public FrmThucDon()
+        public FrmMon()
         {
             db = new ModelQuanLiCafeDbContext();
             InitializeComponent();
             KeyPreview = true;
-            db.NhomThucDons.Load();
-            repositoryItemSearchLookUpEditNhomThucDon.DataSource = db.NhomThucDons.Local.ToBindingList();
+            db.NhomMons.Load();
+            repositoryItemSearchLookUpEditNhomThucDon.DataSource = db.NhomMons.Local.ToBindingList();
             repositoryItemSearchLookUpEditNhomThucDon.View.Columns.AddField("Ten").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
@@ -33,8 +33,8 @@ namespace CafeApp.Winform.Views
         }
         private void NapDuLieu()
         {
-            db.ThucDons.Load();
-            gridControlThucDon.DataSource = db.ThucDons.Local.ToBindingList();
+            db.Mons.Load();
+            gridControlThucDon.DataSource = db.Mons.Local.ToBindingList();
             gridViewThucDon.RefreshData();
             gridViewThucDon.BestFitColumns();
         }
@@ -67,20 +67,20 @@ namespace CafeApp.Winform.Views
         {
             Luu();
         }
-        private ThucDon vitri;
+        private Mon vitri;
         private void Xoa()
         {
             try
             {
-                vitri = (ThucDon)gridViewThucDon.GetFocusedRow();
+                vitri = (Mon)gridViewThucDon.GetFocusedRow();
                 if (vitri == null) return;
                 else if (db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi xoá!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + ThucDon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + Mon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    db.ThucDons.Remove(vitri);
+                    db.Mons.Remove(vitri);
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá thành công!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();

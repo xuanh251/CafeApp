@@ -23,8 +23,8 @@ namespace CafeApp.Winform.Views
             InitializeComponent();
             KeyPreview = true;
             Db = new ModelQuanLiCafeDbContext();
-            Db.LoaiTaiKhoans.Load();
-            repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = Db.LoaiTaiKhoans.Local.ToBindingList();
+            Db.NhomTaiKhoans.Load();
+            repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = Db.NhomTaiKhoans.Local.ToBindingList();
             repositoryItemSearchLookUpEditLoaiTaiKhoan.View.Columns.AddField("Ten").Visible = true;
             NapDuLieu();
             KeyPreview = true;

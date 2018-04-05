@@ -7,8 +7,9 @@ namespace CafeApp.Model.Models
     [Table("NhanVien")]
     public partial class NhanVien
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdNhanVien { get; set; }
 
         [Required]
         [StringLength(100)]

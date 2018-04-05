@@ -15,9 +15,9 @@ namespace CafeApp.Model.Models
         {
             HoaDonChiTiets = new BindingList<HoaDonChiTiet>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdHoaDon { get; set; }
 
         public int IdBan { get; set; }
 

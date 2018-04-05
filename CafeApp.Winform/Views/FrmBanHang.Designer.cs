@@ -51,7 +51,6 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlHoaDonChiTiet = new DevExpress.XtraGrid.GridControl();
             this.gridViewHoaDonChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEditHoaDon_ThucDon = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -302,7 +301,6 @@
             // gridViewHoaDonChiTiet
             // 
             this.gridViewHoaDonChiTiet.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Id,
             this.gridColumn5,
             this.gridColumn4,
             this.gridColumn3,
@@ -313,14 +311,6 @@
             this.gridViewHoaDonChiTiet.OptionsView.ShowViewCaption = true;
             this.gridViewHoaDonChiTiet.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewHoaDonChiTiet_CellValueChanged);
             // 
-            // Id
-            // 
-            this.Id.Caption = "Id";
-            this.Id.FieldName = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = true;
-            this.Id.VisibleIndex = 0;
-            // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Id Món";
@@ -328,7 +318,7 @@
             this.gridColumn5.FieldName = "IdMon";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.VisibleIndex = 0;
             // 
             // repositoryItemSearchLookUpEditHoaDon_ThucDon
             // 
@@ -338,7 +328,7 @@
             this.repositoryItemSearchLookUpEditHoaDon_ThucDon.DisplayMember = "Ten";
             this.repositoryItemSearchLookUpEditHoaDon_ThucDon.Name = "repositoryItemSearchLookUpEditHoaDon_ThucDon";
             this.repositoryItemSearchLookUpEditHoaDon_ThucDon.ReadOnly = true;
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.ValueMember = "IdMon";
             this.repositoryItemSearchLookUpEditHoaDon_ThucDon.View = this.gridView1;
             // 
             // gridView1
@@ -355,7 +345,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 1;
             // 
             // gridColumn3
             // 
@@ -364,7 +354,7 @@
             this.gridColumn3.FieldName = "SoLuong";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 2;
             // 
             // repositoryItemSpinEditHoaDon_ThucDon
             // 
@@ -380,7 +370,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
+            this.gridColumn2.VisibleIndex = 3;
             // 
             // gridControlThucDon
             // 
@@ -407,7 +397,7 @@
             this.gridViewThucDon.OptionsView.ShowAutoFilterRow = true;
             this.gridViewThucDon.OptionsView.ShowGroupPanel = false;
             this.gridViewThucDon.OptionsView.ShowViewCaption = true;
-            this.gridViewThucDon.ViewCaption = "Thực đơn";
+            this.gridViewThucDon.ViewCaption = "Danh sách Món";
             // 
             // gridColumn1
             // 
@@ -425,7 +415,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSearchLookUpEditNhomMon.DisplayMember = "Ten";
             this.repositoryItemSearchLookUpEditNhomMon.Name = "repositoryItemSearchLookUpEditNhomMon";
-            this.repositoryItemSearchLookUpEditNhomMon.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEditNhomMon.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditNhomMon.View = this.repositoryItemSearchLookUpEdit1View;
             // 
             // repositoryItemSearchLookUpEdit1View
@@ -762,7 +752,6 @@
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItemChietKhau;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItemThanhTien;
         private DevExpress.XtraLayout.SimpleLabelItem simpleLabelItemGioVao;
-        private DevExpress.XtraGrid.Columns.GridColumn Id;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;

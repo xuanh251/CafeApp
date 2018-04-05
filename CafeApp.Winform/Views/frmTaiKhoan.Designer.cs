@@ -250,7 +250,7 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Loại tài khoản";
+            this.gridColumn3.Caption = "Nhóm tài khoản";
             this.gridColumn3.ColumnEdit = this.repositoryItemSearchLookUpEditLoaiTaiKhoan;
             this.gridColumn3.FieldName = "QuyenSuDung";
             this.gridColumn3.Name = "gridColumn3";
@@ -265,7 +265,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.DisplayMember = "Ten";
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.Name = "repositoryItemSearchLookUpEditLoaiTaiKhoan";
-            this.repositoryItemSearchLookUpEditLoaiTaiKhoan.ValueMember = "Id";
+            this.repositoryItemSearchLookUpEditLoaiTaiKhoan.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.View = this.repositoryItemSearchLookUpEdit1View;
             // 
             // repositoryItemSearchLookUpEdit1View

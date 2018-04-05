@@ -25,8 +25,8 @@ namespace CafeApp.Winform.Views
         }
         public void NapDuLieu()
         {
-            db.NhomThucDons.Load();
-            gridControlNhomSanPham.DataSource = db.NhomThucDons.Local.ToBindingList();
+            db.NhomMons.Load();
+            gridControlNhomSanPham.DataSource = db.NhomMons.Local.ToBindingList();
             gridViewNhomSanPham.RefreshData();
             gridViewNhomSanPham.BestFitColumns();
         }
@@ -71,20 +71,20 @@ namespace CafeApp.Winform.Views
         {
             Xoa();
         }
-        private NhomThucDon vitri;
+        private NhomMon vitri;
         private void Xoa()
         {
             try
             {
-                vitri = (NhomThucDon)gridViewNhomSanPham.GetFocusedRow();
+                vitri = (NhomMon)gridViewNhomSanPham.GetFocusedRow();
                 if (vitri == null) return;
                 else if (db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi xoá!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + NhomThucDon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + NhomMon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    db.NhomThucDons.Remove(vitri);
+                    db.NhomMons.Remove(vitri);
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá thành công!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();

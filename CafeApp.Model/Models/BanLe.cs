@@ -16,7 +16,7 @@ namespace CafeApp.Model.Models
         {
             hoaDonChiTiets = new BindingList<HoaDonChiTiet>();
         }
-        public int Id { get; set; }
+        public int IdPhieu { get; set; }
         public int IdBan { get; set; }
         public string TenBan { get; set; }
         public DateTime? NgayLapHoaDon { get; set; }
@@ -75,7 +75,7 @@ namespace CafeApp.Model.Models
                 }
                 else
                 {
-                    return string.Concat("<b>", this.TenBan, "</b><br>Phiếu: ", this.Id);
+                    return string.Concat("<b>", this.TenBan, "</b><br>Phiếu: ", this.IdPhieu);
                 }
             }
             set
@@ -93,7 +93,7 @@ namespace CafeApp.Model.Models
         {
             return new HoaDon
             {
-                Id = banLeModel.Id,
+                IdHoaDon = banLeModel.IdPhieu,
                 IdBan = banLeModel.IdBan,
                 GhiChu = banLeModel.GhiChu,
                 NgayTao = (banLeModel.NgayLapHoaDon.HasValue ? banLeModel.NgayLapHoaDon.Value : DateTime.MinValue),

@@ -49,45 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201803211523243_initDb.cs" />
-    <Compile Include="Migrations\201803211523243_initDb.Designer.cs">
-      <DependentUpon>201803211523243_initDb.cs</DependentUpon>
+    <Compile Include="Migrations\201804041848052_editDb.cs" />
+    <Compile Include="Migrations\201804041848052_editDb.Designer.cs">
+      <DependentUpon>201804041848052_editDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803250145181_editHistoryAccess.cs" />
-    <Compile Include="Migrations\201803250145181_editHistoryAccess.Designer.cs">
-      <DependentUpon>201803250145181_editHistoryAccess.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803251401146_002.cs" />
-    <Compile Include="Migrations\201803251401146_002.Designer.cs">
-      <DependentUpon>201803251401146_002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803251524040_003.cs" />
-    <Compile Include="Migrations\201803251524040_003.Designer.cs">
-      <DependentUpon>201803251524040_003.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803261620473_editModel.cs" />
-    <Compile Include="Migrations\201803261620473_editModel.Designer.cs">
-      <DependentUpon>201803261620473_editModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803270823214_005.cs" />
-    <Compile Include="Migrations\201803270823214_005.Designer.cs">
-      <DependentUpon>201803270823214_005.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803291102087_updatePhaChe.cs" />
-    <Compile Include="Migrations\201803291102087_updatePhaChe.Designer.cs">
-      <DependentUpon>201803291102087_updatePhaChe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803291419550_editKhoaNgoai.cs" />
-    <Compile Include="Migrations\201803291419550_editKhoaNgoai.Designer.cs">
-      <DependentUpon>201803291419550_editKhoaNgoai.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803291425205_0012.cs" />
-    <Compile Include="Migrations\201803291425205_0012.Designer.cs">
-      <DependentUpon>201803291425205_0012.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803310756599_changecsdl.cs" />
-    <Compile Include="Migrations\201803310756599_changecsdl.Designer.cs">
-      <DependentUpon>201803310756599_changecsdl.cs</DependentUpon>
+    <Compile Include="Migrations\201804050633018_editcsdl.cs" />
+    <Compile Include="Migrations\201804050633018_editcsdl.Designer.cs">
+      <DependentUpon>201804050633018_editcsdl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
@@ -98,17 +66,17 @@
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\HoaDonChiTiet.cs" />
     <Compile Include="Models\LichSuTruyCap.cs" />
-    <Compile Include="Models\LoaiTaiKhoan.cs" />
+    <Compile Include="Models\NhomTaiKhoan.cs" />
     <Compile Include="Models\ModelQuanLiCafeDbContext.cs" />
     <Compile Include="Models\NguyenLieu.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\NhomNguyenLieu.cs" />
-    <Compile Include="Models\NhomThucDon.cs" />
+    <Compile Include="Models\NhomMon.cs" />
     <Compile Include="Models\DinhLuong.cs" />
     <Compile Include="Models\PhieuNhapKho.cs" />
     <Compile Include="Models\PhieuNhapKhoChiTiet.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
-    <Compile Include="Models\ThucDon.cs" />
+    <Compile Include="Models\Mon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -130,35 +98,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803211523243_initDb.resx">
-      <DependentUpon>201803211523243_initDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804041848052_editDb.resx">
+      <DependentUpon>201804041848052_editDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803250145181_editHistoryAccess.resx">
-      <DependentUpon>201803250145181_editHistoryAccess.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803251401146_002.resx">
-      <DependentUpon>201803251401146_002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803251524040_003.resx">
-      <DependentUpon>201803251524040_003.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803261620473_editModel.resx">
-      <DependentUpon>201803261620473_editModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803270823214_005.resx">
-      <DependentUpon>201803270823214_005.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803291102087_updatePhaChe.resx">
-      <DependentUpon>201803291102087_updatePhaChe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803291419550_editKhoaNgoai.resx">
-      <DependentUpon>201803291419550_editKhoaNgoai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803291425205_0012.resx">
-      <DependentUpon>201803291425205_0012.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803310756599_changecsdl.resx">
-      <DependentUpon>201803310756599_changecsdl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804050633018_editcsdl.resx">
+      <DependentUpon>201804050633018_editcsdl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

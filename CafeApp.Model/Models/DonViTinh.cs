@@ -11,11 +11,11 @@ namespace CafeApp.Model.Models
         public DonViTinh()
         {
             NguyenLieux = new HashSet<NguyenLieu>();
-            ThucDons = new HashSet<ThucDon>();
+            Mons = new HashSet<Mon>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdDVT { get; set; }
 
         [StringLength(100)]
         public string Ten { get; set; }
@@ -27,7 +27,7 @@ namespace CafeApp.Model.Models
         public virtual ICollection<NguyenLieu> NguyenLieux { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThucDon> ThucDons { get; set; }
+        public virtual ICollection<Mon> Mons { get; set; }
         public const string TableName = "Đơn vị tính";
     }
 }

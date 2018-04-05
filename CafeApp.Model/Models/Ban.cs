@@ -12,9 +12,9 @@ namespace CafeApp.Model.Models
         {
             HoaDons = new HashSet<HoaDon>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdBan { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -13,9 +13,9 @@ namespace CafeApp.Model.Models
             PhieuNhapKhoChiTiets = new HashSet<PhieuNhapKhoChiTiet>();
             DinhLuongs = new HashSet<DinhLuong>();
         }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int IdNguyenLieu { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -24,7 +24,9 @@ namespace CafeApp.Model.Models
         public int IdNhom { get; set; }
 
         public int IdDVT { get; set; }
-        public int SoLuong { get; set; }
+        public double SoLuongTon { get; set; }
+        public int IdDVTQuyDoi { get; set; }
+        public double SoLuongQuyDoi { get; set; }
 
         public double DonGia { get; set; }
 

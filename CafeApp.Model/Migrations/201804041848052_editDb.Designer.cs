@@ -7,13 +7,13 @@ namespace CafeApp.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class editKhoaNgoai : IMigrationMetadata
+    public sealed partial class editDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(editKhoaNgoai));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(editDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803291419550_editKhoaNgoai"; }
+            get { return "201804041848052_editDb"; }
         }
         
         string IMigrationMetadata.Source

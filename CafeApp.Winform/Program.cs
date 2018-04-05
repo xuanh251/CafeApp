@@ -15,15 +15,15 @@ namespace CafeApp.Winform
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Views.FrmDangNhap());
-            KhoiTaoDonVi();
+            //KhoiTaoDonVi();
         }
-        public static void KhoiTaoDonVi()
-        {
-            Settings.Default.TenDonVi = "Osaka Coffee";
-            Settings.Default.DiaChi = "Lê Lợi, p.An Mỹ, tp.Tam Kỳ";
-            Settings.Default.Slogan = "Rót cả tâm hồn vào đáy cốc!";
-            Settings.Default.LienHe = " 098 751 77 75";
-            Settings.Default.Save();
-        }
+        //public static void KhoiTaoDonVi()
+        //{
+        //    Settings.Default.TenDonVi = "Osaka Coffee";
+        //    Settings.Default.DiaChi = "Lê Lợi, p.An Mỹ, tp.Tam Kỳ";
+        //    Settings.Default.Slogan = "Rót cả tâm hồn vào đáy cốc!";
+        //    Settings.Default.LienHe = " 098 751 77 75";
+        //    Settings.Default.Save();
+        //}
     }
 }
