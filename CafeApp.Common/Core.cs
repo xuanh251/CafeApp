@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using CafeApp.Model.Models;
+using DevExpress.XtraEditors;
 
 namespace CafeApp.Common
 {
@@ -61,6 +66,31 @@ namespace CafeApp.Common
             cryptoStream.Close();
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
+        public static void SaoLuuDuLieu()
+        {
+            try
+            {
+                var folder = new FolderBrowserDialog();
+                if (folder.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+                using (ModelQuanLiCafeDbContext tempDb = new ModelQuanLiCafeDbContext())
+                {
+                    string dbName = tempDb.Database.Connection.Database;
+                    string backupPath = string.Concat(folder.SelectedPath, "\\", dbName, "_", DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"), ".bak");
+                    string sql = string.Concat(@"BACKUP DATABASE ", dbName, @" TO DISK = '", backupPath, "' WITH NOFORMAT, COMPRESSION,NOINIT, NAME = N'", dbName, "-Full Database Backup', SKIP, STATS = 10;");
+                    int count = tempDb.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, sql);
+                    XtraMessageBox.Show("Đã sao lưu thành công dữ liệu " + dbName + " tại đường dẫn " + backupPath, "Sao lưu thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Process.Start(folder.SelectedPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.ToString(), "Sao lưu dữ liệu",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        
 
     }
     public class VNCurrency

@@ -61,7 +61,7 @@ namespace CafeApp.Model.Models
             {
                 try
                 {
-                    var tongTien = (from hdct in HoaDonChiTiets select hdct.Tien).Sum();
+                    var tongTien = HoaDonChiTiets.Select(s=>s.Tien).Sum();
                     return tongTien;
                 }
                 catch (Exception)
@@ -72,7 +72,7 @@ namespace CafeApp.Model.Models
         }
 
         [NotMapped]
-        [Display(Name = "Thành tiền", Description = "Tổng tiền giờ và tiền sản phẩm")]
+        [Display(Name = "Thành tiền", Description = "Tổng tiền sản phẩm")]
         public double ThanhTien
         {
             get

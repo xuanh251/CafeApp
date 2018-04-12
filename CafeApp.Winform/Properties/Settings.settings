@@ -23,5 +23,13 @@
     <Setting Name="LienHe" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ModelQuanLiCafe" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;data source=.\SQL2014;initial catalog=QuanLiCafe;user id=sa;password=123456;MultipleActiveResultSets=True;App=EntityFramework&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">data source=.\SQL2014;initial catalog=QuanLiCafe;user id=sa;password=123456;MultipleActiveResultSets=True;App=EntityFramework</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

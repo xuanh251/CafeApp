@@ -22,7 +22,8 @@ namespace CafeApp.Model.Models
         [Column(TypeName = "smalldatetime")]
         public DateTime NgaySinh { get; set; }
 
-        public bool GioiTinh { get; set; }
+        [StringLength(10)]
+        public string GioiTinh { get; set; } = "Nam";
 
         [StringLength(200)]
         public string DiaChi { get; set; }
@@ -30,12 +31,15 @@ namespace CafeApp.Model.Models
         [Required]
         [StringLength(50)]
         public string SoDienThoai { get; set; }
+        public double Luong { get; set; }=0;
 
-        public int ChucVu { get; set; }
+        public int IdChucVu { get; set; }
 
         [StringLength(200)]
         public string GhiChu { get; set; }
 
-        public virtual ChucVu ChucVu1 { get; set; }
+        public virtual ChucVu ChucVu { get; set; }
+        public const string TableName = "Nhân viên";
+
     }
 }

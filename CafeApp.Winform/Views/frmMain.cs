@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using CafeApp.Common;
+using System.Diagnostics;
+using System.Data.Entity;
 
 namespace CafeApp.Winform.Views
 {
@@ -103,13 +106,13 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmLichSuTruyCap());
         }
 
-        private void BtnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void DangXuat()
         {
             var curSession = db.LichSuTruyCaps.FirstOrDefault(s => s.IdTaiKhoan == FrmDangNhap.IdTaiKhoan && s.Id == FrmDangNhap.IdPhienDangNhap);
             curSession.TrangThai = false;
             db.SaveChanges();
             closeAllActiveForm();
-            Close();
+            //Close();
             Thread t = new Thread(new ThreadStart(OpenFrmLogin));
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
@@ -146,7 +149,7 @@ namespace CafeApp.Winform.Views
 
         private void BtnNhomThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhomSanPham());
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhomMon());
         }
 
         private void BtnDonViTinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -164,17 +167,6 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNguyenLieu());
         }
 
-       
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                const int CP_NOCLOSE = 0x200;
-                CreateParams myCp = base.CreateParams;
-                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE;
-                return myCp;
-            }
-        }
 
         private void BtnThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -189,6 +181,55 @@ namespace CafeApp.Winform.Views
         private void BtnBanLe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmBanHang());
+        }
+
+        
+        private void BtnPhieuNhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmPhieuNhapKho());
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            if (PreClosingConfirmation() ==DialogResult.Yes)
+            {
+                DangXuat();   
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private DialogResult PreClosingConfirmation()
+        {
+            DialogResult res = XtraMessageBox.Show("Kết thúc phiên làm việc?", "Xác nhâ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return res;
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSaoLuuDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Core.SaoLuuDuLieu();
+        }
+
+        private void BtnCauHinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmCauHinh());
+        }
+
+        private void BtnChucVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmChucVu());
+        }
+
+        private void BtnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhanVien());
         }
     }
 }

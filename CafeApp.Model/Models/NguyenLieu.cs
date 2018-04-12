@@ -30,10 +30,10 @@ namespace CafeApp.Model.Models
 
         public double DonGia { get; set; }
 
-        [StringLength(200)]
-        public string GhiChu { get; set; }
 
         public virtual DonViTinh DonViTinh { get; set; }
+        [StringLength(200)]
+        public string GhiChu { get; set; }
 
         public virtual NhomNguyenLieu NhomNguyenLieu { get; set; }
 
@@ -42,5 +42,13 @@ namespace CafeApp.Model.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DinhLuong> DinhLuongs { get; set; }
         public const string TableName = "Nguyên Liệu";
+        [NotMapped]
+        public double TongSoLuongTonQuyDoi
+        {
+            get
+            {
+                return SoLuongTon * SoLuongQuyDoi;
+            }
+        }
     }
 }

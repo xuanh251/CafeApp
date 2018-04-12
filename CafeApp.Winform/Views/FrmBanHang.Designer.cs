@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBanHang));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.BtnNapDuLieu = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -52,14 +53,15 @@
             this.gridControlHoaDonChiTiet = new DevExpress.XtraGrid.GridControl();
             this.gridViewHoaDonChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEditHoaDon_Mon = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSpinEditHoaDon_ThucDon = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControlThucDon = new DevExpress.XtraGrid.GridControl();
-            this.gridViewThucDon = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repositoryItemButtonEditXoaMon = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridControlMon = new DevExpress.XtraGrid.GridControl();
+            this.gridViewMon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEditNhomMon = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -86,11 +88,12 @@
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlHoaDonChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewHoaDonChiTiet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditHoaDon_ThucDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditHoaDon_Mon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditHoaDon_ThucDon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlThucDon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewThucDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditXoaMon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlMon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewMon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditNhomMon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditChonMon)).BeginInit();
@@ -274,7 +277,7 @@
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridControlHoaDonChiTiet);
-            this.layoutControl1.Controls.Add(this.gridControlThucDon);
+            this.layoutControl1.Controls.Add(this.gridControlMon);
             this.layoutControl1.Controls.Add(this.gridControlBan);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 58);
@@ -291,8 +294,9 @@
             this.gridControlHoaDonChiTiet.MenuManager = this.barManager1;
             this.gridControlHoaDonChiTiet.Name = "gridControlHoaDonChiTiet";
             this.gridControlHoaDonChiTiet.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon,
-            this.repositoryItemSpinEditHoaDon_ThucDon});
+            this.repositoryItemSearchLookUpEditHoaDon_Mon,
+            this.repositoryItemSpinEditHoaDon_ThucDon,
+            this.repositoryItemButtonEditXoaMon});
             this.gridControlHoaDonChiTiet.Size = new System.Drawing.Size(306, 280);
             this.gridControlHoaDonChiTiet.TabIndex = 3;
             this.gridControlHoaDonChiTiet.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -307,6 +311,7 @@
             this.gridColumn2});
             this.gridViewHoaDonChiTiet.GridControl = this.gridControlHoaDonChiTiet;
             this.gridViewHoaDonChiTiet.Name = "gridViewHoaDonChiTiet";
+            this.gridViewHoaDonChiTiet.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridViewHoaDonChiTiet.OptionsView.ShowGroupPanel = false;
             this.gridViewHoaDonChiTiet.OptionsView.ShowViewCaption = true;
             this.gridViewHoaDonChiTiet.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewHoaDonChiTiet_CellValueChanged);
@@ -314,22 +319,22 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Id Món";
-            this.gridColumn5.ColumnEdit = this.repositoryItemSearchLookUpEditHoaDon_ThucDon;
+            this.gridColumn5.ColumnEdit = this.repositoryItemSearchLookUpEditHoaDon_Mon;
             this.gridColumn5.FieldName = "IdMon";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
             // 
-            // repositoryItemSearchLookUpEditHoaDon_ThucDon
+            // repositoryItemSearchLookUpEditHoaDon_Mon
             // 
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.AutoHeight = false;
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.AutoHeight = false;
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.DisplayMember = "Ten";
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.Name = "repositoryItemSearchLookUpEditHoaDon_ThucDon";
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.ReadOnly = true;
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.ValueMember = "IdMon";
-            this.repositoryItemSearchLookUpEditHoaDon_ThucDon.View = this.gridView1;
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.Name = "repositoryItemSearchLookUpEditHoaDon_Mon";
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.ReadOnly = true;
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.ValueMember = "IdMon";
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.View = this.gridView1;
             // 
             // gridView1
             // 
@@ -366,38 +371,49 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tiền";
+            this.gridColumn2.ColumnEdit = this.repositoryItemButtonEditXoaMon;
             this.gridColumn2.FieldName = "Tien";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
             // 
-            // gridControlThucDon
+            // repositoryItemButtonEditXoaMon
             // 
-            this.gridControlThucDon.Location = new System.Drawing.Point(297, 12);
-            this.gridControlThucDon.MainView = this.gridViewThucDon;
-            this.gridControlThucDon.MenuManager = this.barManager1;
-            this.gridControlThucDon.Name = "gridControlThucDon";
-            this.gridControlThucDon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEditXoaMon.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            this.repositoryItemButtonEditXoaMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Xoá món", -1, true, true, false, editorButtonImageOptions1)});
+            this.repositoryItemButtonEditXoaMon.Name = "repositoryItemButtonEditXoaMon";
+            this.repositoryItemButtonEditXoaMon.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditXoaMon_ButtonPressed);
+            // 
+            // gridControlMon
+            // 
+            this.gridControlMon.Location = new System.Drawing.Point(297, 12);
+            this.gridControlMon.MainView = this.gridViewMon;
+            this.gridControlMon.MenuManager = this.barManager1;
+            this.gridControlMon.Name = "gridControlMon";
+            this.gridControlMon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEditNhomMon,
             this.repositoryItemButtonEditChonMon});
-            this.gridControlThucDon.Size = new System.Drawing.Size(203, 395);
-            this.gridControlThucDon.TabIndex = 2;
-            this.gridControlThucDon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewThucDon});
+            this.gridControlMon.Size = new System.Drawing.Size(203, 395);
+            this.gridControlMon.TabIndex = 2;
+            this.gridControlMon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewMon});
             // 
-            // gridViewThucDon
+            // gridViewMon
             // 
-            this.gridViewThucDon.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewMon.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.ThucDon});
-            this.gridViewThucDon.GridControl = this.gridControlThucDon;
-            this.gridViewThucDon.Name = "gridViewThucDon";
-            this.gridViewThucDon.OptionsBehavior.ReadOnly = true;
-            this.gridViewThucDon.OptionsView.ShowAutoFilterRow = true;
-            this.gridViewThucDon.OptionsView.ShowGroupPanel = false;
-            this.gridViewThucDon.OptionsView.ShowViewCaption = true;
-            this.gridViewThucDon.ViewCaption = "Danh sách Món";
+            this.gridViewMon.GridControl = this.gridControlMon;
+            this.gridViewMon.Name = "gridViewMon";
+            this.gridViewMon.OptionsBehavior.ReadOnly = true;
+            this.gridViewMon.OptionsView.ShowAutoFilterRow = true;
+            this.gridViewMon.OptionsView.ShowGroupPanel = false;
+            this.gridViewMon.OptionsView.ShowViewCaption = true;
+            this.gridViewMon.ViewCaption = "Danh sách Món";
             // 
             // gridColumn1
             // 
@@ -438,9 +454,9 @@
             // repositoryItemButtonEditChonMon
             // 
             this.repositoryItemButtonEditChonMon.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEditChonMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions1)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions2)});
             this.repositoryItemButtonEditChonMon.Name = "repositoryItemButtonEditChonMon";
             this.repositoryItemButtonEditChonMon.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditChonMon_ButtonPressed);
             // 
@@ -524,7 +540,7 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.gridControlThucDon;
+            this.layoutControlItem2.Control = this.gridControlMon;
             this.layoutControlItem2.Location = new System.Drawing.Point(285, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(207, 399);
@@ -680,11 +696,12 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlHoaDonChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewHoaDonChiTiet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditHoaDon_ThucDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditHoaDon_Mon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditHoaDon_ThucDon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlThucDon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewThucDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditXoaMon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlMon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewMon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEditNhomMon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEditChonMon)).EndInit();
@@ -730,8 +747,8 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraGrid.GridControl gridControlBan;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.GridControl gridControlThucDon;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewThucDon;
+        private DevExpress.XtraGrid.GridControl gridControlMon;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewMon;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraGrid.GridControl gridControlHoaDonChiTiet;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewHoaDonChiTiet;
@@ -757,8 +774,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraBars.BarLargeButtonItem BtnChietKhau;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEditHoaDon_ThucDon;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEditHoaDon_Mon;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditHoaDon_ThucDon;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEditXoaMon;
     }
 }

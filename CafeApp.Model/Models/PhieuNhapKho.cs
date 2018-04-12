@@ -4,6 +4,7 @@ namespace CafeApp.Model.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     [Table("PhieuNhapKho")]
     public partial class PhieuNhapKho
@@ -14,29 +15,61 @@ namespace CafeApp.Model.Models
             PhieuNhapKhoChiTiets = new HashSet<PhieuNhapKhoChiTiet>();
         }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdPhieu { get; set; }
-
-        public int IdDoiTac { get; set; }
-
-        [Required]
         [StringLength(200)]
         public string SoHoaDon { get; set; }
 
+        public int IdDoiTac { get; set; }
+
         [Column(TypeName = "date")]
-        public DateTime NgayLapPhieu { get; set; }
+        public DateTime NgayLapPhieu { get; set; } = DateTime.Now;
 
         public int NguoiTao { get; set; }
 
-        public bool TrangThaiPhieu { get; set; }
+        public double ChietKhau { get; set; } = 0;
+        [NotMapped]
+        public double TienChietKhau
+        {
+            get
+            {
+                return TongTien * ChietKhau / 100;
+            }
+        }
 
-        public double? ChietKhau { get; set; }
+        [StringLength(500)]
+        public string GhiChu { get; set; }
 
         public virtual DoiTac DoiTac { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
+       
+        [NotMapped]
+        public double TongTien
+        {
+            get
+            {
+                try
+                {
+                    var tien = PhieuNhapKhoChiTiets.Select(s => s.Tien).Sum();
+                    return tien;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+
+            }
+        }
+        [NotMapped]
+        public double ThanhTien
+        {
+            get
+            {
+                return TongTien - TienChietKhau;
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKhoChiTiet> PhieuNhapKhoChiTiets { get; set; }
+        public const string TableName = "Phiếu";
     }
 }

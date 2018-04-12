@@ -12,6 +12,7 @@ using CafeApp.Model.Models;
 using System.Data.Entity;
 using System.IO;
 using System.Diagnostics;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace CafeApp.Winform.Views
 {
@@ -20,25 +21,27 @@ namespace CafeApp.Winform.Views
         ModelQuanLiCafeDbContext db { get; set; }
         public FrmNguyenLieu()
         {
-            db = new ModelQuanLiCafeDbContext();
             InitializeComponent();
-            KeyPreview = true;
+            db = new ModelQuanLiCafeDbContext();
             db.NhomNguyenLieux.Load();
             repositoryItemSearchLookUpEditNhomNguyenLieu.DataSource = db.NhomNguyenLieux.Local.ToBindingList();
             repositoryItemSearchLookUpEditNhomNguyenLieu.View.Columns.AddField("Ten").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
-            repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("TenDVT").Visible = true;
             repositoryItemSearchLookUpEditDVTQuyDoi.DataSource = db.DonViTinhs.Local.ToBindingList();
-            repositoryItemSearchLookUpEditDVTQuyDoi.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditDVTQuyDoi.View.Columns.AddField("TenDVT").Visible = true;
+            KeyPreview = true;
             NapDuLieu();
         }
         private void NapDuLieu()
         {
+            db = new ModelQuanLiCafeDbContext();
             db.NguyenLieux.Load();
             gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
             gridViewNguyenLieu.RefreshData();
             gridViewNguyenLieu.BestFitColumns();
+        
         }
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -148,9 +151,31 @@ namespace CafeApp.Winform.Views
             }
         }
 
-        private void gridViewNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        
+
+        private void gridViewNguyenLieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            
+            var vitri = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
+            if (vitri.IdNguyenLieu != 0) return;
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.Caption != "Đơn vị tính") return;
+            string cellValue = e.Value.ToString();
+            view.SetRowCellValue(e.RowHandle, view.Columns["IdDVTQuyDoi"], cellValue);
+            view.SetRowCellValue(e.RowHandle, view.Columns["SoLuongQuyDoi"], 1);
+        }
+
+        private void BtnChiTietTonKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var vitri = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
+            if (vitri == null)
+            {
+                XtraMessageBox.Show("Chưa chọn nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FrmChiTietTonKho f = new FrmChiTietTonKho();
+            f.KhoiTao(vitri);
+            f.ShowDialog();
         }
     }
 }

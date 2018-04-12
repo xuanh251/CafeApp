@@ -7,19 +7,32 @@ namespace CafeApp.Model.Models
     public partial class PhieuNhapKhoChiTiet
     {
         [Key]
-        [Column(Order =1)]
-        public int IdPhieuNhapKho { get; set; }
+        [Column(Order = 1)]
+        [StringLength(200)]
+        public string SoHoaDon { get; set; }
+
         [Key]
         [Column(Order = 2)]
-
         public int IdNguyenLieu { get; set; }
 
         public int SoLuong { get; set; }
 
-        public double? ChietKhau { get; set; }
+        public double DonGia { get; set; }
+        public string GhiChu { get; set; }
+        [NotMapped]
+        public int STT { get; set; }
+        [NotMapped]
+        public double Tien
+        {
+            get
+            {
+                return SoLuong * DonGia;
+            }
+        }
 
         public virtual NguyenLieu NguyenLieu { get; set; }
 
         public virtual PhieuNhapKho PhieuNhapKho { get; set; }
+        public const string TableName = "Phiếu nhập kho chi tiết";
     }
 }

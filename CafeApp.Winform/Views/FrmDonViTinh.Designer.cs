@@ -137,7 +137,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(702, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(702, 24);
             // 
             // barDockControlBottom
             // 
@@ -151,17 +151,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 274);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(702, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(702, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 274);
             // 
             // barButtonItem2
             // 
@@ -257,7 +257,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên ĐVT";
-            this.gridColumn2.FieldName = "Ten";
+            this.gridColumn2.FieldName = "TenDVT";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -273,11 +273,11 @@
             // gridControlDonViTinh
             // 
             this.gridControlDonViTinh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlDonViTinh.Location = new System.Drawing.Point(0, 26);
+            this.gridControlDonViTinh.Location = new System.Drawing.Point(0, 24);
             this.gridControlDonViTinh.MainView = this.gridViewDonViTinh;
             this.gridControlDonViTinh.MenuManager = this.barManager1;
             this.gridControlDonViTinh.Name = "gridControlDonViTinh";
-            this.gridControlDonViTinh.Size = new System.Drawing.Size(702, 272);
+            this.gridControlDonViTinh.Size = new System.Drawing.Size(702, 274);
             this.gridControlDonViTinh.TabIndex = 4;
             this.gridControlDonViTinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDonViTinh});

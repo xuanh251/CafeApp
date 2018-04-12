@@ -7,13 +7,13 @@ namespace CafeApp.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class editcsdl : IMigrationMetadata
+    public sealed partial class updateDatetime : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(editcsdl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updateDatetime));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804050633018_editcsdl"; }
+            get { return "201804091737489_updateDatetime"; }
         }
         
         string IMigrationMetadata.Source

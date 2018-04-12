@@ -13,10 +13,10 @@ using System.Data.Entity;
 
 namespace CafeApp.Winform.Views
 {
-    public partial class FrmNhomSanPham : DevExpress.XtraEditors.XtraForm
+    public partial class FrmChucVu : DevExpress.XtraEditors.XtraForm
     {
         ModelQuanLiCafeDbContext db { get; set; }
-        public FrmNhomSanPham()
+        public FrmChucVu()
         {
             InitializeComponent();
             KeyPreview = true;
@@ -25,10 +25,10 @@ namespace CafeApp.Winform.Views
         }
         public void NapDuLieu()
         {
-            db.NhomMons.Load();
-            gridControlNhomSanPham.DataSource = db.NhomMons.Local.ToBindingList();
-            gridViewNhomSanPham.RefreshData();
-            gridViewNhomSanPham.BestFitColumns();
+            db.ChucVus.Load();
+            gridControlChucVu.DataSource = db.ChucVus.Local.ToBindingList();
+            gridViewChucVu.RefreshData();
+            gridViewChucVu.BestFitColumns();
         }
 
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -36,11 +36,7 @@ namespace CafeApp.Winform.Views
             NapDuLieu();
         }
 
-        private void BtnThemTuDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
+       
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
@@ -49,7 +45,7 @@ namespace CafeApp.Winform.Views
         {
             try
             {
-                gridControlNhomSanPham.EmbeddedNavigator.Buttons.DoClick(gridControlNhomSanPham.EmbeddedNavigator.Buttons.EndEdit);
+                gridControlChucVu.EmbeddedNavigator.Buttons.DoClick(gridControlChucVu.EmbeddedNavigator.Buttons.EndEdit);
                 int dem = db.SaveChanges();
                 if (dem > 0)
                 {
@@ -71,20 +67,20 @@ namespace CafeApp.Winform.Views
         {
             Xoa();
         }
-        private NhomMon vitri;
+        private ChucVu vitri;
         private void Xoa()
         {
             try
             {
-                vitri = (NhomMon)gridViewNhomSanPham.GetFocusedRow();
+                vitri = (ChucVu)gridViewChucVu.GetFocusedRow();
                 if (vitri == null) return;
                 else if (db.ChangeTracker.HasChanges())
                 {
                     XtraMessageBox.Show("Bạn phải lưu dữ liệu vừa thêm/sửa trước khi xoá!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + NhomMon.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                else if ((XtraMessageBox.Show("Bạn có muốn xoá dữ liệu " + ChucVu.TableName + " này không?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                    db.NhomMons.Remove(vitri);
+                    db.ChucVus.Remove(vitri);
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá thành công!", "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
@@ -100,16 +96,13 @@ namespace CafeApp.Winform.Views
             }
         }
 
-        private void FrmNhomSanPham_KeyDown(object sender, KeyEventArgs e)
+        private void FrmChucVu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==Keys.F5)
             {
                 BtnNapDuLieu_ItemClick(null, null);
             }
-            if (e.Control&&e.KeyCode==Keys.N)
-            {
-                BtnThemTuDong_ItemClick(null, null);
-            }
+            
             if (e.Control&&e.KeyCode==Keys.S)
             {
                 BtnLuu_ItemClick(null, null);

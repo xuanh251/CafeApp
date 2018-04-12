@@ -26,16 +26,16 @@ namespace CafeApp.Winform.Views
             NapDuLieu();
         }
         public BindingList<BanLe> query;
-        private void NapThucDon()
+        private void NapMon()
         {
             db = new ModelQuanLiCafeDbContext();
             db.Mons.Load();
             db.NhomMons.Load();
             repositoryItemSearchLookUpEditNhomMon.DataSource = db.NhomMons.Local.ToBindingList();
             repositoryItemSearchLookUpEditNhomMon.View.Columns.AddField("Ten").Visible = true;
-            gridControlThucDon.DataSource = db.Mons.Local.ToBindingList().OrderBy(s => s.NhomMon.IdNhom);
-            gridViewThucDon.RefreshData();
-            gridViewThucDon.BestFitColumns();
+            gridControlMon.DataSource = db.Mons.Local.ToBindingList().OrderBy(s => s.NhomMon.IdNhom);
+            gridViewMon.RefreshData();
+            gridViewMon.BestFitColumns();
         }
         private void NapDuLieu()
         {
@@ -78,7 +78,8 @@ namespace CafeApp.Winform.Views
             query = new BindingList<BanLe>(listBan);
             gridControlBan.DataSource = query;
             cardViewBan.RefreshData();
-            NapThucDon();
+            NapMon();
+            NapDuLieuChiTiet();
         }
         
         private void cardViewBan_CustomDrawCardFieldValue(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -119,18 +120,18 @@ namespace CafeApp.Winform.Views
             
             if (!vitri.TrangThaiHoaDon)//bàn đang có khách
             {
-                gridControlThucDon.Enabled = true;
+                gridControlMon.Enabled = true;
                 gridControlHoaDonChiTiet.Enabled = true;
                 BtnTaoBan.Enabled = false;
                 BtnChuyenBan.Enabled = true;
                 BtnXoaBan.Enabled = true;
                 BtnThanhToan.Enabled = true;
                 BtnChietKhau.Enabled = true;
-                simpleLabelItemGioVao.Text = "Giờ vào: " + vitri.NgayLapHoaDon.Value.ToString("dd-MM-yyyy HH:mm:ss");
+                simpleLabelItemGioVao.Text = "Giờ vào: " + vitri.NgayLapHoaDon.Value.ToString("dd-MM-yyyy HH:mm");
             }
             else
             {
-                gridControlThucDon.Enabled = false;
+                gridControlMon.Enabled = false;
                 gridControlHoaDonChiTiet.Enabled = false;
                 BtnTaoBan.Enabled = true;
                 BtnChuyenBan.Enabled = false;
@@ -157,7 +158,7 @@ namespace CafeApp.Winform.Views
 
             db = new ModelQuanLiCafeDbContext();
             db.Mons.Load();
-            repositoryItemSearchLookUpEditHoaDon_ThucDon.DataSource = db.Mons.Local.ToBindingList();
+            repositoryItemSearchLookUpEditHoaDon_Mon.DataSource = db.Mons.Local.ToBindingList();
             
             db.HoaDonChiTiets.Where(s=>s.IdHoaDon==vitri.IdPhieu).Load();
             gridControlHoaDonChiTiet.DataSource = db.HoaDonChiTiets.Local.ToBindingList();
@@ -192,7 +193,7 @@ namespace CafeApp.Winform.Views
             {
                 tempDb.HoaDons.Add(hoadon);
                 var hd = tempDb.SaveChanges();
-                if (hd==1)
+                if (hd==1)//nếu lưu thành công
                 {
                     NapDuLieu();
                     for (int i = 0; i < this.cardViewBan.RowCount; i++)
@@ -221,14 +222,31 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             LuuViTri();
             NapDuLieu();
-            NapDuLieuChiTiet();
             NapViTri();
         }
+        private void CapNhatSLTon(Mon mon,int sl)
+        {
+            var listDinhLuong = (from a in db.DinhLuongs
+                              join b in db.Mons
+                              on a.IdMon equals b.IdMon
+                              where a.IdMon == mon.IdMon
+                              select a).ToList();
+            //nếu món hiện tại có danh sách định lượng thì tiến hành cập nhật
+            if (listDinhLuong.Any())
+            {
+                foreach (var nl in listDinhLuong)
+                {
+                    var selectedNL = db.NguyenLieux.Find(nl.IdNguyenLieu);
+                    selectedNL.SoLuongTon = selectedNL.SoLuongTon - sl*(nl.SoLuongNguyenLieu / selectedNL.SoLuongQuyDoi);
 
+                }
+                db.SaveChanges();
+            }
+        }
         private void repositoryItemButtonEditChonMon_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             db = new ModelQuanLiCafeDbContext();
-            var mon = (Mon)gridViewThucDon.GetFocusedRow();
+            var mon = (Mon)gridViewMon.GetFocusedRow();
             var hoadon = (BanLe)cardViewBan.GetFocusedRow();
             var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == hoadon.IdPhieu && s.IdMon == mon.IdMon).FirstOrDefault();
             if (hdct==null)//nếu món được chọn chưa có
@@ -242,26 +260,26 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             LuuViTri();
             NapDuLieu();
-            NapDuLieuChiTiet();
             NapViTri();
         }
         private BanLe banLe;
         private Mon mon;
         int cardViewBanRowHandle = 0;
-        int gridViewThucDonRowHandle = 0;
+        int gridViewMonRowHandle = 0;
         private void LuuViTri()
         {
             //lưu vị trí hiện tại của các bảng
             banLe= (BanLe)cardViewBan.GetFocusedRow();
-            mon = (Mon)gridViewThucDon.GetFocusedRow();
-            if (banLe != null)
-            {
-                cardViewBanRowHandle = cardViewBan.LocateByValue("Id", banLe.IdBan);
-            }
+            mon = (Mon)gridViewMon.GetFocusedRow();
             if (mon != null)
             {
-                gridViewThucDonRowHandle = gridViewThucDon.LocateByValue("Id", mon.IdMon);
+                gridViewMonRowHandle = gridViewMon.LocateByValue("IdMon", mon.IdMon);
             }
+            if (banLe != null)
+            {
+                cardViewBanRowHandle = cardViewBan.LocateByValue("IdBan", banLe.IdBan);
+            }
+           
         }
         private void NapViTri()
         {
@@ -269,10 +287,12 @@ namespace CafeApp.Winform.Views
             {
                 cardViewBan.FocusedRowHandle = cardViewBanRowHandle;
             }
-            if (gridViewThucDonRowHandle!=GridControl.InvalidRowHandle)
+            if (gridViewMonRowHandle != GridControl.InvalidRowHandle)
             {
-                gridViewThucDon.FocusedRowHandle = gridViewThucDonRowHandle;
+                gridViewMon.FocusedRowHandle = gridViewMonRowHandle;
             }
+           
+          
             
         }
 
@@ -297,8 +317,7 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             XtraMessageBox.Show("Đã chuyển từ bàn " + vtc.TenBan + " sang bàn " + vtm.TenBan, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             NapDuLieu();
-            NapDuLieuChiTiet();
-            var a = cardViewBan.LocateByValue("Id", idHoaDon);
+            var a = cardViewBan.LocateByValue("IdPhieu", idHoaDon);
             cardViewBan.FocusedRowHandle = a;
         }
 
@@ -331,7 +350,6 @@ namespace CafeApp.Winform.Views
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá hoá đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
-                    NapDuLieuChiTiet();
                 }
             }
             catch (Exception ex)
@@ -354,17 +372,42 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             LuuViTri();
             NapDuLieu();
-            NapDuLieuChiTiet();
             NapViTri();
         }
-
+        private int SlMon_hdct(Mon mon, int idHd)
+        {
+            var sl = (from a in db.Mons
+                     join b in db.HoaDonChiTiets
+                     on a.IdMon equals b.IdMon
+                     where a.IdMon == mon.IdMon
+                     && b.IdHoaDon == idHd
+                     select b.SoLuong).FirstOrDefault();
+            return sl;
+        }
         private void BtnThanhToan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
             if (vitri == null) return;
             if ((XtraMessageBox.Show("Bạn có muốn thực hiện thanh toán cho "+vitri.TenBan+" ?","Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
             {
+                //cập nhật số lượng tồn
                 db = new ModelQuanLiCafeDbContext();
+                var listMon_hdct = (from a in db.HoaDonChiTiets
+                                    join b in db.Mons
+                                    on a.IdMon equals b.IdMon
+                                    select b).ToList();
+                if (!listMon_hdct.Any())
+                {
+                    XtraMessageBox.Show("Hoá đơn chưa gọi món, không thanh toán được!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    foreach (var item in listMon_hdct)
+                    {
+                        CapNhatSLTon(item, SlMon_hdct(item, vitri.IdPhieu));
+                    }
+                }
                 var report = new Reports.ReportPhieuThanhToan();
                 var hd = db.HoaDons.Find(vitri.IdPhieu);
                 report.NapDuLieu(hd);
@@ -381,7 +424,21 @@ namespace CafeApp.Winform.Views
             hd.TrangThai = true;
             db.SaveChanges();
             NapDuLieu();
-            NapDuLieuChiTiet();
+        }
+
+        private void repositoryItemButtonEditXoaMon_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            db = new ModelQuanLiCafeDbContext();
+            var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
+            if ((XtraMessageBox.Show("Bạn có muốn xoá món "+ vitri.Mon.Ten +" này không?","Xác nhận xoá",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
+            {//xác nhận xoá
+                var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon && s.IdMon == vitri.IdMon).FirstOrDefault();
+                db.HoaDonChiTiets.Remove(hdct);
+                db.SaveChanges();
+                LuuViTri();
+                NapDuLieu();
+                NapViTri();
+            }
         }
     }
 }

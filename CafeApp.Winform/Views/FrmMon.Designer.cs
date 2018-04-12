@@ -36,6 +36,7 @@
             this.BtnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.BtnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.BtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnXemLoiNhuan = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -74,9 +75,10 @@
             this.BtnNapDuLieu,
             this.BtnLuu,
             this.BtnXoa,
-            this.BtnXuatExcel});
+            this.BtnXuatExcel,
+            this.BtnXemLoiNhuan});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 5;
             // 
             // bar2
             // 
@@ -88,7 +90,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnNapDuLieu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnXuatExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnXuatExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.BtnXemLoiNhuan, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -129,13 +132,22 @@
             this.BtnXuatExcel.Name = "BtnXuatExcel";
             this.BtnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXuatExcel_ItemClick);
             // 
+            // BtnXemLoiNhuan
+            // 
+            this.BtnXemLoiNhuan.Caption = "Xem lợi nhuận";
+            this.BtnXemLoiNhuan.Id = 4;
+            this.BtnXemLoiNhuan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.BtnXemLoiNhuan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.BtnXemLoiNhuan.Name = "BtnXemLoiNhuan";
+            this.BtnXemLoiNhuan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXemLoiNhuan_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(703, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(703, 24);
             // 
             // barDockControlBottom
             // 
@@ -149,29 +161,29 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 235);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 237);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(703, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(703, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 235);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 237);
             // 
             // gridControlThucDon
             // 
             this.gridControlThucDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlThucDon.Location = new System.Drawing.Point(0, 26);
+            this.gridControlThucDon.Location = new System.Drawing.Point(0, 24);
             this.gridControlThucDon.MainView = this.gridViewThucDon;
             this.gridControlThucDon.MenuManager = this.barManager1;
             this.gridControlThucDon.Name = "gridControlThucDon";
             this.gridControlThucDon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSearchLookUpEditNhomThucDon,
             this.repositoryItemSearchLookUpEditDonViTinh});
-            this.gridControlThucDon.Size = new System.Drawing.Size(703, 235);
+            this.gridControlThucDon.Size = new System.Drawing.Size(703, 237);
             this.gridControlThucDon.TabIndex = 4;
             this.gridControlThucDon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewThucDon});
@@ -248,7 +260,7 @@
             this.repositoryItemSearchLookUpEditDonViTinh.AutoHeight = false;
             this.repositoryItemSearchLookUpEditDonViTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditDonViTinh.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditDonViTinh.DisplayMember = "TenDVT";
             this.repositoryItemSearchLookUpEditDonViTinh.Name = "repositoryItemSearchLookUpEditDonViTinh";
             this.repositoryItemSearchLookUpEditDonViTinh.ValueMember = "IdDVT";
             this.repositoryItemSearchLookUpEditDonViTinh.View = this.gridView1;
@@ -328,5 +340,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEditDonViTinh;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraBars.BarButtonItem BtnXemLoiNhuan;
     }
 }

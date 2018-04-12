@@ -165,5 +165,21 @@ namespace CafeApp.Winform.Views
                 BtnKhoiPhucMatKhau_ItemClick(null, null);
             }
         }
+
+        private void gridViewTaiKhoan_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            var vitri = (TaiKhoan)gridViewTaiKhoan.GetFocusedRow();
+            if (view == null) return;
+            if (e.Column.Caption != "Tên đăng nhập") return;
+            string tendn = e.Value.ToString();
+            Db = new ModelQuanLiCafeDbContext();
+            if (Db.TaiKhoans.Where(s=>s.TenDangNhap==tendn).Any())
+            {
+                XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gridViewTaiKhoan.DeleteRow(view.FocusedRowHandle);
+                //NapDuLieu();
+            }
+        }
     }
 }

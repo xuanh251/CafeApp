@@ -28,7 +28,7 @@ namespace CafeApp.Winform.Views
             repositoryItemSearchLookUpEditNhomThucDon.View.Columns.AddField("Ten").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
-            repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("TenDVT").Visible = true;
             NapDuLieu();
         }
         private void NapDuLieu()
@@ -144,6 +144,14 @@ namespace CafeApp.Winform.Views
             {
                 BtnXuatExcel_ItemClick(null, null);
             }
+        }
+
+        private void BtnXemLoiNhuan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var vitri = (Mon)gridViewThucDon.GetFocusedRow();
+            FrmChiTietLoiNhuan f = new FrmChiTietLoiNhuan();
+            f.KhoiTao(vitri);
+            f.ShowDialog();
         }
     }
 }

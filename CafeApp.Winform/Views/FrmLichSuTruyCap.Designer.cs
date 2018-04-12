@@ -196,7 +196,7 @@
             // 
             // comboBoxEditTrangThai
             // 
-            this.comboBoxEditTrangThai.Location = new System.Drawing.Point(322, 12);
+            this.comboBoxEditTrangThai.Location = new System.Drawing.Point(504, 12);
             this.comboBoxEditTrangThai.MenuManager = this.barManager1;
             this.comboBoxEditTrangThai.Name = "comboBoxEditTrangThai";
             this.comboBoxEditTrangThai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -212,7 +212,7 @@
             // dateTimePickerDenNgay
             // 
             this.dateTimePickerDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDenNgay.Location = new System.Drawing.Point(246, 12);
+            this.dateTimePickerDenNgay.Location = new System.Drawing.Point(305, 12);
             this.dateTimePickerDenNgay.Name = "dateTimePickerDenNgay";
             this.dateTimePickerDenNgay.Size = new System.Drawing.Size(20, 21);
             this.dateTimePickerDenNgay.TabIndex = 11;
@@ -220,17 +220,17 @@
             // dateTimePickerTuNgay
             // 
             this.dateTimePickerTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTuNgay.Location = new System.Drawing.Point(170, 12);
+            this.dateTimePickerTuNgay.Location = new System.Drawing.Point(106, 12);
             this.dateTimePickerTuNgay.Name = "dateTimePickerTuNgay";
             this.dateTimePickerTuNgay.Size = new System.Drawing.Size(20, 21);
             this.dateTimePickerTuNgay.TabIndex = 10;
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Location = new System.Drawing.Point(479, 12);
+            this.layoutControl2.Location = new System.Drawing.Point(661, 12);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.Root;
-            this.layoutControl2.Size = new System.Drawing.Size(202, 22);
+            this.layoutControl2.Size = new System.Drawing.Size(20, 22);
             this.layoutControl2.TabIndex = 9;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -240,16 +240,16 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Location = new System.Drawing.Point(0, 0);
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(202, 22);
+            this.Root.Size = new System.Drawing.Size(20, 22);
             this.Root.TextVisible = false;
             // 
             // gridControlLichSuTruyCap
             // 
-            this.gridControlLichSuTruyCap.Location = new System.Drawing.Point(12, 38);
+            this.gridControlLichSuTruyCap.Location = new System.Drawing.Point(-298, 54);
             this.gridControlLichSuTruyCap.MainView = this.gridViewLichSuTruyCap;
             this.gridControlLichSuTruyCap.MenuManager = this.barManager1;
             this.gridControlLichSuTruyCap.Name = "gridControlLichSuTruyCap";
-            this.gridControlLichSuTruyCap.Size = new System.Drawing.Size(669, 263);
+            this.gridControlLichSuTruyCap.Size = new System.Drawing.Size(979, 230);
             this.gridControlLichSuTruyCap.TabIndex = 8;
             this.gridControlLichSuTruyCap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLichSuTruyCap});
@@ -302,7 +302,7 @@
             // BtnLoc
             // 
             this.BtnLoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLoc.ImageOptions.Image")));
-            this.BtnLoc.Location = new System.Drawing.Point(376, 12);
+            this.BtnLoc.Location = new System.Drawing.Point(558, 12);
             this.BtnLoc.Name = "BtnLoc";
             this.BtnLoc.Size = new System.Drawing.Size(99, 22);
             this.BtnLoc.StyleController = this.layoutControl1;
@@ -312,7 +312,7 @@
             // 
             // comboBoxEditKieuLoc
             // 
-            this.comboBoxEditKieuLoc.Location = new System.Drawing.Point(64, 12);
+            this.comboBoxEditKieuLoc.Location = new System.Drawing.Point(-123, 12);
             this.comboBoxEditKieuLoc.MenuManager = this.barManager1;
             this.comboBoxEditKieuLoc.Name = "comboBoxEditKieuLoc";
             this.comboBoxEditKieuLoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -339,9 +339,9 @@
             this.layoutControlItem2,
             this.layoutControlItem3,
             this.layoutControlItem7});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(-310, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(693, 313);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1003, 296);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -349,14 +349,14 @@
             this.layoutControlItem1.Control = this.comboBoxEditKieuLoc;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(106, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(229, 26);
             this.layoutControlItem1.Text = "Kiểu lọc";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(49, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(172, 13);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.BtnLoc;
-            this.layoutControlItem4.Location = new System.Drawing.Point(364, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(856, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(103, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -367,45 +367,46 @@
             this.layoutControlItem5.Control = this.gridControlLichSuTruyCap;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(673, 267);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
+            this.layoutControlItem5.Size = new System.Drawing.Size(983, 250);
+            this.layoutControlItem5.Text = "Danh sách lịch sử truy cập hệ thống";
+            this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(172, 13);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.layoutControl2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(467, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(959, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(206, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(24, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dateTimePickerTuNgay;
-            this.layoutControlItem2.Location = new System.Drawing.Point(106, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(229, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(76, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(199, 26);
             this.layoutControlItem2.Text = "Từ ngày";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(49, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(172, 13);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.dateTimePickerDenNgay;
-            this.layoutControlItem3.Location = new System.Drawing.Point(182, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(428, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(76, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(199, 26);
             this.layoutControlItem3.Text = "Đến ngày";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(49, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(172, 13);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.comboBoxEditTrangThai;
-            this.layoutControlItem7.Location = new System.Drawing.Point(258, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(627, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(106, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(229, 26);
             this.layoutControlItem7.Text = "Trạng thái";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(49, 13);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(172, 13);
             // 
             // FrmLichSuTruyCap
             // 

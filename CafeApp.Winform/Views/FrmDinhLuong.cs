@@ -32,45 +32,45 @@ namespace CafeApp.Winform.Views
             db.DonViTinhs.Load();
             db.NguyenLieux.Load();
             db.Mons.Load();
-            repositoryItemSearchLookUpEditDVT_NguyenLieu.DataSource = db.DonViTinhs.Local.ToBindingList();
-            repositoryItemSearchLookUpEditDVT_Mon.DataSource = db.DonViTinhs.Local.ToBindingList();
-            repositoryItemSearchLookUpEditNguyenLieu_DinhLuong.DataSource = db.NguyenLieux.Local.ToBindingList();
-            repositoryItemSearchLookUpEditMon_DinhLuong.DataSource = db.Mons.Local.ToBindingList();
+            repositoryItemSearchLookUpEditDVTMon.DataSource = db.DonViTinhs.Local.ToBindingList();
+            repositoryItemSearchLookUpEditDVTNguyenLieu.DataSource = db.DonViTinhs.Local.ToBindingList();
+            repositoryItemSearchLookUpEditMonDinhLuong.DataSource = db.Mons.Local.ToBindingList();
+            repositoryItemSearchLookUpEditNguyenLieuDinhLuong.DataSource = db.NguyenLieux.Local.ToBindingList();
         }
         private void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
-            //load nguyên liêu
-            db.NguyenLieux.Load();
-            gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
-            gridViewNguyenLieu.RefreshData();
-            gridViewNguyenLieu.BestFitColumns();
             //load món
-            db.Mons.Load();
+            db.NguyenLieux.Load();
             gridControlMon.DataSource = db.Mons.Local.ToBindingList();
             gridViewMon.RefreshData();
             gridViewMon.BestFitColumns();
-           
+            //load nguyên liêu
+            db.Mons.Load();
+            gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
+            gridViewNguyenLieu.RefreshData();
+            gridViewNguyenLieu.BestFitColumns();
+
         }
         private NguyenLieu nguyenLieu;
         private Mon mon;
         private DinhLuong dinhLuong;
-        private void gridViewNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void gridViewMon_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            //load danh sách định lượng của nguyên liệu được chọn
-            nguyenLieu = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
-            if (nguyenLieu==null)
+            //load danh sách định lượng của món được chọn
+            mon = (Mon)gridViewMon.GetFocusedRow();
+            if (mon == null)
             {
                 return;
             }
-            LblTenNguyenLieu.Caption = nguyenLieu.Ten;
+            LblTenMon.Caption = mon.Ten;
             NapDinhLuongChiTiet();
         }
         private void NapDinhLuongChiTiet()
         {
             dbDinhLuong = new ModelQuanLiCafeDbContext();
-            dbDinhLuong.DinhLuongs.Where(s => s.IdNguyenLieu == nguyenLieu.IdNguyenLieu).Load();
-            listDinhLuongs= dbDinhLuong.DinhLuongs.Local.ToBindingList();
+            dbDinhLuong.DinhLuongs.Where(s => s.IdMon == mon.IdMon).Load();
+            listDinhLuongs = dbDinhLuong.DinhLuongs.Local.ToBindingList();
             gridControlDinhLuong.DataSource = listDinhLuongs;
             gridViewDinhLuong.RefreshData();
             gridViewDinhLuong.BestFitColumns();
@@ -78,25 +78,25 @@ namespace CafeApp.Winform.Views
 
         private void CapNhatDinhLuong()
         {
-            mon = (Mon)gridViewMon.GetFocusedRow();
-            //kiểm tra xem nguyên liệu hiện tại có danh sách định lượng hay chưa
-            var listDl = listDinhLuongs.Where(s => s.IdNguyenLieu == nguyenLieu.IdNguyenLieu).FirstOrDefault();
-            if (listDl==null)
+            nguyenLieu = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
+            //kiểm tra xem món hiện tại có danh sách định lượng hay chưa
+            var dl = listDinhLuongs.Where(s => s.IdMon == mon.IdMon).FirstOrDefault();
+            if (dl == null)
             {//nếu chưa thì thêm mới
-                listDinhLuongs.Add(new DinhLuong {IdNguyenLieu=nguyenLieu.IdNguyenLieu,SoLuongNguyenLieu=1, IdMon=mon.IdMon,SoLuongMon=1 });
+                listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, SoLuongMon = 1, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
             }
             else
-            {//nếu có rồi thì kiểm tra món được chọn có trong danh sách định lượng hay chưa
-                var listMon = listDinhLuongs.Where(s => s.IdNguyenLieu == nguyenLieu.IdNguyenLieu && s.IdMon == mon.IdMon).FirstOrDefault();
-                if (listMon==null)//nếu chưa có thì thêm mới
+            {//nếu có rồi thì kiểm tra nguyên liệu được chọn có trong danh sách định lượng hay chưa
+                var nl = listDinhLuongs.Where(s => s.IdMon == mon.IdMon && s.IdNguyenLieu == nguyenLieu.IdNguyenLieu).FirstOrDefault();
+                if (nl == null)//nếu chưa có thì thêm mới
                 {
-                    listDinhLuongs.Add(new DinhLuong { IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1, IdMon = mon.IdMon, SoLuongMon = 1 });
+                    listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, SoLuongMon = 1, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
                 }
                 else
                 {
-                    listMon.SoLuongMon += 1;
+                    nl.SoLuongNguyenLieu += 1;
                 }
-                
+
             }
             gridViewDinhLuong.RefreshData();
         }
@@ -111,20 +111,20 @@ namespace CafeApp.Winform.Views
         private void LuuViTri()
         {
             //lưu vị trí hiện tại của các bảng
-            nguyenLieu = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
-            dinhLuong = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
             mon = (Mon)gridViewMon.GetFocusedRow();
-            if (nguyenLieu!=null)
+            dinhLuong = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
+            nguyenLieu = (NguyenLieu)gridViewNguyenLieu.GetFocusedRow();
+            if (nguyenLieu != null)
             {
-                gridViewNguyenLieuRowHandle = gridViewNguyenLieu.LocateByValue("Id", nguyenLieu.IdNguyenLieu);
+                gridViewNguyenLieuRowHandle = gridViewNguyenLieu.LocateByValue("IdNguyenLieu", nguyenLieu.IdNguyenLieu);
             }
-            if (dinhLuong!=null)
+            if (dinhLuong != null)
             {
-                gridViewDinhLuongRowHandle = gridViewDinhLuong.LocateByValue("Id", dinhLuong.IdMon);
+                gridViewDinhLuongRowHandle = gridViewDinhLuong.LocateByValue("IdMon", dinhLuong.IdMon);
             }
             if (mon != null)
             {
-                gridViewMonRowHandle = gridViewMon.LocateByValue("Id", mon.IdMon);
+                gridViewMonRowHandle = gridViewMon.LocateByValue("IdMon", mon.IdMon);
             }
         }
         private void NapViTri()
@@ -144,8 +144,21 @@ namespace CafeApp.Winform.Views
         }
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Luu();
+        }
+
+        private void FrmDinhLuong_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                Luu();
+            }
+        }
+        private void Luu()
+        {
             try
             {
+                //gridControlDinhLuong.
                 var dem = dbDinhLuong.SaveChanges();
                 if (dem > 0)
                 {
@@ -153,7 +166,7 @@ namespace CafeApp.Winform.Views
                     LuuViTri();
                     NapDuLieu();
                     NapViTri();
-                    
+
                 }
                 else
                 {
@@ -162,36 +175,39 @@ namespace CafeApp.Winform.Views
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Chưa lưu được!"+Environment.NewLine+ex.ToString(), "Định lượng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
-        }
-
-        private void FrmDinhLuong_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control&&e.KeyCode==Keys.S)
-            {
-                BtnLuu_ItemClick(null, null);
+                XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Định lượng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void BtnXoaMon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BtnXoaNL_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XoaMon();
+            XoaNL();
         }
-        private void XoaMon()
+        private void XoaNL()
         {
-            var currMon = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
-            if (currMon == null) return;
+            var currNL = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
+            if (currNL == null) return;
             else
             {
-                listDinhLuongs.Remove(currMon);
+                listDinhLuongs.Remove(currNL);
                 gridViewDinhLuong.RefreshData();
             }
         }
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NapDuLieu();
+        }
+
+        private void BtnXemCongThuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var mon = (Mon)gridViewMon.GetFocusedRow();
+            if (mon==null)
+            {
+                XtraMessageBox.Show("Chưa chọn món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FrmCongThucDinhLuong f = new FrmCongThucDinhLuong();
+            f.KhoiTao(mon);
+            f.ShowDialog();
         }
     }
 }

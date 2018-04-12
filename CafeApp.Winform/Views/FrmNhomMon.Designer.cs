@@ -1,6 +1,6 @@
 ﻿namespace CafeApp.Winform.Views
 {
-    partial class FrmNhomSanPham
+    partial class FrmNhomMon
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhomSanPham));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhomMon));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.BtnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
@@ -137,7 +137,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(702, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(702, 24);
             // 
             // barDockControlBottom
             // 
@@ -151,17 +151,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 274);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(702, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(702, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 274);
             // 
             // barButtonItem2
             // 
@@ -273,16 +273,16 @@
             // gridControlNhomSanPham
             // 
             this.gridControlNhomSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlNhomSanPham.Location = new System.Drawing.Point(0, 26);
+            this.gridControlNhomSanPham.Location = new System.Drawing.Point(0, 24);
             this.gridControlNhomSanPham.MainView = this.gridViewNhomSanPham;
             this.gridControlNhomSanPham.MenuManager = this.barManager1;
             this.gridControlNhomSanPham.Name = "gridControlNhomSanPham";
-            this.gridControlNhomSanPham.Size = new System.Drawing.Size(702, 272);
+            this.gridControlNhomSanPham.Size = new System.Drawing.Size(702, 274);
             this.gridControlNhomSanPham.TabIndex = 4;
             this.gridControlNhomSanPham.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNhomSanPham});
             // 
-            // FrmNhomSanPham
+            // FrmNhomMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,8 +292,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "FrmNhomSanPham";
-            this.Text = "Quản lí Nhóm sản phẩm";
+            this.Name = "FrmNhomMon";
+            this.Text = "Quản lí Nhóm món";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmNhomSanPham_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();

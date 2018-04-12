@@ -18,7 +18,7 @@ namespace CafeApp.Model.Models
         public int IdDVT { get; set; }
 
         [StringLength(100)]
-        public string Ten { get; set; }
+        public string TenDVT { get; set; }
 
         [StringLength(100)]
         public string GhiChu { get; set; }

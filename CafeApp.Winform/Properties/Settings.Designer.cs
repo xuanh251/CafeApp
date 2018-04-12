@@ -106,5 +106,16 @@ namespace CafeApp.Winform.Properties {
                 this["LienHe"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("data source=.\\SQL2014;initial catalog=QuanLiCafe;user id=sa;password=123456;Multi" +
+            "pleActiveResultSets=True;App=EntityFramework")]
+        public string ModelQuanLiCafe {
+            get {
+                return ((string)(this["ModelQuanLiCafe"]));
+            }
+        }
     }
 }

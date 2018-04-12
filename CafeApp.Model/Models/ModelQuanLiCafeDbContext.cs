@@ -5,7 +5,7 @@ namespace CafeApp.Model.Models
     public partial class ModelQuanLiCafeDbContext : DbContext
     {
         public ModelQuanLiCafeDbContext()
-            : base("name=ModelQuanLiCafeDbContext")
+            : base("CafeApp.Winform.Properties.Settings.ModelQuanLiCafe")
         {
         }
 
@@ -37,8 +37,8 @@ namespace CafeApp.Model.Models
 
             modelBuilder.Entity<ChucVu>()
                 .HasMany(e => e.NhanViens)
-                .WithRequired(e => e.ChucVu1)
-                .HasForeignKey(e => e.ChucVu)
+                .WithRequired(e => e.ChucVu)
+                .HasForeignKey(e => e.IdChucVu)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DoiTac>()
@@ -47,10 +47,11 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.IdDoiTac)
                 .WillCascadeOnDelete(false);
 
+
             modelBuilder.Entity<DonViTinh>()
                 .HasMany(e => e.NguyenLieux)
                 .WithRequired(e => e.DonViTinh)
-                .HasForeignKey(e => e.IdDVT)
+                .HasForeignKey(e => e.IdDVTQuyDoi)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DonViTinh>()
@@ -98,7 +99,7 @@ namespace CafeApp.Model.Models
             modelBuilder.Entity<PhieuNhapKho>()
                 .HasMany(e => e.PhieuNhapKhoChiTiets)
                 .WithRequired(e => e.PhieuNhapKho)
-                .HasForeignKey(e => e.IdPhieuNhapKho)
+                .HasForeignKey(e => e.SoHoaDon)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaiKhoan>()
