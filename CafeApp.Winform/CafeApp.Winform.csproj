@@ -49,6 +49,8 @@
     <Reference Include="DevExpress.Utils.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.1.Wizard, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -103,6 +105,12 @@
     <Compile Include="Views\FrmBanHang.Designer.cs">
       <DependentUpon>FrmBanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmBieuDoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmBieuDoDoanhThu.Designer.cs">
+      <DependentUpon>FrmBieuDoDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmCauHinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +146,12 @@
     </Compile>
     <Compile Include="Views\FrmChuyenBan.Designer.cs">
       <DependentUpon>FrmChuyenBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDoanhThu.Designer.cs">
+      <DependentUpon>FrmDoanhThu.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmDoiTac.cs">
       <SubType>Form</SubType>
@@ -267,6 +281,9 @@
     <EmbeddedResource Include="Views\FrmBanHang.resx">
       <DependentUpon>FrmBanHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmBieuDoDoanhThu.resx">
+      <DependentUpon>FrmBieuDoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmCauHinh.resx">
       <DependentUpon>FrmCauHinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmChuyenBan.resx">
       <DependentUpon>FrmChuyenBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmDoanhThu.resx">
+      <DependentUpon>FrmDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmDoiTac.resx">
       <DependentUpon>FrmDoiTac.cs</DependentUpon>

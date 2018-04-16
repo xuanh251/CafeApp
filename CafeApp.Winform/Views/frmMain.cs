@@ -203,7 +203,7 @@ namespace CafeApp.Winform.Views
 
         private DialogResult PreClosingConfirmation()
         {
-            DialogResult res = XtraMessageBox.Show("Kết thúc phiên làm việc?", "Xác nhâ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult res = XtraMessageBox.Show("Kết thúc phiên làm việc?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             return res;
         }
 
@@ -230,6 +230,11 @@ namespace CafeApp.Winform.Views
         private void BtnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhanVien());
+        }
+
+        private void BtnDoanhThu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDoanhThu());
         }
     }
 }

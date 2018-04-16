@@ -27,6 +27,14 @@ namespace CafeApp.Model.Models
         public DateTime NgayTao { get; set; }
 
         public bool TrangThai { get; set; }
+        [NotMapped]
+        public string STrangThai
+        {
+            get
+            {
+                return TrangThai ? "Đã thanh toán" : "Chưa thanh toán";
+            }
+        }
 
         [Required]
         [StringLength(50)]
@@ -61,7 +69,7 @@ namespace CafeApp.Model.Models
             {
                 try
                 {
-                    var tongTien = HoaDonChiTiets.Select(s=>s.Tien).Sum();
+                    var tongTien = HoaDonChiTiets.Select(s => s.Tien).Sum();
                     return tongTien;
                 }
                 catch (Exception)

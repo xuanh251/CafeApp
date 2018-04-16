@@ -61,6 +61,8 @@
             this.BtnDangXuat_small = new DevExpress.XtraBars.BarButtonItem();
             this.BtnChucVu = new DevExpress.XtraBars.BarButtonItem();
             this.BtnNhanVien = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnDoanhThu = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnDoanhSo = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -122,9 +124,11 @@
             this.barButtonItem5,
             this.BtnDangXuat_small,
             this.BtnChucVu,
-            this.BtnNhanVien});
+            this.BtnNhanVien,
+            this.BtnDoanhThu,
+            this.BtnDoanhSo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 31;
+            this.ribbonControl1.MaxItemId = 33;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -349,6 +353,23 @@
             this.BtnNhanVien.Name = "BtnNhanVien";
             this.BtnNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnNhanVien_ItemClick);
             // 
+            // BtnDoanhThu
+            // 
+            this.BtnDoanhThu.Caption = "Doanh thu";
+            this.BtnDoanhThu.Id = 31;
+            this.BtnDoanhThu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnDoanhThu.ImageOptions.Image")));
+            this.BtnDoanhThu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnDoanhThu.ImageOptions.LargeImage")));
+            this.BtnDoanhThu.Name = "BtnDoanhThu";
+            this.BtnDoanhThu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDoanhThu_ItemClick);
+            // 
+            // BtnDoanhSo
+            // 
+            this.BtnDoanhSo.Caption = "Doanh số bán";
+            this.BtnDoanhSo.Id = 32;
+            this.BtnDoanhSo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.BtnDoanhSo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.BtnDoanhSo.Name = "BtnDoanhSo";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -439,8 +460,9 @@
             // 
             // ribbonPageGroup4
             // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.BtnDoanhThu);
+            this.ribbonPageGroup4.ItemLinks.Add(this.BtnDoanhSo);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
             // ribbonStatusBar1
             // 
@@ -515,5 +537,7 @@
         private DevExpress.XtraBars.BarButtonItem BtnChucVu;
         private DevExpress.XtraBars.BarButtonItem BtnNhanVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem BtnDoanhThu;
+        private DevExpress.XtraBars.BarButtonItem BtnDoanhSo;
     }
 }
