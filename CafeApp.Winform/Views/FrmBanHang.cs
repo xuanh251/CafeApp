@@ -220,9 +220,7 @@ namespace CafeApp.Winform.Views
             var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon &&s.IdMon==vitri.IdMon).FirstOrDefault();
             hdct.SoLuong = vitri.SoLuong;
             db.SaveChanges();
-            LuuViTri();
-            NapDuLieu();
-            NapViTri();
+            NapDuLieu_ViTri();
         }
         private void CapNhatSLTon(Mon mon,int sl)
         {
@@ -258,9 +256,7 @@ namespace CafeApp.Winform.Views
                 hdct.SoLuong += 1;
             }
             db.SaveChanges();
-            LuuViTri();
-            NapDuLieu();
-            NapViTri();
+            NapDuLieu_ViTri();
         }
         private BanLe banLe;
         private Mon mon;
@@ -370,9 +366,7 @@ namespace CafeApp.Winform.Views
             var hd = db.HoaDons.Find(vitri.IdPhieu);
             hd.ChietKhau = chietkhau;
             db.SaveChanges();
-            LuuViTri();
-            NapDuLieu();
-            NapViTri();
+            NapDuLieu_ViTri();
         }
         private int SlMon_hdct(Mon mon, int idHd)
         {
@@ -435,10 +429,14 @@ namespace CafeApp.Winform.Views
                 var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon && s.IdMon == vitri.IdMon).FirstOrDefault();
                 db.HoaDonChiTiets.Remove(hdct);
                 db.SaveChanges();
-                LuuViTri();
-                NapDuLieu();
-                NapViTri();
+                NapDuLieu_ViTri();
             }
+        }
+        private void NapDuLieu_ViTri()
+        {
+            LuuViTri();
+            NapDuLieu();
+            NapViTri();
         }
     }
 }

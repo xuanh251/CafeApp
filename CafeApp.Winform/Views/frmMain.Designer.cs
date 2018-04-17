@@ -366,9 +366,10 @@
             // 
             this.BtnDoanhSo.Caption = "Doanh số bán";
             this.BtnDoanhSo.Id = 32;
-            this.BtnDoanhSo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.BtnDoanhSo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.BtnDoanhSo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnDoanhSo.ImageOptions.Image")));
+            this.BtnDoanhSo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnDoanhSo.ImageOptions.LargeImage")));
             this.BtnDoanhSo.Name = "BtnDoanhSo";
+            this.BtnDoanhSo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDoanhSo_ItemClick);
             // 
             // ribbonPage1
             // 

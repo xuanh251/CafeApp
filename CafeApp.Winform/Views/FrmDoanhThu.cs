@@ -26,7 +26,6 @@ namespace CafeApp.Winform.Views
         public FrmDoanhThu()
         {
             InitializeComponent();
-
             NapDuLieu();
             barEditItemKieuLoc.DataBindings.Add("EditValue", this, nameof(KieuLoc), false, DataSourceUpdateMode.OnPropertyChanged, TrongNgay);
             barEditItemTuNgay.DataBindings.Add("EditValue", this, nameof(TuNgay), false, DataSourceUpdateMode.OnPropertyChanged, DateTime.Now);
@@ -112,6 +111,20 @@ namespace CafeApp.Winform.Views
         {
             FrmBieuDoDoanhThu f = new FrmBieuDoDoanhThu();
             f.ShowDialog();
+        }
+
+        private void barEditItemKieuLoc_EditValueChanged(object sender, EventArgs e)
+        {
+            if (barEditItemKieuLoc.EditValue.ToString()==TuNgayDenNgay)
+            {
+                barEditItemTuNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                barEditItemDenNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+            else
+            {
+                barEditItemTuNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barEditItemDenNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
         }
     }
 }

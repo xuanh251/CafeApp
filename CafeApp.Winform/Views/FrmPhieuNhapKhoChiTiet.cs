@@ -95,6 +95,7 @@ namespace CafeApp.Winform.Views
             db.PhieuNhapKhoChiTiets.Where(s => s.SoHoaDon == textEditSoPhieu.Text).Load();
             gridControlChiTietPhieu.DataSource = db.PhieuNhapKhoChiTiets.Local.ToBindingList();
             gridViewChiTietPhieu.RefreshData();
+            gridViewChiTietPhieu.BestFitColumns();
         }
         private void gridViewChiTietPhieu_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
