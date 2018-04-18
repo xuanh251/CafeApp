@@ -34,6 +34,16 @@ namespace CafeApp.Winform.Views
 
         private void barButtonItemNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (TuNgay.Date > DenNgay.Date)
+            {
+                XtraMessageBox.Show("Giá trị Từ ngày không được nhỏ hơn giá trị Đến ngày", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (TuNgay.Date > DateTime.Now.Date || DenNgay.Date > DateTime.Now.Date)
+            {
+                XtraMessageBox.Show("Ngày nhập vào phải nhỏ hơn hoặc bằng ngày hiện tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             NapDuLieu();
         }
         public BindingList<HoaDon> query;

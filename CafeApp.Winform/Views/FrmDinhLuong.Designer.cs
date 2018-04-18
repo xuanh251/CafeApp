@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDinhLuong));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.BtnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
             this.BtnLuu = new DevExpress.XtraBars.BarButtonItem();
@@ -79,6 +78,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -104,6 +105,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -189,8 +192,8 @@
             // 
             this.BtnXemCongThuc.Caption = "Xem công thức";
             this.BtnXemCongThuc.Id = 7;
-            this.BtnXemCongThuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.BtnXemCongThuc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.BtnXemCongThuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXemCongThuc.ImageOptions.Image")));
+            this.BtnXemCongThuc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnXemCongThuc.ImageOptions.LargeImage")));
             this.BtnXemCongThuc.Name = "BtnXemCongThuc";
             this.BtnXemCongThuc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXemCongThuc_ItemClick);
             // 
@@ -302,9 +305,9 @@
             // repositoryItemButtonEditChonNguyenLieu
             // 
             this.repositoryItemButtonEditChonNguyenLieu.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.repositoryItemButtonEditChonNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, true, editorButtonImageOptions3)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, true, editorButtonImageOptions5)});
             this.repositoryItemButtonEditChonNguyenLieu.Name = "repositoryItemButtonEditChonNguyenLieu";
             this.repositoryItemButtonEditChonNguyenLieu.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditChonMon_ButtonPressed);
             // 
@@ -345,7 +348,9 @@
             this.repositoryItemSearchLookUpEditMonDinhLuong,
             this.repositoryItemSearchLookUpEditNguyenLieuDinhLuong,
             this.repositoryItemCalcEdit1,
-            this.repositoryItemCalcEdit2});
+            this.repositoryItemCalcEdit2,
+            this.repositoryItemSpinEdit1,
+            this.repositoryItemSpinEdit2});
             this.gridControlDinhLuong.Size = new System.Drawing.Size(348, 365);
             this.gridControlDinhLuong.TabIndex = 2;
             this.gridControlDinhLuong.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -362,6 +367,7 @@
             this.gridViewDinhLuong.Name = "gridViewDinhLuong";
             this.gridViewDinhLuong.OptionsView.ShowViewCaption = true;
             this.gridViewDinhLuong.ViewCaption = "Định lượng";
+            this.gridViewDinhLuong.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewDinhLuong_CellValueChanged);
             // 
             // gridColumn4
             // 
@@ -393,7 +399,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "SL Món";
-            this.gridColumn5.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn5.ColumnEdit = this.repositoryItemSpinEdit1;
             this.gridColumn5.FieldName = "SoLuongMon";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
@@ -409,7 +415,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "SL Nguyên Liệu";
-            this.gridColumn7.ColumnEdit = this.repositoryItemCalcEdit2;
+            this.gridColumn7.ColumnEdit = this.repositoryItemSpinEdit2;
             this.gridColumn7.FieldName = "SoLuongNguyenLieu";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
@@ -529,9 +535,9 @@
             this.repositoryItemButtonEditNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("repositoryItemButtonEditNguyenLieu.Appearance.Image")));
             this.repositoryItemButtonEditNguyenLieu.Appearance.Options.UseImage = true;
             this.repositoryItemButtonEditNguyenLieu.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
             this.repositoryItemButtonEditNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions4)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions6)});
             this.repositoryItemButtonEditNguyenLieu.Name = "repositoryItemButtonEditNguyenLieu";
             // 
             // layoutControlGroup1
@@ -574,6 +580,20 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
+            // repositoryItemSpinEdit2
+            // 
+            this.repositoryItemSpinEdit2.AutoHeight = false;
+            this.repositoryItemSpinEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit2.Name = "repositoryItemSpinEdit2";
+            // 
             // FrmDinhLuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,6 +632,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,5 +688,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem BtnNapDuLieu;
         private DevExpress.XtraBars.BarButtonItem BtnXemCongThuc;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
     }
 }

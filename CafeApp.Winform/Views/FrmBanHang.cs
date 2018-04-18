@@ -219,7 +219,14 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
             var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon &&s.IdMon==vitri.IdMon).FirstOrDefault();
-            hdct.SoLuong = vitri.SoLuong;
+            if (vitri.SoLuong<=0)
+            {
+                hdct.SoLuong = 1;
+            }
+            else
+            {
+                hdct.SoLuong = vitri.SoLuong;
+            }
             db.SaveChanges();
             NapDuLieu_ViTri();
         }

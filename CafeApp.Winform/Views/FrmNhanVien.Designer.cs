@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhanVien));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.BtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -60,7 +60,6 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.BtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -136,6 +135,15 @@
             this.btnXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.LargeImage")));
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXoa_ItemClick);
+            // 
+            // BtnXuatExcel
+            // 
+            this.BtnXuatExcel.Caption = "Xuất Excel";
+            this.BtnXuatExcel.Id = 6;
+            this.BtnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXuatExcel.ImageOptions.Image")));
+            this.BtnXuatExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnXuatExcel.ImageOptions.LargeImage")));
+            this.BtnXuatExcel.Name = "BtnXuatExcel";
+            this.BtnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXuatExcel_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -235,6 +243,7 @@
             this.gridViewNhanVien.OptionsView.ShowAutoFilterRow = true;
             this.gridViewNhanVien.OptionsView.ShowGroupPanel = false;
             this.gridViewNhanVien.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GridViewNhanVien_InitNewRow);
+            this.gridViewNhanVien.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewNhanVien_CellValueChanged);
             // 
             // Id
             // 
@@ -375,15 +384,6 @@
             this.layoutControlItem1.Text = "Danh sách nhân viên";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(100, 13);
-            // 
-            // BtnXuatExcel
-            // 
-            this.BtnXuatExcel.Caption = "Xuất Excel";
-            this.BtnXuatExcel.Id = 6;
-            this.BtnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.BtnXuatExcel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.BtnXuatExcel.Name = "BtnXuatExcel";
-            this.BtnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXuatExcel_ItemClick);
             // 
             // FrmNhanVien
             // 

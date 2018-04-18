@@ -12,6 +12,7 @@ using CafeApp.Model.Models;
 using System.Data.Entity;
 using CafeApp.Common;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Text.RegularExpressions;
 
 namespace CafeApp.Winform.Views
 {
@@ -32,7 +33,7 @@ namespace CafeApp.Winform.Views
 
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
-        
+
         }
         private void NapDuLieu()
         {
@@ -108,7 +109,7 @@ namespace CafeApp.Winform.Views
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: "+ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void KhoiPhucMatKhau()
@@ -126,7 +127,7 @@ namespace CafeApp.Winform.Views
                     var tk = Db.TaiKhoans.Find(vitri.Id);
                     tk.MatKhau = Core.Encrypt(Core.MatKhauMacDinh);
                     Db.SaveChanges();
-                    XtraMessageBox.Show("Đã thiết lập mật khẩu mặc định cho " + TaiKhoan.TableName + " " +tk.TenDangNhap + " thành công!", "Khôi phục mật khẩu!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Đã thiết lập mật khẩu mặc định cho " + TaiKhoan.TableName + " " + tk.TenDangNhap + " thành công!", "Khôi phục mật khẩu!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieu();
                 }
             }
@@ -171,15 +172,32 @@ namespace CafeApp.Winform.Views
             GridView view = sender as GridView;
             var vitri = (TaiKhoan)gridViewTaiKhoan.GetFocusedRow();
             if (view == null) return;
-            if (e.Column.Caption != "Tên đăng nhập") return;
-            string tendn = e.Value.ToString();
-            Db = new ModelQuanLiCafeDbContext();
-            if (Db.TaiKhoans.Where(s=>s.TenDangNhap==tendn).Any())
+            if (e.Column.Caption == "Tên đăng nhập")
             {
-                XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                gridViewTaiKhoan.DeleteRow(view.FocusedRowHandle);
-                //NapDuLieu();
+                string tendn = e.Value.ToString();
+                Db = new ModelQuanLiCafeDbContext();
+                if (Db.TaiKhoans.Where(s => s.TenDangNhap == tendn).Any())
+                {
+                    XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridViewTaiKhoan.DeleteRow(view.FocusedRowHandle);
+                }
             }
+            if (e.Column.Caption=="Số điện thoại")
+            {
+                string sdt = e.Value.ToString();
+                if (!IsPhoneNumber(sdt))
+                {
+                    vitri.SoDienThoai = "";
+                }
+            }
+        }
+        public static bool IsPhoneNumber(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!Char.IsNumber(s[i])) return false;
+            }
+            return true;
         }
     }
 }

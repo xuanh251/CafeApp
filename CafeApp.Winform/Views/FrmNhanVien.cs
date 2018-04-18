@@ -164,5 +164,28 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show(msg, "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void gridViewNhanVien_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            var vitri = (NhanVien)gridViewNhanVien.GetFocusedRow();
+            if (view == null) return;
+            if (e.Column.Caption == "Số điện thoại")
+            {
+                string sdt = e.Value.ToString();
+                if (!IsPhoneNumber(sdt))
+                {
+                    vitri.SoDienThoai = "";
+                }
+            }
+        }
+        public static bool IsPhoneNumber(string s)
+        {
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!Char.IsNumber(s[i])) return false;
+            }
+            return true;
+        }
     }
 }

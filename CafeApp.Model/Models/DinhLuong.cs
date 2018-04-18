@@ -9,12 +9,12 @@ namespace CafeApp.Model.Models
         [Key,Column(Order =1)]
         public int IdNguyenLieu { get; set; }
 
-        public int SoLuongNguyenLieu { get; set; }
+        public double SoLuongNguyenLieu { get; set; }
         [Key, Column(Order = 2)]
 
         public int IdMon { get; set; }
 
-        public int SoLuongMon { get; set; }
+        public double SoLuongMon { get; set; }
 
         public virtual NguyenLieu NguyenLieu { get; set; }
 

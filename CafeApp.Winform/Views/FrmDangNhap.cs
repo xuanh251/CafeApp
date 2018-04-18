@@ -18,15 +18,25 @@ namespace CafeApp.Winform.Views
         {
             InitializeComponent();
             KeyPreview = true;
-            txtTaiKhoan.Focus();
-            CkeNhoMatKhau.Checked = true;
-            txtTaiKhoan.Text = Properties.Settings.Default.TaiKhoan;
-            db = new ModelQuanLiCafeDbContext();
-            db.TaiKhoans.Load();
-            var EnPass= db.TaiKhoans.Where(s => s.TenDangNhap == txtTaiKhoan.Text).FirstOrDefault().MatKhau;
-            txtMatKhau.Text = Core.Decrypt(EnPass);
+            KhoiTao();
         }
-
+        private void KhoiTao()
+        {
+            try
+            {
+                txtTaiKhoan.Focus();
+                CkeNhoMatKhau.Checked = true;
+                txtTaiKhoan.Text = Properties.Settings.Default.TaiKhoan;
+                db = new ModelQuanLiCafeDbContext();
+                db.TaiKhoans.Load();
+                var EnPass = db.TaiKhoans.Where(s => s.TenDangNhap == txtTaiKhoan.Text).FirstOrDefault().MatKhau;
+                txtMatKhau.Text = Core.Decrypt(EnPass);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Đã xảy ra lỗi!" + Environment.NewLine + ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void LuuMatKhau(string un)
         {
             if (CkeNhoMatKhau.Checked)

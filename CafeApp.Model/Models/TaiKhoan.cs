@@ -35,7 +35,7 @@ namespace CafeApp.Model.Models
         [StringLength(100)]
         public string Email { get; set; }
 
-        [StringLength(50)]
+        [StringLength(11)]
         public string SoDienThoai { get; set; }
 
         [StringLength(200)]

@@ -209,5 +209,19 @@ namespace CafeApp.Winform.Views
             f.KhoiTao(mon);
             f.ShowDialog();
         }
+
+        private void gridViewDinhLuong_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            db = new ModelQuanLiCafeDbContext();
+            var vitri = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
+            if (vitri.SoLuongMon<=0)
+            {
+                vitri.SoLuongMon = 1;
+            }
+            if (vitri.SoLuongNguyenLieu<=0)
+            {
+                vitri.SoLuongNguyenLieu = 1;
+            }
+        }
     }
 }

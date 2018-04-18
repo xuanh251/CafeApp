@@ -29,7 +29,7 @@ namespace CafeApp.Model.Models
         public string DiaChi { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(11)]
         public string SoDienThoai { get; set; }
         public double Luong { get; set; }=0;
 
