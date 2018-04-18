@@ -81,12 +81,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ReportCongThucDinhLuong.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\ReportCongThucDinhLuong.Designer.cs">
-      <DependentUpon>ReportCongThucDinhLuong.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\ReportPhieuNhapKho.cs">
       <SubType>Component</SubType>
     </Compile>

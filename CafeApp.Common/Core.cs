@@ -22,6 +22,8 @@ namespace CafeApp.Common
         private static readonly string PasswordHash = "P@@Sw0rd";
         private static readonly string SaltKey = "S@LT&KEY";
         private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+        public static int Admin = 1;
+        public static int Seller = 2;
         public static string SetCaLamViec()
         {
             if (DateTime.Now.Hour<=11) return CaLamViecs[0];

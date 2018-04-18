@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Card;
 using CafeApp.Common;
 using DevExpress.XtraGrid;
 using DevExpress.XtraReports.UI;
+using System.Threading;
 
 namespace CafeApp.Winform.Views
 {
@@ -437,6 +438,28 @@ namespace CafeApp.Winform.Views
             LuuViTri();
             NapDuLieu();
             NapViTri();
+        }
+       
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            DangXuat();
+        }
+        private void DangXuat()
+        {
+            if (FrmDangNhap.accType==Core.Admin)
+            {
+                return;
+            }
+            var curSession = db.LichSuTruyCaps.FirstOrDefault(s => s.IdTaiKhoan == FrmDangNhap.IdTaiKhoan && s.Id == FrmDangNhap.IdPhienDangNhap);
+            curSession.TrangThai = false;
+            db.SaveChanges();
+            Thread t = new Thread(new ThreadStart(OpenFrmLogin));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+        }
+        public static void OpenFrmLogin()
+        {
+            Application.Run(new FrmDangNhap());
         }
     }
 }

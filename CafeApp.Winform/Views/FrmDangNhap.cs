@@ -65,14 +65,23 @@ namespace CafeApp.Winform.Views
                 return true;
             }
         }
-
+        public static int accType=0;
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
             string taikhoan = txtTaiKhoan.Text;
             string matkhau = Core.Encrypt(txtMatKhau.Text);
-            if (DangNhap(taikhoan, matkhau))
+            if (DangNhap(taikhoan, matkhau))//đăng nhập thành công
             {
-                LoadFormMain();
+                db = new ModelQuanLiCafeDbContext();
+                accType=db.TaiKhoans.Where(s => s.TenDangNhap == taikhoan).FirstOrDefault().NhomTaiKhoan.IdNhom;
+                if (accType==Core.Admin)
+                {
+                    LoadFormMain();
+                }
+                else
+                {
+                    LoadFormBanHang();
+                } 
             }
             else
             {
@@ -84,12 +93,24 @@ namespace CafeApp.Winform.Views
         {
             Application.Run(new FrmMain());
         }
+        public static void OpenFrmBanHang()
+        {
+            Application.Run(new FrmBanHang());
+        }
 
         private void LoadFormMain()
         {
             FrmMain fm = new FrmMain();
             this.Close();
             Thread t = new Thread(new ThreadStart(OpenFrmMain));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+        }
+        private void LoadFormBanHang()
+        {
+            FrmBanHang fm = new FrmBanHang();
+            this.Close();
+            Thread t = new Thread(new ThreadStart(OpenFrmBanHang));
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }

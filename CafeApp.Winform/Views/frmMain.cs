@@ -112,7 +112,6 @@ namespace CafeApp.Winform.Views
             curSession.TrangThai = false;
             db.SaveChanges();
             closeAllActiveForm();
-            //Close();
             Thread t = new Thread(new ThreadStart(OpenFrmLogin));
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
