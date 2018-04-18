@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using CafeApp.Model.Models;
 using System.Data.Entity;
 using DevExpress.XtraCharts;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Diagnostics;
+using CafeApp.Common;
+
 
 namespace CafeApp.Winform.Views
 {
@@ -84,20 +78,7 @@ namespace CafeApp.Winform.Views
 
         private void barButtonItemXuatThanhAnh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var folder = new FolderBrowserDialog();
-            if (folder.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            var fileName = string.Concat(Guid.NewGuid().ToString(), ".jpg");
-            string exportFilePath = string.Concat(folder.SelectedPath, "\\", Guid.NewGuid().ToString(), "_", DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"), ".jpg");
-            //string exportFilePath = string.Concat(Application.StartupPath, @"\", fileName);
-            ImageFormat image = ImageFormat.Jpeg;
-            chartControlDoanhThu.ExportToImage(exportFilePath, image);
-            if (File.Exists(exportFilePath))
-            {
-                Process.Start(folder.SelectedPath);
-            }
+            Core.XuatHinhAnh(chartControlDoanhThu);
         }
 
         private void barEditItemKieuLoc_EditValueChanged(object sender, EventArgs e)

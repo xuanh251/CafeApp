@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using CafeApp.Model.Models;
 using System.Data.Entity;
 using DevExpress.XtraCharts;
+using CafeApp.Common;
 
 namespace CafeApp.Winform.Views
 {
@@ -51,19 +52,57 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             List<DoanhSoBan_NhomMon> r = new List<DoanhSoBan_NhomMon>();
             db.NhomMons.Load();
+            db.Mons.Load();
+            db.HoaDons.Load();
+            db.HoaDonChiTiets.Load();
             var listNhom = db.NhomMons.Local.ToBindingList();
-            foreach (var item in listNhom)
+            switch (KieuLoc)
             {
-                var tempSlBan = (from a in db.NhomMons
-                                 from b in db.Mons.Where(s => s.IdNhom == a.IdNhom)
-                                 from c in db.HoaDonChiTiets.Where(s => s.IdMon == b.IdMon)
-                                 where a.IdNhom == item.IdNhom
-                                 select (int?)c.SoLuong).Sum() ?? 0;
-                r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                case TatCa:
+                    foreach (var item in listNhom)
+                    {
+                        var tempSlBan = (from a in db.NhomMons.Local
+                                         from b in db.Mons.Local.Where(s => s.IdNhom == a.IdNhom)
+                                         from c in db.HoaDonChiTiets.Local.Where(s => s.IdMon == b.IdMon)
+                                         where a.IdNhom == item.IdNhom
+                                         select (int?)c.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                case TrongNgay:
+                    foreach (var item in listNhom)
+                    {
+                        var tempSlBan = (from a in db.NhomMons.Local
+                                         from b in db.Mons.Local.Where(s => s.IdNhom == a.IdNhom)
+                                         from c in db.HoaDonChiTiets.Local.Where(s => s.IdMon == b.IdMon)
+                                         from d in db.HoaDons.Local.Where(s=>s.IdHoaDon==c.IdHoaDon)
+                                         where a.IdNhom == item.IdNhom
+                                         && d.NgayTao.Date >= DateTime.Now.Date && d.NgayTao.Date <= DateTime.Now.Date
+                                         select (int?)c.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                case TuNgayDenNgay:
+                    foreach (var item in listNhom)
+                    {
+                        var tempSlBan = (from a in db.NhomMons.Local
+                                         from b in db.Mons.Local.Where(s => s.IdNhom == a.IdNhom)
+                                         from c in db.HoaDonChiTiets.Local.Where(s => s.IdMon == b.IdMon)
+                                         from d in db.HoaDons.Local.Where(s => s.IdHoaDon == c.IdHoaDon)
+                                         where a.IdNhom == item.IdNhom
+                                         && d.NgayTao.Date >= TuNgay.Date && d.NgayTao.Date <= DenNgay.Date
+                                         select (int?)c.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                default:
+                    break;
             }
+
             gridControlNhomMon.DataSource = r;
             gridViewNhomMon.RefreshData();
             gridViewNhomMon.RefreshData();
+            NapDoanhSoMon();
         }
 
         private void gridViewNhomMon_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -73,15 +112,46 @@ namespace CafeApp.Winform.Views
         private void NapDoanhSoMon()
         {
             var vitri = (DoanhSoBan_NhomMon)gridViewNhomMon.GetFocusedRow();
+            if (vitri == null) return;
+            layoutControlItem2.Text = "Doanh số theo món thuộc nhóm " + vitri.TenNhom;
             db = new ModelQuanLiCafeDbContext();
             List<DoanhSoBan_Mon> r = new List<DoanhSoBan_Mon>();
-            db.Mons.Where(s=>s.IdNhom==vitri.IdNhom).Load();
+            db.Mons.Where(s => s.IdNhom == vitri.IdNhom).Load();
+            db.HoaDons.Load();
+            db.HoaDonChiTiets.Load();
             var listMon = db.Mons.Local;
-            foreach (var item in listMon)
+            switch (KieuLoc)
             {
-                var tempSlBan = (from a in db.HoaDonChiTiets.Where(s=>s.IdMon==item.IdMon)
-                                 select (int?)a.SoLuong).Sum() ?? 0;
-                r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                case TatCa:
+                    foreach (var item in listMon)
+                    {
+                        var tempSlBan = (from a in db.HoaDonChiTiets.Local.Where(s => s.IdMon == item.IdMon)
+                                         select (int?)a.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                case TrongNgay:
+                    foreach (var item in listMon)
+                    {
+                        var tempSlBan = (from a in db.HoaDonChiTiets.Local.Where(s => s.IdMon == item.IdMon)
+                                         from b in db.HoaDons.Local.Where(s=>s.IdHoaDon==a.IdHoaDon)
+                                         where b.NgayTao.Date >= DateTime.Now.Date && b.NgayTao.Date <= DateTime.Now.Date
+                                         select (int?)a.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                case TuNgayDenNgay:
+                    foreach (var item in listMon)
+                    {
+                        var tempSlBan = (from a in db.HoaDonChiTiets.Local.Where(s => s.IdMon == item.IdMon)
+                                         from b in db.HoaDons.Local.Where(s => s.IdHoaDon == a.IdHoaDon)
+                                         where b.NgayTao.Date >= TuNgay.Date && b.NgayTao.Date <= DenNgay.Date
+                                         select (int?)a.SoLuong).Sum() ?? 0;
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                    }
+                    break;
+                default:
+                    break;
             }
             gridControlMon.DataSource = r;
             gridViewMon.RefreshData();
@@ -89,19 +159,20 @@ namespace CafeApp.Winform.Views
             XuatBieuDo(r);
 
         }
-        private void XuatBieuDo(List<DoanhSoBan_Mon> dt)
+        private void XuatBieuDo(List<DoanhSoBan_Mon> dt, bool isTop10 = false)
         {
             if (chartControlBieuDo.Series.Count > 0)
             {
                 chartControlBieuDo.Series.Clear();
             }
             var nhom = (DoanhSoBan_NhomMon)gridViewNhomMon.GetFocusedRow();
-            if (dt.Count==0)
+            if (dt.Count == 0)
             {
-                XtraMessageBox.Show("Không có dữ liệu chi tiết","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Không có dữ liệu chi tiết", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            Series pie = new Series("Biểu đồ doanh thu của nhóm "+nhom.TenNhom, ViewType.Pie);
+
+            Series pie = new Series(!isTop10 ? "Biểu đồ doanh thu của nhóm " + nhom.TenNhom : "Top 10 sản phẩm bán chạy", ViewType.Pie);
             var TongSL = dt.Select(s => s.SoLuongBan).Sum();
             foreach (var item in dt)
             {
@@ -126,6 +197,42 @@ namespace CafeApp.Winform.Views
             // Hide the legend (if necessary).
             chartControlBieuDo.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
 
+        }
+
+        private void barButtonItemTop10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GetTop10();
+        }
+        private void GetTop10()
+        {
+            layoutControlItem2.Text = "Danh sách 10 món bán chạy nhất";
+            gridControlNhomMon.DataSource = null;
+            gridViewNhomMon.RefreshData();
+            //gridViewNhomMon.
+            db = new ModelQuanLiCafeDbContext();
+            List<DoanhSoBan_Mon> r = new List<DoanhSoBan_Mon>();
+            db.Mons.Load();
+            var listMon = db.Mons.Local;
+            foreach (var item in listMon)
+            {
+                var tempSlBan = (from a in db.HoaDonChiTiets.Where(s => s.IdMon == item.IdMon)
+                                 select (int?)a.SoLuong).Sum() ?? 0;
+                r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+            }
+            var top10 = r.OrderByDescending(s => s.SoLuongBan).Take(10).ToList();
+            gridControlMon.DataSource = top10;
+            gridViewMon.RefreshData();
+            gridViewMon.BestFitColumns();
+            XuatBieuDo(top10, true);
+        }
+        private void barButtonItemLocDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            NapDuLieu();
+        }
+
+        private void barButtonItemXuatHinhAnh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Core.XuatHinhAnh(chartControlBieuDo);
         }
     }
     public class DoanhSoBan_NhomMon

@@ -38,18 +38,6 @@ namespace CafeApp.Winform.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string MatKhau {
-            get {
-                return ((string)(this["MatKhau"]));
-            }
-            set {
-                this["MatKhau"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Skin {
             get {
                 return ((string)(this["Skin"]));

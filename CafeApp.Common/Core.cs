@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CafeApp.Model.Models;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 
 namespace CafeApp.Common
@@ -90,7 +92,24 @@ namespace CafeApp.Common
                 XtraMessageBox.Show(ex.ToString(), "Sao lưu dữ liệu",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
-        
+        public static void XuatHinhAnh(ChartControl chartControl)
+        {
+            var folder = new FolderBrowserDialog();
+            if (folder.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            var fileName = string.Concat(Guid.NewGuid().ToString(), ".jpg");
+            string exportFilePath = string.Concat(folder.SelectedPath, "\\", Guid.NewGuid().ToString(), "_", DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"), ".jpg");
+            //string exportFilePath = string.Concat(Application.StartupPath, @"\", fileName);
+            ImageFormat image = ImageFormat.Jpeg;
+            chartControl.ExportToImage(exportFilePath, image);
+            if (File.Exists(exportFilePath))
+            {
+                XtraMessageBox.Show("Xuất hình ảnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(folder.SelectedPath);
+            }
+        }
 
     }
     public class VNCurrency
@@ -326,7 +345,5 @@ namespace CafeApp.Common
         {
             return (string.Concat("ngày ", d.Day.ToString(), " tháng ", d.Month.ToString(), " năm ", d.Year.ToString()));
         }
-
-
     }
 }

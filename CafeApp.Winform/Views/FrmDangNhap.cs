@@ -3,6 +3,7 @@ using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
 using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -20,21 +21,22 @@ namespace CafeApp.Winform.Views
             txtTaiKhoan.Focus();
             CkeNhoMatKhau.Checked = true;
             txtTaiKhoan.Text = Properties.Settings.Default.TaiKhoan;
-            txtMatKhau.Text = Properties.Settings.Default.MatKhau;
+            db = new ModelQuanLiCafeDbContext();
+            db.TaiKhoans.Load();
+            var EnPass= db.TaiKhoans.Where(s => s.TenDangNhap == txtTaiKhoan.Text).FirstOrDefault().MatKhau;
+            txtMatKhau.Text = Core.Decrypt(EnPass);
         }
 
-        public void LuuMatKhau(string un, string pw)
+        public void LuuMatKhau(string un)
         {
             if (CkeNhoMatKhau.Checked)
             {
                 Properties.Settings.Default.TaiKhoan = un;
-                Properties.Settings.Default.MatKhau = pw;
                 Properties.Settings.Default.Save();
             }
             else
             {
                 Properties.Settings.Default.TaiKhoan = "";
-                Properties.Settings.Default.MatKhau = "";
                 Properties.Settings.Default.Save();
             }
         }
@@ -52,7 +54,7 @@ namespace CafeApp.Winform.Views
             }
             else
             {
-                LuuMatKhau(txtTaiKhoan.Text, txtMatKhau.Text);
+                LuuMatKhau(txtTaiKhoan.Text);
                 var idTaiKhoan = db.TaiKhoans.Where(s => s.TenDangNhap == tk).Select(s => s.Id).First();
                 LichSuTruyCap lstc = new LichSuTruyCap() { IdTaiKhoan = idTaiKhoan, ThoiDiemDangNhap = DateTime.Now, TrangThai = true };
                 db.LichSuTruyCaps.Add(lstc);
@@ -60,7 +62,6 @@ namespace CafeApp.Winform.Views
                 //Lưu thông tin phiên đăng nhập
                 IdPhienDangNhap = lstc.Id;
                 IdTaiKhoan = (int)lstc.IdTaiKhoan;
-
                 return true;
             }
         }
