@@ -175,7 +175,6 @@ namespace CafeApp.Winform.Views
             if (e.Column.Caption == "Tên đăng nhập")
             {
                 string tendn = e.Value.ToString();
-                Db = new ModelQuanLiCafeDbContext();
                 if (Db.TaiKhoans.Where(s => s.TenDangNhap == tendn).Any())
                 {
                     XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -26,6 +26,10 @@ namespace CafeApp.Winform.Views
             {
                 txtTaiKhoan.Focus();
                 CkeNhoMatKhau.Checked = true;
+                if (String.IsNullOrEmpty(Properties.Settings.Default.TaiKhoan))
+                {
+                    return;
+                }
                 txtTaiKhoan.Text = Properties.Settings.Default.TaiKhoan;
                 db = new ModelQuanLiCafeDbContext();
                 db.TaiKhoans.Load();
