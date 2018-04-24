@@ -125,6 +125,10 @@
     <Compile Include="Migrations\201804181626074_upadtetk.Designer.cs">
       <DependentUpon>201804181626074_upadtetk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804240725447_suasdt.cs" />
+    <Compile Include="Migrations\201804240725447_suasdt.Designer.cs">
+      <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\BanLe.cs" />
@@ -222,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804181626074_upadtetk.resx">
       <DependentUpon>201804181626074_upadtetk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804240725447_suasdt.resx">
+      <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
