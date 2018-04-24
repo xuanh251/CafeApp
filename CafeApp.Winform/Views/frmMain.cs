@@ -221,15 +221,9 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmCauHinh());
         }
 
-        private void BtnChucVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmChucVu());
-        }
+        
 
-        private void BtnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNhanVien());
-        }
+        
 
         private void BtnDoanhThu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

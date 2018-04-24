@@ -67,7 +67,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -337,21 +336,11 @@
             // 
             // BtnChucVu
             // 
-            this.BtnChucVu.Caption = "Chức vụ";
-            this.BtnChucVu.Id = 29;
-            this.BtnChucVu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnChucVu.ImageOptions.Image")));
-            this.BtnChucVu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnChucVu.ImageOptions.LargeImage")));
-            this.BtnChucVu.Name = "BtnChucVu";
-            this.BtnChucVu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnChucVu_ItemClick);
+            
             // 
             // BtnNhanVien
             // 
-            this.BtnNhanVien.Caption = "Nhân viên";
-            this.BtnNhanVien.Id = 30;
-            this.BtnNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNhanVien.ImageOptions.Image")));
-            this.BtnNhanVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnNhanVien.ImageOptions.LargeImage")));
-            this.BtnNhanVien.Name = "BtnNhanVien";
-            this.BtnNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnNhanVien_ItemClick);
+           
             // 
             // BtnDoanhThu
             // 
@@ -399,20 +388,12 @@
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9,
             this.ribbonPageGroup2,
             this.ribbonPageGroup6,
             this.ribbonPageGroup7});
             this.ribbonPage2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage2.Image")));
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "DANH MỤC";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.BtnChucVu);
-            this.ribbonPageGroup9.ItemLinks.Add(this.BtnNhanVien);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "Nhân viên";
             // 
             // ribbonPageGroup2
             // 
@@ -537,7 +518,6 @@
         private DevExpress.XtraBars.BarButtonItem BtnDangXuat_small;
         private DevExpress.XtraBars.BarButtonItem BtnChucVu;
         private DevExpress.XtraBars.BarButtonItem BtnNhanVien;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem BtnDoanhThu;
         private DevExpress.XtraBars.BarButtonItem BtnDoanhSo;
     }

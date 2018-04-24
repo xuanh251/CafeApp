@@ -10,7 +10,7 @@ namespace CafeApp.Model.Models
         }
 
         public virtual DbSet<Ban> Bans { get; set; }
-        public virtual DbSet<ChucVu> ChucVus { get; set; }
+       
         public virtual DbSet<DoiTac> DoiTacs { get; set; }
         public virtual DbSet<DonViTinh> DonViTinhs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
@@ -18,7 +18,6 @@ namespace CafeApp.Model.Models
         public virtual DbSet<LichSuTruyCap> LichSuTruyCaps { get; set; }
         public virtual DbSet<NhomTaiKhoan> NhomTaiKhoans { get; set; }
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
-        public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NhomNguyenLieu> NhomNguyenLieux { get; set; }
         public virtual DbSet<NhomMon> NhomMons { get; set; }
         public virtual DbSet<DinhLuong> DinhLuongs { get; set; }
@@ -35,11 +34,6 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.IdBan)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ChucVu>()
-                .HasMany(e => e.NhanViens)
-                .WithRequired(e => e.ChucVu)
-                .HasForeignKey(e => e.IdChucVu)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DoiTac>()
                 .HasMany(e => e.PhieuNhapKhoes)

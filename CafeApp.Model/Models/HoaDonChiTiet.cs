@@ -9,7 +9,7 @@ namespace CafeApp.Model.Models
     {
         private ModelQuanLiCafeDbContext db = new ModelQuanLiCafeDbContext();
 
-        [Key,Column(Order =1)]
+        [Key, Column(Order = 1)]
         public int IdHoaDon { get; set; }
         [Key, Column(Order = 2)]
 
@@ -20,8 +20,16 @@ namespace CafeApp.Model.Models
         public virtual HoaDon HoaDon { get; set; }
 
         public virtual Mon Mon { get; set; }
+        [NotMapped]
 
-        public double DonGia { get; set; }
+        public double DonGia
+        {
+            get
+            {
+                return Mon.DonGia;
+            }
+            set { }
+        }
 
         [NotMapped]
         public double Tien

@@ -129,10 +129,13 @@
     <Compile Include="Migrations\201804240725447_suasdt.Designer.cs">
       <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804241638062_suacsdl_hoang.cs" />
+    <Compile Include="Migrations\201804241638062_suacsdl_hoang.Designer.cs">
+      <DependentUpon>201804241638062_suacsdl_hoang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
     <Compile Include="Models\BanLe.cs" />
-    <Compile Include="Models\ChucVu.cs" />
     <Compile Include="Models\DoiTac.cs" />
     <Compile Include="Models\DonViTinh.cs" />
     <Compile Include="Models\HoaDon.cs" />
@@ -141,7 +144,6 @@
     <Compile Include="Models\NhomTaiKhoan.cs" />
     <Compile Include="Models\ModelQuanLiCafeDbContext.cs" />
     <Compile Include="Models\NguyenLieu.cs" />
-    <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\NhomNguyenLieu.cs" />
     <Compile Include="Models\NhomMon.cs" />
     <Compile Include="Models\DinhLuong.cs" />
@@ -229,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804240725447_suasdt.resx">
       <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804241638062_suacsdl_hoang.resx">
+      <DependentUpon>201804241638062_suacsdl_hoang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

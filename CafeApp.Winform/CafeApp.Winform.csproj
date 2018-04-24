@@ -183,12 +183,6 @@
     <Compile Include="Views\FrmDonViTinh.Designer.cs">
       <DependentUpon>FrmDonViTinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmChucVu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FrmChucVu.Designer.cs">
-      <DependentUpon>FrmChucVu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\FrmNhomMon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,12 +230,6 @@
     </Compile>
     <Compile Include="Views\FrmPhieuNhapKho.Designer.cs">
       <DependentUpon>FrmPhieuNhapKho.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FrmNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\FrmNhanVien.Designer.cs">
-      <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmTaiKhoan.cs">
       <SubType>Form</SubType>
@@ -323,9 +311,6 @@
     <EmbeddedResource Include="Views\FrmDonViTinh.resx">
       <DependentUpon>FrmDonViTinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmChucVu.resx">
-      <DependentUpon>FrmChucVu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmNhomMon.resx">
       <DependentUpon>FrmNhomMon.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,9 +334,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPhieuNhapKho.resx">
       <DependentUpon>FrmPhieuNhapKho.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmNhanVien.resx">
-      <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmTaiKhoan.resx">
       <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
