@@ -184,8 +184,9 @@ namespace CafeApp.Winform.Views
             if (e.Column.Caption=="Số điện thoại")
             {
                 string sdt = e.Value.ToString();
-                if (!IsPhoneNumber(sdt))
+                if (!IsPhoneNumber(sdt)||sdt.Length<10)
                 {
+                    XtraMessageBox.Show("Số điện thoại không hợp lệ!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     vitri.SoDienThoai = "";
                 }
             }
