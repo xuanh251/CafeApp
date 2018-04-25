@@ -16,8 +16,15 @@ namespace CafeApp.Model.Models
         public int IdNguyenLieu { get; set; }
 
         public int SoLuong { get; set; }
-
-        public double DonGia { get; set; }
+        [NotMapped]
+        public double DonGia
+        {
+            get
+            {
+                return NguyenLieu.DonGia;
+            }
+            set { }
+        }
         public string GhiChu { get; set; }
         [NotMapped]
         public int STT { get; set; }

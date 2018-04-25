@@ -7,13 +7,13 @@ namespace CafeApp.Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class updateTenDVT : IMigrationMetadata
+    public sealed partial class _000 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateTenDVT));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_000));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804091810149_updateTenDVT"; }
+            get { return "201804250311286_000"; }
         }
         
         string IMigrationMetadata.Source

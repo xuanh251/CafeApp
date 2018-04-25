@@ -83,14 +83,14 @@ namespace CafeApp.Winform.Views
             var dl = listDinhLuongs.Where(s => s.IdMon == mon.IdMon).FirstOrDefault();
             if (dl == null)
             {//nếu chưa thì thêm mới
-                listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, SoLuongMon = 1, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
+                listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
             }
             else
             {//nếu có rồi thì kiểm tra nguyên liệu được chọn có trong danh sách định lượng hay chưa
                 var nl = listDinhLuongs.Where(s => s.IdMon == mon.IdMon && s.IdNguyenLieu == nguyenLieu.IdNguyenLieu).FirstOrDefault();
                 if (nl == null)//nếu chưa có thì thêm mới
                 {
-                    listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, SoLuongMon = 1, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
+                    listDinhLuongs.Add(new DinhLuong { IdMon = mon.IdMon, IdNguyenLieu = nguyenLieu.IdNguyenLieu, SoLuongNguyenLieu = 1 });
                 }
                 else
                 {
@@ -214,10 +214,6 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
-            if (vitri.SoLuongMon<=0)
-            {
-                vitri.SoLuongMon = 1;
-            }
             if (vitri.SoLuongNguyenLieu<=0)
             {
                 vitri.SoLuongNguyenLieu = 1;

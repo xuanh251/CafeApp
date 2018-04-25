@@ -14,7 +14,6 @@ namespace CafeApp.Model.Models
 
         public int IdMon { get; set; }
 
-        public double SoLuongMon { get; set; }
 
         public virtual NguyenLieu NguyenLieu { get; set; }
 

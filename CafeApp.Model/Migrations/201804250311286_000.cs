@@ -3,16 +3,16 @@ namespace CafeApp.Model.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _0000 : DbMigration
+    public partial class _000 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.NguyenLieu", "GhiChu", c => c.String(maxLength: 200));
+            DropColumn("dbo.DinhLuong", "SoLuongMon");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.NguyenLieu", "GhiChu");
+            AddColumn("dbo.DinhLuong", "SoLuongMon", c => c.Double(nullable: false));
         }
     }
 }

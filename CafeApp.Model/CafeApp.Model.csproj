@@ -49,89 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201804050959284_er1.cs" />
-    <Compile Include="Migrations\201804050959284_er1.Designer.cs">
-      <DependentUpon>201804050959284_er1.cs</DependentUpon>
+    <Compile Include="Migrations\201804250311286_000.cs" />
+    <Compile Include="Migrations\201804250311286_000.Designer.cs">
+      <DependentUpon>201804250311286_000.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804051350592_hoang.cs" />
-    <Compile Include="Migrations\201804051350592_hoang.Designer.cs">
-      <DependentUpon>201804051350592_hoang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804051354237_000.cs" />
-    <Compile Include="Migrations\201804051354237_000.Designer.cs">
-      <DependentUpon>201804051354237_000.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804051356311_0000.cs" />
-    <Compile Include="Migrations\201804051356311_0000.Designer.cs">
-      <DependentUpon>201804051356311_0000.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804080513293_suaCsdl_lann.cs" />
-    <Compile Include="Migrations\201804080513293_suaCsdl_lann.Designer.cs">
-      <DependentUpon>201804080513293_suaCsdl_lann.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804080524443_suaCsdl_lannn.cs" />
-    <Compile Include="Migrations\201804080524443_suaCsdl_lannn.Designer.cs">
-      <DependentUpon>201804080524443_suaCsdl_lannn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804081538165_suadl.cs" />
-    <Compile Include="Migrations\201804081538165_suadl.Designer.cs">
-      <DependentUpon>201804081538165_suadl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091307556_boTrangThai.cs" />
-    <Compile Include="Migrations\201804091307556_boTrangThai.Designer.cs">
-      <DependentUpon>201804091307556_boTrangThai.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091737489_updateDatetime.cs" />
-    <Compile Include="Migrations\201804091737489_updateDatetime.Designer.cs">
-      <DependentUpon>201804091737489_updateDatetime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804091810149_updateTenDVT.cs" />
-    <Compile Include="Migrations\201804091810149_updateTenDVT.Designer.cs">
-      <DependentUpon>201804091810149_updateTenDVT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804100612019_chinhcsdl123.cs" />
-    <Compile Include="Migrations\201804100612019_chinhcsdl123.Designer.cs">
-      <DependentUpon>201804100612019_chinhcsdl123.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804100851081_suabang.cs" />
-    <Compile Include="Migrations\201804100851081_suabang.Designer.cs">
-      <DependentUpon>201804100851081_suabang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804101001115_suabang1.cs" />
-    <Compile Include="Migrations\201804101001115_suabang1.Designer.cs">
-      <DependentUpon>201804101001115_suabang1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804101007280_suabang2.cs" />
-    <Compile Include="Migrations\201804101007280_suabang2.Designer.cs">
-      <DependentUpon>201804101007280_suabang2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804111842341_themLuong.cs" />
-    <Compile Include="Migrations\201804111842341_themLuong.Designer.cs">
-      <DependentUpon>201804111842341_themLuong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804111850375_updateChucvu.cs" />
-    <Compile Include="Migrations\201804111850375_updateChucvu.Designer.cs">
-      <DependentUpon>201804111850375_updateChucvu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804120142123_updagt.cs" />
-    <Compile Include="Migrations\201804120142123_updagt.Designer.cs">
-      <DependentUpon>201804120142123_updagt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804181526555_changeDinhLuong.cs" />
-    <Compile Include="Migrations\201804181526555_changeDinhLuong.Designer.cs">
-      <DependentUpon>201804181526555_changeDinhLuong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804181626074_upadtetk.cs" />
-    <Compile Include="Migrations\201804181626074_upadtetk.Designer.cs">
-      <DependentUpon>201804181626074_upadtetk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804240725447_suasdt.cs" />
-    <Compile Include="Migrations\201804240725447_suasdt.Designer.cs">
-      <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804241638062_suacsdl_hoang.cs" />
-    <Compile Include="Migrations\201804241638062_suacsdl_hoang.Designer.cs">
-      <DependentUpon>201804241638062_suacsdl_hoang.cs</DependentUpon>
+    <Compile Include="Migrations\201804250341373_001.cs" />
+    <Compile Include="Migrations\201804250341373_001.Designer.cs">
+      <DependentUpon>201804250341373_001.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Ban.cs" />
@@ -172,68 +96,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804050959284_er1.resx">
-      <DependentUpon>201804050959284_er1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804250311286_000.resx">
+      <DependentUpon>201804250311286_000.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804051350592_hoang.resx">
-      <DependentUpon>201804051350592_hoang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804051354237_000.resx">
-      <DependentUpon>201804051354237_000.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804051356311_0000.resx">
-      <DependentUpon>201804051356311_0000.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804080513293_suaCsdl_lann.resx">
-      <DependentUpon>201804080513293_suaCsdl_lann.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804080524443_suaCsdl_lannn.resx">
-      <DependentUpon>201804080524443_suaCsdl_lannn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804081538165_suadl.resx">
-      <DependentUpon>201804081538165_suadl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091307556_boTrangThai.resx">
-      <DependentUpon>201804091307556_boTrangThai.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091737489_updateDatetime.resx">
-      <DependentUpon>201804091737489_updateDatetime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804091810149_updateTenDVT.resx">
-      <DependentUpon>201804091810149_updateTenDVT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804100612019_chinhcsdl123.resx">
-      <DependentUpon>201804100612019_chinhcsdl123.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804100851081_suabang.resx">
-      <DependentUpon>201804100851081_suabang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804101001115_suabang1.resx">
-      <DependentUpon>201804101001115_suabang1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804101007280_suabang2.resx">
-      <DependentUpon>201804101007280_suabang2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804111842341_themLuong.resx">
-      <DependentUpon>201804111842341_themLuong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804111850375_updateChucvu.resx">
-      <DependentUpon>201804111850375_updateChucvu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120142123_updagt.resx">
-      <DependentUpon>201804120142123_updagt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804181526555_changeDinhLuong.resx">
-      <DependentUpon>201804181526555_changeDinhLuong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804181626074_upadtetk.resx">
-      <DependentUpon>201804181626074_upadtetk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804240725447_suasdt.resx">
-      <DependentUpon>201804240725447_suasdt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804241638062_suacsdl_hoang.resx">
-      <DependentUpon>201804241638062_suacsdl_hoang.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804250341373_001.resx">
+      <DependentUpon>201804250341373_001.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
