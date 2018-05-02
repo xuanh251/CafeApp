@@ -10,7 +10,7 @@ namespace CafeApp.Model.Models
         }
 
         public virtual DbSet<Ban> Bans { get; set; }
-       
+
         public virtual DbSet<DoiTac> DoiTacs { get; set; }
         public virtual DbSet<DonViTinh> DonViTinhs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }

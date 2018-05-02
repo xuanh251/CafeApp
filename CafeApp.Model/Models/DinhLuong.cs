@@ -6,7 +6,7 @@ namespace CafeApp.Model.Models
     [Table("DinhLuong")]
     public partial class DinhLuong
     {
-        [Key,Column(Order =1)]
+        [Key, Column(Order = 1)]
         public int IdNguyenLieu { get; set; }
 
         public double SoLuongNguyenLieu { get; set; }

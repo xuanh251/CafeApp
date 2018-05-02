@@ -73,6 +73,7 @@
     <Compile Include="Models\DinhLuong.cs" />
     <Compile Include="Models\PhieuNhapKho.cs" />
     <Compile Include="Models\PhieuNhapKhoChiTiet.cs" />
+    <Compile Include="Models\QuyDoiDVT.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\Mon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
