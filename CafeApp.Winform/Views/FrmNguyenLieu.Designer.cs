@@ -229,7 +229,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên Nguyên Liệu";
-            this.gridColumn2.FieldName = "Ten";
+            this.gridColumn2.FieldName = "TenNguyenLieu";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -248,7 +248,7 @@
             this.repositoryItemSearchLookUpEditNhomNguyenLieu.AutoHeight = false;
             this.repositoryItemSearchLookUpEditNhomNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditNhomNguyenLieu.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditNhomNguyenLieu.DisplayMember = "TenNhom";
             this.repositoryItemSearchLookUpEditNhomNguyenLieu.Name = "repositoryItemSearchLookUpEditNhomNguyenLieu";
             this.repositoryItemSearchLookUpEditNhomNguyenLieu.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditNhomNguyenLieu.View = this.repositoryItemSearchLookUpEdit1View;

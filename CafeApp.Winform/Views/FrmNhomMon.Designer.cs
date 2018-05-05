@@ -257,7 +257,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên nhóm";
-            this.gridColumn2.FieldName = "Ten";
+            this.gridColumn2.FieldName = "TenNhom";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;

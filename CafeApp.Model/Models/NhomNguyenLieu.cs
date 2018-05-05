@@ -19,7 +19,7 @@ namespace CafeApp.Model.Models
 
         [Required]
         [StringLength(100)]
-        public string Ten { get; set; }
+        public string TenNhom { get; set; }
 
         [StringLength(100)]
         public string GhiChu { get; set; }

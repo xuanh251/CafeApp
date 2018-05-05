@@ -25,7 +25,7 @@ namespace CafeApp.Winform.Views
             KeyPreview = true;
             db.NhomMons.Load();
             repositoryItemSearchLookUpEditNhomThucDon.DataSource = db.NhomMons.Local.ToBindingList();
-            repositoryItemSearchLookUpEditNhomThucDon.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditNhomThucDon.View.Columns.AddField("TenNhom").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
             repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("TenDVT").Visible = true;

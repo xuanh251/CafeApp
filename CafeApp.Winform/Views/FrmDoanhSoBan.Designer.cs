@@ -39,6 +39,8 @@
             this.barEditItemDenNgay = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barButtonItemLocDuLieu = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemTop10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemXuatHinhAnh = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -68,8 +70,6 @@
             this.chartControlBieuDo = new DevExpress.XtraCharts.ChartControl();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.barButtonItemTop10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemXuatHinhAnh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
@@ -203,6 +203,23 @@
             this.barButtonItemLocDuLieu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemLocDuLieu.ImageOptions.LargeImage")));
             this.barButtonItemLocDuLieu.Name = "barButtonItemLocDuLieu";
             this.barButtonItemLocDuLieu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLocDuLieu_ItemClick);
+            // 
+            // barButtonItemTop10
+            // 
+            this.barButtonItemTop10.Caption = "Top 10 món bán chạy";
+            this.barButtonItemTop10.Id = 7;
+            this.barButtonItemTop10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemTop10.ImageOptions.Image")));
+            this.barButtonItemTop10.Name = "barButtonItemTop10";
+            this.barButtonItemTop10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTop10_ItemClick);
+            // 
+            // barButtonItemXuatHinhAnh
+            // 
+            this.barButtonItemXuatHinhAnh.Caption = "Xuất hình ảnh";
+            this.barButtonItemXuatHinhAnh.Id = 8;
+            this.barButtonItemXuatHinhAnh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemXuatHinhAnh.ImageOptions.Image")));
+            this.barButtonItemXuatHinhAnh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemXuatHinhAnh.ImageOptions.LargeImage")));
+            this.barButtonItemXuatHinhAnh.Name = "barButtonItemXuatHinhAnh";
+            this.barButtonItemXuatHinhAnh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemXuatHinhAnh_ItemClick);
             // 
             // bar3
             // 
@@ -468,23 +485,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(253, 349);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // barButtonItemTop10
-            // 
-            this.barButtonItemTop10.Caption = "Top 10 món bán chạy";
-            this.barButtonItemTop10.Id = 7;
-            this.barButtonItemTop10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.barButtonItemTop10.Name = "barButtonItemTop10";
-            this.barButtonItemTop10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemTop10_ItemClick);
-            // 
-            // barButtonItemXuatHinhAnh
-            // 
-            this.barButtonItemXuatHinhAnh.Caption = "Xuất hình ảnh";
-            this.barButtonItemXuatHinhAnh.Id = 8;
-            this.barButtonItemXuatHinhAnh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.barButtonItemXuatHinhAnh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
-            this.barButtonItemXuatHinhAnh.Name = "barButtonItemXuatHinhAnh";
-            this.barButtonItemXuatHinhAnh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemXuatHinhAnh_ItemClick);
             // 
             // FrmDoanhSoBan
             // 

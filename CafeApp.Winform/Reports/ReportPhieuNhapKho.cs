@@ -38,10 +38,10 @@ namespace CafeApp.Winform.Reports
             var myList = from a in temp
                          join b in db.DonViTinhs.Local
                          on a.NguyenLieu.IdDVT equals b.IdDVT
-                         select new { a.STT, a.NguyenLieu.Ten, a.SoLuong, a.DonGia, a.Tien,b.TenDVT };
+                         select new { a.STT, a.NguyenLieu.TenNguyenLieu, a.SoLuong, a.DonGia, a.Tien,b.TenDVT };
             DataSource = myList.ToList();
             STT.DataBindings.Add("Text", DataSource, nameof(PhieuNhapKhoChiTiet.STT));
-            Ten.DataBindings.Add("Text", DataSource, nameof(NguyenLieu.Ten));
+            Ten.DataBindings.Add("Text", DataSource, nameof(NguyenLieu.TenNguyenLieu));
             DonGia.DataBindings.Add("Text", DataSource, nameof(PhieuNhapKhoChiTiet.DonGia),"{0:n0}đ");
             SoLuong.DataBindings.Add("Text", DataSource, nameof(PhieuNhapKhoChiTiet.SoLuong));
             DVT.DataBindings.Add("Text", DataSource, nameof(DonViTinh.TenDVT));
@@ -49,7 +49,7 @@ namespace CafeApp.Winform.Reports
 
             xrLabelNgay.Text = "Ngày lập phiếu: "+phieu.NgayLapPhieu.ToString("dd/MM/yyyy");
             xrLabelSoPhieu.Text = "Số HĐ: "+phieu.SoHoaDon;
-            xrLabelTenDoiTac.Text = phieu.DoiTac.Ten;
+            xrLabelTenDoiTac.Text = phieu.DoiTac.TenDoiTac;
             xrLabelSoDienThoaiDoiTac.Text = phieu.DoiTac.SoDienThoai;
             xrLabelDiaChiDoiTac.Text = phieu.DoiTac.DiaChi;
             xrTableCellTongTien.Text = phieu.TongTien.ToString("n0")+"đ";

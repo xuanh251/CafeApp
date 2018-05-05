@@ -18,6 +18,7 @@ namespace CafeApp.Winform.Views
         public FrmChiTietTonKho()
         {
             InitializeComponent();
+            BtnOK.Focus();
         }
         public void KhoiTao(NguyenLieu nl)
         {
@@ -31,7 +32,7 @@ namespace CafeApp.Winform.Views
                                   select a.TenDVT).FirstOrDefault();
                 var slLe = ((int)((temp.SoLuongTon - (int)temp.SoLuongTon) * temp.SoLuongQuyDoi)).ToString();
                 slLe = int.Parse(slLe) > 0 ? slLe+ " " +temp.DonViTinh.TenDVT : "";
-                LblTieuDe.Text = "Chi tiết tồn kho của nguyên liệu: " + temp.Ten;
+                LblTieuDe.Text = "Chi tiết tồn kho của nguyên liệu: " + temp.TenNguyenLieu;
                 LblSLTon.Text ="Số lượng tồn: "+ (int)temp.SoLuongTon + " " + dvt +" "+slLe+"  ("+temp.TongSoLuongTonQuyDoi+" "+temp.DonViTinh.TenDVT+")";
                 LblGiaTriTon.Text ="Giá trị tồn: "+ (temp.SoLuongTon * temp.DonGia).ToString("c0");
             }

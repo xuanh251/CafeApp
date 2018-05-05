@@ -66,7 +66,7 @@ namespace CafeApp.Winform.Views
                                          from c in db.HoaDonChiTiets.Local.Where(s => s.IdMon == b.IdMon)
                                          where a.IdNhom == item.IdNhom
                                          select (int?)c.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.TenNhom, SoLuongBan = tempSlBan });
                     }
                     break;
                 case TrongNgay:
@@ -79,7 +79,7 @@ namespace CafeApp.Winform.Views
                                          where a.IdNhom == item.IdNhom
                                          && d.NgayTao.Date >= DateTime.Now.Date && d.NgayTao.Date <= DateTime.Now.Date
                                          select (int?)c.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.TenNhom, SoLuongBan = tempSlBan });
                     }
                     break;
                 case TuNgayDenNgay:
@@ -92,7 +92,7 @@ namespace CafeApp.Winform.Views
                                          where a.IdNhom == item.IdNhom
                                          && d.NgayTao.Date >= TuNgay.Date && d.NgayTao.Date <= DenNgay.Date
                                          select (int?)c.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_NhomMon { IdNhom = item.IdNhom, TenNhom = item.TenNhom, SoLuongBan = tempSlBan });
                     }
                     break;
                 default:
@@ -127,7 +127,7 @@ namespace CafeApp.Winform.Views
                     {
                         var tempSlBan = (from a in db.HoaDonChiTiets.Local.Where(s => s.IdMon == item.IdMon)
                                          select (int?)a.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.TenMon, SoLuongBan = tempSlBan });
                     }
                     break;
                 case TrongNgay:
@@ -137,7 +137,7 @@ namespace CafeApp.Winform.Views
                                          from b in db.HoaDons.Local.Where(s=>s.IdHoaDon==a.IdHoaDon)
                                          where b.NgayTao.Date >= DateTime.Now.Date && b.NgayTao.Date <= DateTime.Now.Date
                                          select (int?)a.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.TenMon, SoLuongBan = tempSlBan });
                     }
                     break;
                 case TuNgayDenNgay:
@@ -147,7 +147,7 @@ namespace CafeApp.Winform.Views
                                          from b in db.HoaDons.Local.Where(s => s.IdHoaDon == a.IdHoaDon)
                                          where b.NgayTao.Date >= TuNgay.Date && b.NgayTao.Date <= DenNgay.Date
                                          select (int?)a.SoLuong).Sum() ?? 0;
-                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                        r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.TenMon, SoLuongBan = tempSlBan });
                     }
                     break;
                 default:
@@ -217,7 +217,7 @@ namespace CafeApp.Winform.Views
             {
                 var tempSlBan = (from a in db.HoaDonChiTiets.Where(s => s.IdMon == item.IdMon)
                                  select (int?)a.SoLuong).Sum() ?? 0;
-                r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.Ten, SoLuongBan = tempSlBan });
+                r.Add(new DoanhSoBan_Mon { IdMon = item.IdMon, TenMon = item.TenMon, SoLuongBan = tempSlBan });
             }
             var top10 = r.OrderByDescending(s => s.SoLuongBan).Take(10).ToList();
             gridControlMon.DataSource = top10;

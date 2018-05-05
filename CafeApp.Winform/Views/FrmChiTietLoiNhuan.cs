@@ -18,6 +18,7 @@ namespace CafeApp.Winform.Views
         public FrmChiTietLoiNhuan()
         {
             InitializeComponent();
+            BtnOK.Focus();
         }
         public void KhoiTao(Mon mon)
         {
@@ -36,7 +37,7 @@ namespace CafeApp.Winform.Views
                     giavon += (item.SoLuongNguyenLieu / item.SoLuongQuyDoi) * item.DonGia;
                 }
             }
-            LblTieuDe.Text = "Lợi nhuận của món: " + mon.Ten+"/1 món";
+            LblTieuDe.Text = "Lợi nhuận của món: " + mon.TenMon+"/1 món";
             LblGiaBan.Text = "Giá món: "+giaMon.ToString("c0");
             LblGiaVon.Text = "Tổng vốn:" +giavon.ToString("c0");
             LblLoiNhuan.Text = "Lợi nhuận: "+(giaMon - giavon).ToString("c0")+"("+Math.Round(((giaMon-giavon)/giaMon*100),2)+"%)";

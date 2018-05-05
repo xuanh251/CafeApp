@@ -136,8 +136,8 @@
             // 
             this.BtnXemLoiNhuan.Caption = "Xem lợi nhuận";
             this.BtnXemLoiNhuan.Id = 4;
-            this.BtnXemLoiNhuan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.BtnXemLoiNhuan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.BtnXemLoiNhuan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnXemLoiNhuan.ImageOptions.Image")));
+            this.BtnXemLoiNhuan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnXemLoiNhuan.ImageOptions.LargeImage")));
             this.BtnXemLoiNhuan.Name = "BtnXemLoiNhuan";
             this.BtnXemLoiNhuan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnXemLoiNhuan_ItemClick);
             // 
@@ -214,7 +214,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên Món";
-            this.gridColumn2.FieldName = "Ten";
+            this.gridColumn2.FieldName = "TenMon";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -234,7 +234,7 @@
             this.repositoryItemSearchLookUpEditNhomThucDon.AutoHeight = false;
             this.repositoryItemSearchLookUpEditNhomThucDon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditNhomThucDon.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditNhomThucDon.DisplayMember = "TenNhom";
             this.repositoryItemSearchLookUpEditNhomThucDon.Name = "repositoryItemSearchLookUpEditNhomThucDon";
             this.repositoryItemSearchLookUpEditNhomThucDon.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditNhomThucDon.View = this.repositoryItemSearchLookUpEdit1View;

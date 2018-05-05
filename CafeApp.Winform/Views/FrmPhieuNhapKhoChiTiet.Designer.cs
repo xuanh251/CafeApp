@@ -633,7 +633,7 @@
             this.repositoryItemSearchLookUpEditNguyenLieu.AutoHeight = false;
             this.repositoryItemSearchLookUpEditNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditNguyenLieu.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditNguyenLieu.DisplayMember = "TenNguyenLieu";
             this.repositoryItemSearchLookUpEditNguyenLieu.Name = "repositoryItemSearchLookUpEditNguyenLieu";
             this.repositoryItemSearchLookUpEditNguyenLieu.ValueMember = "IdNguyenLieu";
             this.repositoryItemSearchLookUpEditNguyenLieu.View = this.repositoryItemSearchLookUpEdit1View;

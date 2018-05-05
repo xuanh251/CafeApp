@@ -94,7 +94,7 @@ namespace CafeApp.Winform.Views
         {
             lblThongTin.Caption = "@" + DateTime.Now.Year + " CafeApp Manager";
             var user = db.TaiKhoans.Find(FrmDangNhap.IdTaiKhoan);
-            lblUserInfo.Caption = "Phiên làm việc: " + user.HoTen + " - " + user.NhomTaiKhoan.Ten;
+            lblUserInfo.Caption = "Phiên làm việc: " + user.HoTen + " - " + user.NhomTaiKhoan.TenNhom;
         }
         private void BtnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

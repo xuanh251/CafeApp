@@ -26,7 +26,7 @@ namespace CafeApp.Winform.Views
             Db = new ModelQuanLiCafeDbContext();
             Db.NhomTaiKhoans.Load();
             repositoryItemSearchLookUpEditLoaiTaiKhoan.DataSource = Db.NhomTaiKhoans.Local.ToBindingList();
-            repositoryItemSearchLookUpEditLoaiTaiKhoan.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditLoaiTaiKhoan.View.Columns.AddField("TenNhom").Visible = true;
             NapDuLieu();
             KeyPreview = true;
         }

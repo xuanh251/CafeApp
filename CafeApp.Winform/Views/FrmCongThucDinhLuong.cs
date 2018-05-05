@@ -22,13 +22,13 @@ namespace CafeApp.Winform.Views
         public void KhoiTao(Mon mon)
         {
             db = new ModelQuanLiCafeDbContext();
-            LblTieuDe.Text = "Công thức định lượng của " + mon.Ten;
-            memoEditCongThuc.Text+= "1 " + mon.DonViTinh.TenDVT + " " + mon.Ten + " cần:"+Environment.NewLine;
+            LblTieuDe.Text = "Công thức định lượng của " + mon.TenMon;
+            memoEditCongThuc.Text+= "1 " + mon.DonViTinh.TenDVT + " " + mon.TenMon + " cần:"+Environment.NewLine;
             var listnl = db.DinhLuongs.Where(s => s.IdMon == mon.IdMon).ToList();
             foreach (var item in listnl)
             {
                 var nl = db.NguyenLieux.Find(item.IdNguyenLieu);
-                memoEditCongThuc.Text += "-> " + item.SoLuongNguyenLieu + " " + nl.DonViTinh.TenDVT + " " + nl.Ten+Environment.NewLine;
+                memoEditCongThuc.Text += "-> " + item.SoLuongNguyenLieu + " " + nl.DonViTinh.TenDVT + " " + nl.TenNguyenLieu+Environment.NewLine;
             }
         }
         private void BtnOK_Click(object sender, EventArgs e)

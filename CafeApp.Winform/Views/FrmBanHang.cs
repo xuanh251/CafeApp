@@ -33,7 +33,7 @@ namespace CafeApp.Winform.Views
             db.Mons.Load();
             db.NhomMons.Load();
             repositoryItemSearchLookUpEditNhomMon.DataSource = db.NhomMons.Local.ToBindingList();
-            repositoryItemSearchLookUpEditNhomMon.View.Columns.AddField("Ten").Visible = true;
+            repositoryItemSearchLookUpEditNhomMon.View.Columns.AddField("TenNhom").Visible = true;
             gridControlMon.DataSource = db.Mons.Local.ToBindingList().OrderBy(s => s.NhomMon.IdNhom);
             gridViewMon.RefreshData();
             gridViewMon.BestFitColumns();
@@ -432,7 +432,7 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
-            if ((XtraMessageBox.Show("Bạn có muốn xoá món "+ vitri.Mon.Ten +" này không?","Xác nhận xoá",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
+            if ((XtraMessageBox.Show("Bạn có muốn xoá món "+ vitri.Mon.TenMon +" này không?","Xác nhận xoá",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
             {//xác nhận xoá
                 var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon && s.IdMon == vitri.IdMon).FirstOrDefault();
                 db.HoaDonChiTiets.Remove(hdct);

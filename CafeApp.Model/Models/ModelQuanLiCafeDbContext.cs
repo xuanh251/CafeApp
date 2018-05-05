@@ -63,7 +63,7 @@ namespace CafeApp.Model.Models
             modelBuilder.Entity<NhomTaiKhoan>()
                 .HasMany(e => e.TaiKhoans)
                 .WithRequired(e => e.NhomTaiKhoan)
-                .HasForeignKey(e => e.QuyenSuDung)
+                .HasForeignKey(e => e.IdNhom)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NguyenLieu>()

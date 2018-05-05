@@ -47,7 +47,7 @@ namespace CafeApp.Winform.Views
             Text = isThemMoi ? "Thêm mới phiếu nhập kho" : "Chi tiết phiếu nhập kho " + phieu.SoHoaDon;
             db = new ModelQuanLiCafeDbContext();
             db.DoiTacs.Load();
-            var listDoitac = from dt in db.DoiTacs.Local select new { dt.IdDoiTac, dt.Ten, dt.DiaChi };
+            var listDoitac = from dt in db.DoiTacs.Local select new { dt.IdDoiTac, dt.TenDoiTac, dt.DiaChi };
             searchLookUpEditDoiTac.Properties.DataSource = listDoitac.ToList();
             db.TaiKhoans.Load();
             var listTaiKhoan = from tk in db.TaiKhoans.Local select new { tk.Id, tk.TenDangNhap, tk.HoTen };
@@ -57,7 +57,7 @@ namespace CafeApp.Winform.Views
             db.DonViTinhs.Load();
             var listNguyenLieu = from nl in db.NguyenLieux.Local
                                  join dvt in db.DonViTinhs.Local on nl.IdDVT equals dvt.IdDVT
-                                 select new { nl.IdNguyenLieu, nl.Ten, DonViTinh = dvt.TenDVT };
+                                 select new { nl.IdNguyenLieu, nl.TenNguyenLieu, DonViTinh = dvt.TenDVT };
             repositoryItemSearchLookUpEditNguyenLieu.DataSource = listNguyenLieu.ToList();
             NapDuLieuChiTiet();
         }

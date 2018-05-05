@@ -536,7 +536,7 @@
             this.repositoryItemSearchLookUpEditMon.AutoHeight = false;
             this.repositoryItemSearchLookUpEditMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditMon.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditMon.DisplayMember = "TenMon";
             this.repositoryItemSearchLookUpEditMon.Name = "repositoryItemSearchLookUpEditMon";
             this.repositoryItemSearchLookUpEditMon.ValueMember = "IdMon";
             this.repositoryItemSearchLookUpEditMon.View = this.gridView1;

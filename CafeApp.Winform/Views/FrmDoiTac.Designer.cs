@@ -140,7 +140,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(702, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(702, 24);
             // 
             // barDockControlBottom
             // 
@@ -154,17 +154,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 274);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(702, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(702, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 272);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 274);
             // 
             // barButtonItem2
             // 
@@ -263,7 +263,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên Đối tác";
-            this.gridColumn2.FieldName = "Ten";
+            this.gridColumn2.FieldName = "TenDoiTac";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -303,11 +303,11 @@
             // gridControlDoiTac
             // 
             this.gridControlDoiTac.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlDoiTac.Location = new System.Drawing.Point(0, 26);
+            this.gridControlDoiTac.Location = new System.Drawing.Point(0, 24);
             this.gridControlDoiTac.MainView = this.gridViewDoiTac;
             this.gridControlDoiTac.MenuManager = this.barManager1;
             this.gridControlDoiTac.Name = "gridControlDoiTac";
-            this.gridControlDoiTac.Size = new System.Drawing.Size(702, 272);
+            this.gridControlDoiTac.Size = new System.Drawing.Size(702, 274);
             this.gridControlDoiTac.TabIndex = 4;
             this.gridControlDoiTac.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDoiTac});

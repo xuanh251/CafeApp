@@ -18,7 +18,7 @@ namespace CafeApp.Model.Models
 
         [Required]
         [StringLength(200)]
-        public string Ten { get; set; }
+        public string TenDoiTac { get; set; }
 
         [Required]
         [StringLength(200)]

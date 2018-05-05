@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTaiKhoan));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnNapDuLieu = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
@@ -251,7 +252,7 @@
             // 
             this.gridColumn3.Caption = "Nhóm tài khoản";
             this.gridColumn3.ColumnEdit = this.repositoryItemSearchLookUpEditLoaiTaiKhoan;
-            this.gridColumn3.FieldName = "QuyenSuDung";
+            this.gridColumn3.FieldName = "IdNhom";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -262,7 +263,7 @@
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.AutoHeight = false;
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditLoaiTaiKhoan.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditLoaiTaiKhoan.DisplayMember = "TenNhom";
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.Name = "repositoryItemSearchLookUpEditLoaiTaiKhoan";
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditLoaiTaiKhoan.View = this.repositoryItemSearchLookUpEdit1View;

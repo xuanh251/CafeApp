@@ -157,7 +157,7 @@
             this.repositoryItemSearchLookUpEditDoiTac.AutoHeight = false;
             this.repositoryItemSearchLookUpEditDoiTac.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditDoiTac.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditDoiTac.DisplayMember = "TenDoiTac";
             this.repositoryItemSearchLookUpEditDoiTac.Name = "repositoryItemSearchLookUpEditDoiTac";
             this.repositoryItemSearchLookUpEditDoiTac.ValueMember = "IdDoiTac";
             this.repositoryItemSearchLookUpEditDoiTac.View = this.repositoryItemSearchLookUpEdit1View;

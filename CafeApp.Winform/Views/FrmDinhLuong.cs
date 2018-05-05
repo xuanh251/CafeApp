@@ -63,7 +63,7 @@ namespace CafeApp.Winform.Views
             {
                 return;
             }
-            LblTenMon.Caption = mon.Ten;
+            LblTenMon.Caption = mon.TenMon;
             NapDinhLuongChiTiet();
         }
         private void NapDinhLuongChiTiet()

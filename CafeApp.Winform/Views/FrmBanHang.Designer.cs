@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBanHang));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.BtnNapDuLieu = new DevExpress.XtraBars.BarLargeButtonItem();
@@ -338,7 +338,7 @@
             this.repositoryItemSearchLookUpEditHoaDon_Mon.AutoHeight = false;
             this.repositoryItemSearchLookUpEditHoaDon_Mon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditHoaDon_Mon.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditHoaDon_Mon.DisplayMember = "TenMon";
             this.repositoryItemSearchLookUpEditHoaDon_Mon.Name = "repositoryItemSearchLookUpEditHoaDon_Mon";
             this.repositoryItemSearchLookUpEditHoaDon_Mon.ReadOnly = true;
             this.repositoryItemSearchLookUpEditHoaDon_Mon.ValueMember = "IdMon";
@@ -390,9 +390,9 @@
             // repositoryItemButtonEditXoaMon
             // 
             this.repositoryItemButtonEditXoaMon.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.repositoryItemButtonEditXoaMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Xoá món", -1, true, true, false, editorButtonImageOptions3)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Xoá món", -1, true, true, false, editorButtonImageOptions1)});
             this.repositoryItemButtonEditXoaMon.Name = "repositoryItemButtonEditXoaMon";
             this.repositoryItemButtonEditXoaMon.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditXoaMon_ButtonPressed);
             // 
@@ -437,7 +437,7 @@
             this.repositoryItemSearchLookUpEditNhomMon.AutoHeight = false;
             this.repositoryItemSearchLookUpEditNhomMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEditNhomMon.DisplayMember = "Ten";
+            this.repositoryItemSearchLookUpEditNhomMon.DisplayMember = "TenNhom";
             this.repositoryItemSearchLookUpEditNhomMon.Name = "repositoryItemSearchLookUpEditNhomMon";
             this.repositoryItemSearchLookUpEditNhomMon.ValueMember = "IdNhom";
             this.repositoryItemSearchLookUpEditNhomMon.View = this.repositoryItemSearchLookUpEdit1View;
@@ -453,7 +453,7 @@
             // 
             this.ThucDon.Caption = "Tên Món";
             this.ThucDon.ColumnEdit = this.repositoryItemButtonEditChonMon;
-            this.ThucDon.FieldName = "Ten";
+            this.ThucDon.FieldName = "TenMon";
             this.ThucDon.Name = "ThucDon";
             this.ThucDon.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.ThucDon.Visible = true;
@@ -462,9 +462,9 @@
             // repositoryItemButtonEditChonMon
             // 
             this.repositoryItemButtonEditChonMon.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEditChonMon.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions4)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions2)});
             this.repositoryItemButtonEditChonMon.Name = "repositoryItemButtonEditChonMon";
             this.repositoryItemButtonEditChonMon.ButtonPressed += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEditChonMon_ButtonPressed);
             // 

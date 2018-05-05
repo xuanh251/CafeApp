@@ -26,7 +26,7 @@ namespace CafeApp.Model.Models
         [StringLength(50)]
         public string MatKhau { get; set; }
 
-        public int QuyenSuDung { get; set; }
+        public int IdNhom { get; set; }
 
         [Required]
         [StringLength(100)]

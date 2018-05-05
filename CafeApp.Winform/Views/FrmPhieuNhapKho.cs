@@ -48,7 +48,7 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             db.DoiTacs.Load();
             db.TaiKhoans.Load();
-            var listDoiTac = from dt in db.DoiTacs.Local select new { dt.IdDoiTac, dt.Ten, dt.DiaChi, dt.SoDienThoai };
+            var listDoiTac = from dt in db.DoiTacs.Local select new { dt.IdDoiTac, dt.TenDoiTac, dt.DiaChi, dt.SoDienThoai };
             var listTaiKhoan = from tk in db.TaiKhoans.Local select new { tk.Id, tk.TenDangNhap };
             repositoryItemSearchLookUpEditDoiTac.DataSource = listDoiTac.ToList();
             repositoryItemSearchLookUpEditNguoiTao.DataSource = listTaiKhoan.ToList();
