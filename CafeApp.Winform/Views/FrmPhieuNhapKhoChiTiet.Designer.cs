@@ -374,7 +374,7 @@
             this.searchLookUpEditDoiTac.Name = "searchLookUpEditDoiTac";
             this.searchLookUpEditDoiTac.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditDoiTac.Properties.DisplayMember = "Ten";
+            this.searchLookUpEditDoiTac.Properties.DisplayMember = "TenDoiTac";
             this.searchLookUpEditDoiTac.Properties.ValueMember = "IdDoiTac";
             this.searchLookUpEditDoiTac.Properties.View = this.searchLookUpEdit1View;
             this.searchLookUpEditDoiTac.Size = new System.Drawing.Size(223, 20);

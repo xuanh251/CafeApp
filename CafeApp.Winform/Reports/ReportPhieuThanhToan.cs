@@ -8,6 +8,8 @@ using CafeApp.Model.Models;
 using System.Linq;
 using CafeApp.Common;
 using DevExpress.XtraEditors;
+using System.Data.Entity;
+using System.Linq;
 
 namespace CafeApp.Winform.Reports
 {
@@ -23,14 +25,10 @@ namespace CafeApp.Winform.Reports
         public void NapDuLieu(HoaDon hd)
         {
             db = new ModelQuanLiCafeDbContext();
-            var temp= (from a in db.HoaDons
-                                     join b in db.HoaDonChiTiets on a.IdHoaDon equals b.IdHoaDon
-                                     join c in db.Mons on b.IdMon equals c.IdMon
-                                     where a.IdHoaDon == hd.IdHoaDon
-                                     select new { c.TenMon, b.SoLuong, b.DonGia, Tien = (b.SoLuong * b.DonGia) }).ToList();
+            db.HoaDonChiTiets.Where(s => s.IdHoaDon == hd.IdHoaDon).Load();
+            var temp = db.HoaDonChiTiets.Local.ToBindingList();
             hoaDon = db.HoaDons.Find(hd.IdHoaDon);
-            listCT = (from hdct in temp select new { hdct.TenMon, SoLuong = hdct.SoLuong.ToString("n0"), DonGia = hdct.DonGia.ToString("n0"), Tien = hdct.Tien.ToString("n0") }).ToList();
-            //xrTableCellViTri.Text = hd.IdBan.ToString();
+            listCT = (from hdct in temp select new { hdct.Mon.TenMon, SoLuong = hdct.SoLuong.ToString("n0"), DonGia = hdct.DonGia.ToString("n0"), Tien = hdct.Tien.ToString("n0") }).ToList();
         }
 
         private void ReportPhieuThanhToan_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

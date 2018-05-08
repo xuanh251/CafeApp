@@ -35,10 +35,14 @@ namespace CafeApp.Winform.Reports
             }
             db = new ModelQuanLiCafeDbContext();
             db.DonViTinhs.Load();
-            var myList = from a in temp
-                         join b in db.DonViTinhs.Local
-                         on a.NguyenLieu.IdDVT equals b.IdDVT
-                         select new { a.STT, a.NguyenLieu.TenNguyenLieu, a.SoLuong, a.DonGia, a.Tien,b.TenDVT };
+            db.PhieuNhapKhoChiTiets.Where(s => s.SoHoaDon == phieu.SoHoaDon).Load();
+            //var myList = from a in temp
+            //             join b in db.DonViTinhs.Local
+            //             on a.NguyenLieu.IdDVT equals b.IdDVT
+            //             select new { a.STT, a.NguyenLieu.TenNguyenLieu, a.SoLuong, a.DonGia, a.Tien,b.TenDVT };
+            var tempPhieu = db.PhieuNhapKhoChiTiets.Local.ToBindingList();
+            var myList = from a in tempPhieu
+                         select new { a.STT, a.NguyenLieu.TenNguyenLieu, a.SoLuong, a.DonGia, a.NguyenLieu.DonViTinh.TenDVT, a.Tien };
             DataSource = myList.ToList();
             STT.DataBindings.Add("Text", DataSource, nameof(PhieuNhapKhoChiTiet.STT));
             Ten.DataBindings.Add("Text", DataSource, nameof(NguyenLieu.TenNguyenLieu));
