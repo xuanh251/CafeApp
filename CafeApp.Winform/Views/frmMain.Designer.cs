@@ -127,7 +127,7 @@
             this.BtnDoanhThu,
             this.BtnDoanhSo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 33;
+            this.ribbonControl1.MaxItemId = 35;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -199,6 +199,8 @@
             this.skinRibbonGalleryBarItem3.Caption = "skinRibbonGalleryBarItem3";
             this.skinRibbonGalleryBarItem3.Id = 8;
             this.skinRibbonGalleryBarItem3.Name = "skinRibbonGalleryBarItem3";
+            this.skinRibbonGalleryBarItem3.GalleryItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.skinRibbonGalleryBarItem3_GalleryItemClick);
+
             // 
             // BtnDoiMatKhau
             // 
@@ -336,11 +338,13 @@
             // 
             // BtnChucVu
             // 
-            
+            this.BtnChucVu.Id = 33;
+            this.BtnChucVu.Name = "BtnChucVu";
             // 
             // BtnNhanVien
             // 
-           
+            this.BtnNhanVien.Id = 34;
+            this.BtnNhanVien.Name = "BtnNhanVien";
             // 
             // BtnDoanhThu
             // 

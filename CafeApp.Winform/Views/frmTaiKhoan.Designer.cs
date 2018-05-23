@@ -223,6 +223,7 @@
             this.gridColumn1});
             this.gridViewTaiKhoan.GridControl = this.gridControlTaiKhoan;
             this.gridViewTaiKhoan.Name = "gridViewTaiKhoan";
+            this.gridViewTaiKhoan.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
             this.gridViewTaiKhoan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridViewTaiKhoan.OptionsView.ShowAutoFilterRow = true;
             this.gridViewTaiKhoan.OptionsView.ShowGroupPanel = false;

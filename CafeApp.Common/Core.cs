@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CafeApp.Model.Models;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 
 namespace CafeApp.Common
 {
@@ -26,7 +27,7 @@ namespace CafeApp.Common
         public static int Seller = 2;
         public static string SetCaLamViec()
         {
-            if (DateTime.Now.Hour<=11) return CaLamViecs[0];
+            if (DateTime.Now.Hour <= 11) return CaLamViecs[0];
             if (DateTime.Now.Hour <= 17) return CaLamViecs[1];
             else return CaLamViecs[2];
         }
@@ -91,7 +92,7 @@ namespace CafeApp.Common
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.ToString(), "Sao lưu dữ liệu",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                XtraMessageBox.Show(ex.ToString(), "Sao lưu dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public static void XuatHinhAnh(ChartControl chartControl)
@@ -112,8 +113,25 @@ namespace CafeApp.Common
                 Process.Start(folder.SelectedPath);
             }
         }
-
+        public static void XuatPDF(ChartControl chartControl)
+        {
+            var folder = new FolderBrowserDialog();
+            if (folder.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            var fileName = string.Concat(Guid.NewGuid().ToString(), ".pdf");
+            string exportFilePath = string.Concat(folder.SelectedPath, "\\", Guid.NewGuid().ToString(), "_", DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss"), ".pdf");
+            chartControl.ExportToPdf(exportFilePath);
+            if (File.Exists(exportFilePath))
+            {
+                XtraMessageBox.Show("Xuất file thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(folder.SelectedPath);
+            }
+        }
     }
+
+
     public class VNCurrency
     {
         public static string ToString(decimal number)

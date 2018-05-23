@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDangNhap));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.CkeNhoMatKhau = new DevExpress.XtraEditors.CheckEdit();
@@ -43,6 +44,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CkeNhoMatKhau.Properties)).BeginInit();
@@ -87,9 +89,9 @@
             // 
             this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
-            this.btnThoat.Location = new System.Drawing.Point(145, 114);
+            this.btnThoat.Location = new System.Drawing.Point(147, 114);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(133, 36);
+            this.btnThoat.Size = new System.Drawing.Size(131, 38);
             this.btnThoat.StyleController = this.layoutControl1;
             this.btnThoat.TabIndex = 8;
             this.btnThoat.Text = "Thoát(F4)";
@@ -100,7 +102,7 @@
             this.btnDangNhap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.ImageOptions.Image")));
             this.btnDangNhap.Location = new System.Drawing.Point(12, 114);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(129, 36);
+            this.btnDangNhap.Size = new System.Drawing.Size(131, 38);
             this.btnDangNhap.StyleController = this.layoutControl1;
             this.btnDangNhap.TabIndex = 7;
             this.btnDangNhap.Text = "Đăng nhập(Enter)";
@@ -186,16 +188,16 @@
             this.layoutControlItem5.Control = this.btnDangNhap;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 102);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(133, 44);
+            this.layoutControlItem5.Size = new System.Drawing.Size(135, 44);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.btnThoat;
-            this.layoutControlItem6.Location = new System.Drawing.Point(133, 102);
+            this.layoutControlItem6.Location = new System.Drawing.Point(135, 102);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(137, 44);
+            this.layoutControlItem6.Size = new System.Drawing.Size(135, 44);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -253,5 +255,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.CheckEdit CkeNhoMatKhau;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        public DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

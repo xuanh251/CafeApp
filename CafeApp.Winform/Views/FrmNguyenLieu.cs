@@ -25,7 +25,7 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             db.NhomNguyenLieux.Load();
             repositoryItemSearchLookUpEditNhomNguyenLieu.DataSource = db.NhomNguyenLieux.Local.ToBindingList();
-            repositoryItemSearchLookUpEditNhomNguyenLieu.View.Columns.AddField("TenNguyenLieu").Visible = true;
+            repositoryItemSearchLookUpEditNhomNguyenLieu.View.Columns.AddField("TenNhom").Visible = true;
             db.DonViTinhs.Load();
             repositoryItemSearchLookUpEditDonViTinh.DataSource = db.DonViTinhs.Local.ToBindingList();
             repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("TenDVT").Visible = true;
@@ -176,6 +176,11 @@ namespace CafeApp.Winform.Views
             FrmChiTietTonKho f = new FrmChiTietTonKho();
             f.KhoiTao(vitri);
             f.ShowDialog();
+        }
+
+        private void gridControlNguyenLieu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

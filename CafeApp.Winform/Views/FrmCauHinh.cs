@@ -56,15 +56,13 @@ namespace CafeApp.Winform.Views
         {
             try
             {
-                //gridView.FocusedRowHandle = DevExpress.XtraGrid.GridControl.NewItemRowHandle;
                 gridViewCauHinh.FocusedColumn = gridViewCauHinh.Columns[nameof(SettingsPropertyValue.Name)];
-
                 if (listSettings == null) return;
                 Settings.Default.Save();
                 DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = Settings.Default.Skin;
                 XtraMessageBox.Show("Đã lưu thay đổi!", "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.ToString(), "Lưu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 

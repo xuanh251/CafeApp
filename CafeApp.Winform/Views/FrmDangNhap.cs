@@ -1,5 +1,6 @@
 ﻿using CafeApp.Common;
 using CafeApp.Model.Models;
+using CafeApp.Winform.Properties;
 using DevExpress.XtraEditors;
 using System;
 using System.Data;
@@ -17,8 +18,11 @@ namespace CafeApp.Winform.Views
         public FrmDangNhap()
         {
             InitializeComponent();
+            defaultLookAndFeel1.EnableBonusSkins=true;
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = Settings.Default.Skin;
             KeyPreview = true;
             KhoiTao();
+            
         }
         private void KhoiTao()
         {
