@@ -55,10 +55,10 @@ namespace CafeApp.Winform.Views
             NapDuLieuPhieu(phieu);
             db.NguyenLieux.Load();
             db.DonViTinhs.Load();
-            var listNguyenLieu = from nl in db.NguyenLieux.Local
-                                 join dvt in db.DonViTinhs.Local on nl.IdDVT equals dvt.IdDVT
-                                 select new { nl.IdNguyenLieu, nl.TenNguyenLieu, DonViTinh = dvt.TenDVT };
-            repositoryItemSearchLookUpEditNguyenLieu.DataSource = listNguyenLieu.ToList();
+            var lnl = db.NguyenLieux.Local.ToBindingList();
+            var lnls = (from a in lnl
+                       select new { a.IdNguyenLieu, a.TenNguyenLieu, a.DonGia }).ToList();
+            repositoryItemSearchLookUpEditNguyenLieu.DataSource = lnls;
             NapDuLieuChiTiet();
         }
         private void NapDuLieuPhieu(PhieuNhapKho p)
@@ -97,21 +97,17 @@ namespace CafeApp.Winform.Views
             gridViewChiTietPhieu.RefreshData();
             gridViewChiTietPhieu.BestFitColumns();
         }
-        private void gridViewChiTietPhieu_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            //GridView view = sender as GridView;
+     
 
-        }
-
-        private void gridViewChiTietPhieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (view == null) return;
-            if (e.Column.Caption != "Nguyên liệu") return;
-            var dongia = db.NguyenLieux.Find((int)e.Value).DonGia;
-            view.SetRowCellValue(e.RowHandle, view.Columns["DonGia"], dongia);
-            view.SetRowCellValue(e.RowHandle, view.Columns["SoHoaDon"], textEditSoPhieu.Text);
-        }
+        //private void gridViewChiTietPhieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        //{
+        //    //GridView view = sender as GridView;
+        //    //if (view == null) return;
+        //    //if (e.Column.Caption != "Nguyên liệu") return;
+        //    //var dongia = db.NguyenLieux.Find((int)e.Value).DonGia;
+        //    //view.SetRowCellValue(e.RowHandle, view.Columns["DonGia"], dongia);
+        //    //view.SetRowCellValue(e.RowHandle, view.Columns["SoHoaDon"], textEditSoPhieu.Text);
+        //}
 
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -124,7 +120,15 @@ namespace CafeApp.Winform.Views
                 p.IdDoiTac = int.Parse(searchLookUpEditDoiTac.EditValue.ToString());
                 p.NgayLapPhieu = dateEditNgayTao.DateTime;
                 p.NguoiTao = int.Parse(searchLookUpEditNguoiTao.EditValue.ToString());
-                p.ChietKhau = double.Parse(spinEditChietKhau.EditValue.ToString());
+                try
+                {
+                    p.ChietKhau = double.Parse(spinEditChietKhau.EditValue.ToString());
+                }
+                catch (Exception)
+                {
+                    p.ChietKhau = 0;
+                }
+                
                 p.GhiChu = memoEditGhiChu.EditValue != null ? memoEditGhiChu.EditValue.ToString() : null;
                 tempDb.PhieuNhapKhoes.Add(p);
                 tempDb.SaveChanges();
@@ -210,6 +214,16 @@ namespace CafeApp.Winform.Views
                 nl.SoLuongTon += item.SoLuong;
             }
             db.SaveChanges();
+        }
+
+        private void gridViewChiTietPhieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (view == null) return;
+            if (e.Column.Caption != "Nguyên liệu") return;
+            var dongia = db.NguyenLieux.Find((int)e.Value).DonGia;
+            view.SetRowCellValue(e.RowHandle, view.Columns["DonGia"], dongia);
+            view.SetRowCellValue(e.RowHandle, view.Columns["SoHoaDon"], textEditSoPhieu.Text);
         }
     }
 }

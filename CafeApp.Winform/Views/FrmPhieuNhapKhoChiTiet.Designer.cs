@@ -608,7 +608,6 @@
             this.gridViewChiTietPhieu.GridControl = this.gridControlChiTietPhieu;
             this.gridViewChiTietPhieu.Name = "gridViewChiTietPhieu";
             this.gridViewChiTietPhieu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridViewChiTietPhieu.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridViewChiTietPhieu_InitNewRow);
             this.gridViewChiTietPhieu.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewChiTietPhieu_CellValueChanged);
             // 
             // gridColumn1

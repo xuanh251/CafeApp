@@ -477,5 +477,11 @@ namespace CafeApp.Winform.Views
         {
             Application.Run(new FrmDangNhap());
         }
+
+        private void BtnDoiMatKhau_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmDoiMatKhau f = new FrmDoiMatKhau();
+            f.ShowDialog();
+        }
     }
 }

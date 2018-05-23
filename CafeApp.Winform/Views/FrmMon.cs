@@ -97,7 +97,7 @@ namespace CafeApp.Winform.Views
         }
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Xoa();
         }
 
         private void BtnXuatExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

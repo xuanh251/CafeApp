@@ -731,6 +731,7 @@
             this.BtnDoiMatKhau.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnDoiMatKhau.ImageOptions.Image")));
             this.BtnDoiMatKhau.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BtnDoiMatKhau.ImageOptions.LargeImage")));
             this.BtnDoiMatKhau.Name = "BtnDoiMatKhau";
+            this.BtnDoiMatKhau.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnDoiMatKhau_ItemClick);
             // 
             // bar4
             // 
