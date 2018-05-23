@@ -7,6 +7,7 @@ using DevExpress.XtraEditors;
 using CafeApp.Common;
 using System.Diagnostics;
 using System.Data.Entity;
+using CafeApp.Winform.Properties;
 
 namespace CafeApp.Winform.Views
 {
@@ -19,6 +20,7 @@ namespace CafeApp.Winform.Views
             InitializeComponent();
             db = new ModelQuanLiCafeDbContext();
             LoadStatusBar();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = Settings.Default.Skin;
         }
         public void XtraTabbedMdiManager_Add_Or_Select_ChildForm(Form pForm, System.Drawing.Image pImage = null, bool pAllowReplaceForm = false)
         {
@@ -233,6 +235,15 @@ namespace CafeApp.Winform.Views
         private void BtnDoanhSo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDoanhSoBan());
+        }
+
+       
+
+        private void skinRibbonGalleryBarItem3_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            var skin = (string)e.Item.Tag;
+            Settings.Default.Skin = skin;
+            Settings.Default.Save();
         }
     }
 }

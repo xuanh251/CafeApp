@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using CafeApp.Model.Models;
 using System.Data.Entity;
-using DevExpress.XtraGrid.Views.Card;
 using CafeApp.Common;
+using System.Threading;
+using DevExpress.XtraGrid.Views.Card;
 using DevExpress.XtraGrid;
 using DevExpress.XtraReports.UI;
-using System.Threading;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+
 
 namespace CafeApp.Winform.Views
 {
@@ -24,6 +24,16 @@ namespace CafeApp.Winform.Views
         public FrmBanHang()
         {
             InitializeComponent();
+            if (FrmDangNhap.accType == Core.Admin)
+            {
+                bar3.Visible = false;
+                BtnDoiMatKhau.Visibility = BarItemVisibility.Never;
+            }
+            else
+            {
+                bar3.Visible = true;
+                BtnDoiMatKhau.Visibility = BarItemVisibility.Always;
+            }
             NapDuLieu();
         }
         public BindingList<BanLe> query;
@@ -338,18 +348,17 @@ namespace CafeApp.Winform.Views
                 if (vitri == null) return;
                 if ((XtraMessageBox.Show("Việc này sẽ xoá hoá đơn hiện tại của "+vitri.TenBan+", bạn có muốn thực hiện không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
+                    var hd = db.HoaDons.Find(vitri.IdPhieu);
                     var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu).FirstOrDefault();
                     if (hdct == null)//hoá đơn chi tiết chưa có sản phẩm nào thì xoá hoá đơn
                     {
-                        var hd = db.HoaDons.Find(vitri.IdPhieu);
                         db.HoaDons.Remove(hd);
                     }
                     else
                     {//ngược lại thì xoá hoá đơn chi tiết và hoá đơn
                         IEnumerable<HoaDonChiTiet> listHdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu);
                         db.HoaDonChiTiets.RemoveRange(listHdct);
-                        var hoadon = db.HoaDons.Find(vitri.IdPhieu);
-                        db.HoaDons.Remove(hoadon);
+                        db.HoaDons.Remove(hd);
                     }
                     db.SaveChanges();
                     XtraMessageBox.Show("Đã xoá hoá đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

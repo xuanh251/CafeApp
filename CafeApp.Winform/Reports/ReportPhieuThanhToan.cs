@@ -9,7 +9,6 @@ using System.Linq;
 using CafeApp.Common;
 using DevExpress.XtraEditors;
 using System.Data.Entity;
-using System.Linq;
 
 namespace CafeApp.Winform.Reports
 {
@@ -28,7 +27,7 @@ namespace CafeApp.Winform.Reports
             db.HoaDonChiTiets.Where(s => s.IdHoaDon == hd.IdHoaDon).Load();
             var temp = db.HoaDonChiTiets.Local.ToBindingList();
             hoaDon = db.HoaDons.Find(hd.IdHoaDon);
-            listCT = (from hdct in temp select new { hdct.Mon.TenMon, SoLuong = hdct.SoLuong.ToString("n0"), DonGia = hdct.DonGia.ToString("n0"), Tien = hdct.Tien.ToString("n0") }).ToList();
+            listCT = (from hdct in temp select new { hdct.Mon.TenMon, SoLuong = hdct.SoLuong.ToString("n0"), DonGia = hdct.DonGia.ToString("n0"), Tien = hdct.Tien.ToString("n0"),hdct.Mon.DonViTinh.TenDVT }).ToList();
         }
 
         private void ReportPhieuThanhToan_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -39,11 +38,12 @@ namespace CafeApp.Winform.Reports
             xrTableCellLienHe.Text = "Liên hệ: "+Settings.Default.LienHe;
             xrTableCellViTri.Text = "Vị trí: "+hoaDon.Ban.TenBan;
             xrTableCellCaLamViec.Text = "Ca làm việc: "+hoaDon.CaLamViec;
-            xrTableCellThoiGian.Text = "Giờ vào: "+ hoaDon.NgayTao.ToString("dd-MM-yyy HH:mm:ss");
+            xrTableCellThoiGian.Text = "Giờ vào: "+ hoaDon.NgayTao.ToString("dd-MM-yyy HH:mm");
             xrTableCellMaHoaDon.Text = "Hoá đơn số: " + hoaDon.IdHoaDon;
             DataSource = listCT;
             xrTableCellTenMon.DataBindings.Add("Text", listCT, nameof(Mon.TenMon));
             xrTableCellDonGia.DataBindings.Add("Text", listCT, nameof(Mon.DonGia));
+            xrTableCellDVT.DataBindings.Add("Text", listCT, nameof(Mon.DonViTinh.TenDVT));
             xrTableCellSoLuong.DataBindings.Add("Text", listCT, nameof(HoaDonChiTiet.SoLuong));
             xrTableCellTien.DataBindings.Add("Text", listCT, nameof(HoaDonChiTiet.Tien));
             xrTableCellGiamGia.Text = hoaDon.TienChietKhau.ToString("n0")+"đ";

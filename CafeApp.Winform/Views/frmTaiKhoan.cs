@@ -172,19 +172,23 @@ namespace CafeApp.Winform.Views
             GridView view = sender as GridView;
             var vitri = (TaiKhoan)gridViewTaiKhoan.GetFocusedRow();
             if (view == null) return;
+            var beforeName = vitri.TenDangNhap;
             if (e.Column.Caption == "Tên đăng nhập")
             {
                 string tendn = e.Value.ToString();
                 if (Db.TaiKhoans.Where(s => s.TenDangNhap == tendn).Any())
                 {
-                    XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    gridViewTaiKhoan.DeleteRow(view.FocusedRowHandle);
+                    if (tendn != beforeName)
+                    {
+                        XtraMessageBox.Show("Đã tồn tại tên đăng nhập " + tendn + "!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridViewTaiKhoan.DeleteRow(view.FocusedRowHandle);
+                    }
                 }
             }
-            if (e.Column.Caption=="Số điện thoại")
+            if (e.Column.Caption == "Số điện thoại")
             {
                 string sdt = e.Value.ToString();
-                if (!IsPhoneNumber(sdt)||sdt.Length<10)
+                if (!IsPhoneNumber(sdt) || sdt.Length < 10)
                 {
                     XtraMessageBox.Show("Số điện thoại không hợp lệ!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     vitri.SoDienThoai = "";

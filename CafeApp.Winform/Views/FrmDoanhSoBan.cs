@@ -244,6 +244,11 @@ namespace CafeApp.Winform.Views
         {
             Core.XuatHinhAnh(chartControlBieuDo);
         }
+
+        private void BtnXuatPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Core.XuatPDF(chartControlBieuDo);
+        }
     }
     public class DoanhSoBan_NhomMon
     {
