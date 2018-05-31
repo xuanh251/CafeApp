@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CafeApp.Model.Models;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Card;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
-using System.Data.Entity;
-using DevExpress.XtraGrid.Views.Card;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmChuyenBan : DevExpress.XtraEditors.XtraForm
     {
         private FrmBanHang _frmBanHang;
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmChuyenBan(FrmBanHang frmBanHang)
         {
             InitializeComponent();
             _frmBanHang = frmBanHang;
             NapDuLieu();
-
         }
+
         public int vitri_old;
         public int vitri_new;
         public int idHoaDon;
+
         private void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -37,32 +34,33 @@ namespace CafeApp.Winform.Views
             var idBanDangSuDung = from a in dangSuDung select a.IdBan;
             //var listBanTrong = db.Bans.Local.Where(s => !dangSuDung.Any(a => a.IdBan == s.Id)).ToList();
             var listBanTrong = (from a in db.Bans
-                               where !idBanDangSuDung.Any(s => s == a.IdBan)
-                               select new ChuyenBanModel
-                               {
-                                   IdBan = a.IdBan,
-                                   TenBan = a.TenBan,
-                                   GhiChu = a.GhiChu
-                               }).ToList();
+                                where !idBanDangSuDung.Any(s => s == a.IdBan)
+                                select new ChuyenBanModel
+                                {
+                                    IdBan = a.IdBan,
+                                    TenBan = a.TenBan,
+                                    GhiChu = a.GhiChu
+                                }).ToList();
             gridControlViTri.DataSource = listBanTrong;
         }
+
         private void ChuyenViTri()
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (ChuyenBanModel)cardViewViTri.GetFocusedRow();
             vitri_new = vitri.IdBan;
-            if ((XtraMessageBox.Show("Bạn có muốn chuyển đến bàn " + vitri.TenBan, "Xác nhận chuyển", MessageBoxButtons.YesNo, MessageBoxIcon.Question))==DialogResult.Yes)
+            if ((XtraMessageBox.Show("Bạn có muốn chuyển đến bàn " + vitri.TenBan, "Xác nhận chuyển", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
             {
                 this.Close();
-                _frmBanHang.ChuyenBan(vitri_old,vitri_new,idHoaDon);
+                _frmBanHang.ChuyenBan(vitri_old, vitri_new, idHoaDon);
             }
-            
         }
+
         private void BtnChuyenViTri_Click(object sender, EventArgs e)
         {
             ChuyenViTri();
         }
-        
+
         private void cardViewViTri_CustomDrawCardFieldValue(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             CardView view = sender as CardView;
@@ -77,15 +75,13 @@ namespace CafeApp.Winform.Views
 
         private void cardViewViTri_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-
         }
 
         private void FrmChuyenBan_Load(object sender, EventArgs e)
         {
             db = new ModelQuanLiCafeDbContext();
-            var tenBan_old=db.Bans.Find(vitri_old);
-            this.Text = "Chuyển từ vị trí " + tenBan_old.TenBan +" - Hoá đơn số "+idHoaDon;
-            
+            var tenBan_old = db.Bans.Find(vitri_old);
+            this.Text = "Chuyển từ vị trí " + tenBan_old.TenBan + " - Hoá đơn số " + idHoaDon;
         }
     }
 }

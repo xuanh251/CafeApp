@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
-using System.Data.Entity;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmPhieuNhapKho : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
         public DateTime TuNgay { get; set; } = DateTime.Now;
         public DateTime DenNgay { get; set; } = DateTime.Now;
+
         public FrmPhieuNhapKho()
         {
             InitializeComponent();
@@ -43,6 +38,7 @@ namespace CafeApp.Winform.Views
             }
             NapDuLieu();
         }
+
         public void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -61,6 +57,7 @@ namespace CafeApp.Winform.Views
         {
             XoaPhieuNhapKho();
         }
+
         private void XoaPhieuNhapKho()
         {
             try
@@ -89,23 +86,22 @@ namespace CafeApp.Winform.Views
             {
                 XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void BtnNapChiTietPhieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vitri = (PhieuNhapKho)gridViewPhieuNhapKho.GetFocusedRow();
             FrmPhieuNhapKhoChiTiet f = new FrmPhieuNhapKhoChiTiet(this);
-            f.KhoiTao(vitri,false);
+            f.KhoiTao(vitri, false);
             f.ShowDialog();
-            
         }
+
         private void BtnInPhieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vitri = (PhieuNhapKho)gridViewPhieuNhapKho.GetFocusedRow();
             InPhieu(vitri);
         }
-       
+
         public void InPhieu(PhieuNhapKho phieu)
         {
             if (phieu == null) return;
@@ -135,7 +131,6 @@ namespace CafeApp.Winform.Views
 
         private void gridViewPhieuNhapKho_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-           
         }
     }
 }

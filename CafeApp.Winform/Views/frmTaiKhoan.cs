@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using CafeApp.Common;
 using CafeApp.Model.Models;
-using System.Data.Entity;
-using CafeApp.Common;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using System.Text.RegularExpressions;
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmTaiKhoan : DevExpress.XtraEditors.XtraForm
     {
         public ModelQuanLiCafeDbContext Db { get; set; }
+
         public FrmTaiKhoan()
         {
             InitializeComponent();
@@ -33,8 +28,8 @@ namespace CafeApp.Winform.Views
 
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
-
         }
+
         private void NapDuLieu()
         {
             try
@@ -50,6 +45,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!", "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void Luu()
         {
             try
@@ -71,6 +67,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
@@ -80,11 +77,14 @@ namespace CafeApp.Winform.Views
         {
             NapDuLieu();
         }
+
         private TaiKhoan vitri;
+
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Xoa();
         }
+
         private void Xoa()
         {
             try
@@ -112,6 +112,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void KhoiPhucMatKhau()
         {
             try
@@ -136,6 +137,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Đã xảy ra lỗi!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Khôi phục mật khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnKhoiPhucMatKhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             KhoiPhucMatKhau();
@@ -195,6 +197,7 @@ namespace CafeApp.Winform.Views
                 }
             }
         }
+
         public static bool IsPhoneNumber(string s)
         {
             for (int i = 0; i < s.Length; i++)

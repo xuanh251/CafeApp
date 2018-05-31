@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Winform.Properties;
-using System.Configuration;
-using DevExpress.XtraGrid.Columns;
+﻿using CafeApp.Winform.Properties;
 using DevExpress.Skins;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
+using System;
+using System.Configuration;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
@@ -27,7 +20,9 @@ namespace CafeApp.Winform.Views
         {
             NapDuLieu();
         }
+
         private SettingsPropertyValueCollection listSettings = null;
+
         private void NapDuLieu()
         {
             try
@@ -52,6 +47,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show(ex.ToString());
             }
         }
+
         private void Luu()
         {
             try
@@ -65,7 +61,6 @@ namespace CafeApp.Winform.Views
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.ToString(), "Lưu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
 

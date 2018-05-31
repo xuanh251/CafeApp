@@ -1,7 +1,6 @@
 namespace CafeApp.Model.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -15,6 +14,7 @@ namespace CafeApp.Model.Models
         {
             HoaDonChiTiets = new BindingList<HoaDonChiTiet>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdHoaDon { get; set; }
@@ -27,6 +27,7 @@ namespace CafeApp.Model.Models
         public DateTime NgayTao { get; set; }
 
         public bool TrangThai { get; set; }
+
         [NotMapped]
         public string STrangThai
         {
@@ -39,19 +40,21 @@ namespace CafeApp.Model.Models
         [Required]
         [StringLength(50)]
         public string CaLamViec { get; set; }
+
         [Display(Name = "Chiết khấu", Description = "Giảm giá theo % trên tổng tiền của phiếu")]
         [Required, DefaultValue(0)]
         public double ChietKhau { get; set; }
+
         [NotMapped]
-        [Display(Name = "Tiền CK", Description = "Tổng tiền giờ và tiền sản phẩm")]
+        [Display(Name = "Tiền CK", Description = "Tiền chiết khẩu sản phẩm")]
         public double TienChietKhau
         {
             get
             {
                 return (this.TongTien) * ChietKhau / 100;
             }
-
         }
+
         [StringLength(200)]
         public string GhiChu { get; set; }
 
@@ -87,7 +90,6 @@ namespace CafeApp.Model.Models
             {
                 return this.TongTien - TienChietKhau;
             }
-
         }
     }
 }

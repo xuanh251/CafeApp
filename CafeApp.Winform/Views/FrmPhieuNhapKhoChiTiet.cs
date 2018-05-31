@@ -1,37 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using CafeApp.Common;
 using CafeApp.Model.Models;
-using System.Data.Entity;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using CafeApp.Common;
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmPhieuNhapKhoChiTiet : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
         private bool isThemMoi = true;
         private PhieuNhapKho phieu;
         private FrmPhieuNhapKho _pnk;
+
         public FrmPhieuNhapKhoChiTiet(FrmPhieuNhapKho pnk)
         {
             InitializeComponent();
             _pnk = pnk;
         }
+
         public void KhoiTao(PhieuNhapKho info, bool isCreateNew)
         {
             phieu = info;
             isThemMoi = isCreateNew;
             NapDuLieu();
         }
+
         private void NapDuLieu()
         {
             if (!isThemMoi)
@@ -57,10 +55,11 @@ namespace CafeApp.Winform.Views
             db.DonViTinhs.Load();
             var lnl = db.NguyenLieux.Local.ToBindingList();
             var lnls = (from a in lnl
-                       select new { a.IdNguyenLieu, a.TenNguyenLieu, a.DonGia }).ToList();
+                        select new { a.IdNguyenLieu, a.TenNguyenLieu, a.DonGia }).ToList();
             repositoryItemSearchLookUpEditNguyenLieu.DataSource = lnls;
             NapDuLieuChiTiet();
         }
+
         private void NapDuLieuPhieu(PhieuNhapKho p)
         {
             if (p != null)
@@ -74,7 +73,6 @@ namespace CafeApp.Winform.Views
                 labelControlTongTien.Text = p.TongTien.ToString("c0");
                 labelControlTienChietKhau.Text = p.TienChietKhau.ToString("c0");
                 labelControlThanhTien.Text = p.ThanhTien.ToString("c0");
-
             }
             else
             {
@@ -89,6 +87,7 @@ namespace CafeApp.Winform.Views
                 labelControlThanhTien.Text = Core.NullData;
             }
         }
+
         private void NapDuLieuChiTiet()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -97,7 +96,6 @@ namespace CafeApp.Winform.Views
             gridViewChiTietPhieu.RefreshData();
             gridViewChiTietPhieu.BestFitColumns();
         }
-     
 
         //private void gridViewChiTietPhieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         //{
@@ -113,7 +111,7 @@ namespace CafeApp.Winform.Views
         {
             var tempDb = new ModelQuanLiCafeDbContext();
             var p = tempDb.PhieuNhapKhoes.Where(s => s.SoHoaDon == textEditSoPhieu.Text).FirstOrDefault();
-            if (p==null)//thêm mới
+            if (p == null)//thêm mới
             {
                 p = new PhieuNhapKho();
                 p.SoHoaDon = textEditSoPhieu.Text;
@@ -128,7 +126,7 @@ namespace CafeApp.Winform.Views
                 {
                     p.ChietKhau = 0;
                 }
-                
+
                 p.GhiChu = memoEditGhiChu.EditValue != null ? memoEditGhiChu.EditValue.ToString() : null;
                 tempDb.PhieuNhapKhoes.Add(p);
                 tempDb.SaveChanges();
@@ -140,7 +138,7 @@ namespace CafeApp.Winform.Views
                 p.GhiChu = memoEditGhiChu.EditValue != null ? memoEditGhiChu.EditValue.ToString() : null;
                 tempDb.SaveChanges();
             }
-            
+
             try
             {
                 gridControlChiTietPhieu.EmbeddedNavigator.Buttons.DoClick(gridControlChiTietPhieu.EmbeddedNavigator.Buttons.EndEdit);
@@ -150,7 +148,7 @@ namespace CafeApp.Winform.Views
                     XtraMessageBox.Show("Đã lưu " + dem + " mẩu tin!", "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NapDuLieuChiTiet();
                 }
-               
+
                 NapDuLieuPhieu(p);
             }
             catch (Exception ex)
@@ -190,7 +188,6 @@ namespace CafeApp.Winform.Views
 
         private void FrmPhieuNhapKhoChiTiet_Load(object sender, EventArgs e)
         {
-
         }
 
         private void FrmPhieuNhapKhoChiTiet_FormClosed(object sender, FormClosedEventArgs e)
@@ -204,6 +201,7 @@ namespace CafeApp.Winform.Views
             if (isThemMoi) CapNhatSoLuongTon(phieu);
             _pnk.InPhieu(phieu);
         }
+
         private void CapNhatSoLuongTon(PhieuNhapKho phieu)
         {
             db = new ModelQuanLiCafeDbContext();

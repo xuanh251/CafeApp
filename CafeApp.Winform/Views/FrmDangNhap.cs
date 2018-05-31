@@ -18,12 +18,12 @@ namespace CafeApp.Winform.Views
         public FrmDangNhap()
         {
             InitializeComponent();
-            defaultLookAndFeel1.EnableBonusSkins=true;
+            defaultLookAndFeel1.EnableBonusSkins = true;
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = Settings.Default.Skin;
             KeyPreview = true;
             KhoiTao();
-            
         }
+
         private void KhoiTao()
         {
             try
@@ -45,6 +45,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Đã xảy ra lỗi!" + Environment.NewLine + ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void LuuMatKhau(string un)
         {
             if (CkeNhoMatKhau.Checked)
@@ -83,7 +84,9 @@ namespace CafeApp.Winform.Views
                 return true;
             }
         }
-        public static int accType=0;
+
+        public static int accType = 0;
+
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
             string taikhoan = txtTaiKhoan.Text;
@@ -91,15 +94,15 @@ namespace CafeApp.Winform.Views
             if (DangNhap(taikhoan, matkhau))//đăng nhập thành công
             {
                 db = new ModelQuanLiCafeDbContext();
-                accType=db.TaiKhoans.Where(s => s.TenDangNhap == taikhoan).FirstOrDefault().NhomTaiKhoan.IdNhom;
-                if (accType==Core.Admin)
+                accType = db.TaiKhoans.Where(s => s.TenDangNhap == taikhoan).FirstOrDefault().NhomTaiKhoan.IdNhom;
+                if (accType == Core.Admin)
                 {
                     LoadFormMain();
                 }
                 else
                 {
                     LoadFormBanHang();
-                } 
+                }
             }
             else
             {
@@ -111,6 +114,7 @@ namespace CafeApp.Winform.Views
         {
             Application.Run(new FrmMain());
         }
+
         public static void OpenFrmBanHang()
         {
             Application.Run(new FrmBanHang());
@@ -124,6 +128,7 @@ namespace CafeApp.Winform.Views
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
+
         private void LoadFormBanHang()
         {
             FrmBanHang fm = new FrmBanHang();

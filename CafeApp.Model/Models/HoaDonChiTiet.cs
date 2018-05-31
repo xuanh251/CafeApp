@@ -11,8 +11,8 @@ namespace CafeApp.Model.Models
 
         [Key, Column(Order = 1)]
         public int IdHoaDon { get; set; }
-        [Key, Column(Order = 2)]
 
+        [Key, Column(Order = 2)]
         public int IdMon { get; set; }
 
         public int SoLuong { get; set; } = 1;
@@ -20,8 +20,8 @@ namespace CafeApp.Model.Models
         public virtual HoaDon HoaDon { get; set; }
 
         public virtual Mon Mon { get; set; }
-        [NotMapped]
 
+        [NotMapped]
         public double DonGia
         {
             get

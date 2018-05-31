@@ -13,6 +13,7 @@ namespace CafeApp.Model.Models
             PhieuNhapKhoChiTiets = new HashSet<PhieuNhapKhoChiTiet>();
             DinhLuongs = new HashSet<DinhLuong>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdNguyenLieu { get; set; }
@@ -30,8 +31,8 @@ namespace CafeApp.Model.Models
 
         public double DonGia { get; set; }
 
-
         public virtual DonViTinh DonViTinh { get; set; }
+
         [StringLength(200)]
         public string GhiChu { get; set; }
 
@@ -39,9 +40,12 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKhoChiTiet> PhieuNhapKhoChiTiets { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DinhLuong> DinhLuongs { get; set; }
+
         public const string TableName = "Nguyên Liệu";
+
         [NotMapped]
         public double TongSoLuongTonQuyDoi
         {

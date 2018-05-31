@@ -13,6 +13,7 @@ namespace CafeApp.Model.Models
             HoaDonChiTiets = new HashSet<HoaDonChiTiet>();
             DinhLuongs = new HashSet<DinhLuong>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdMon { get; set; }
@@ -39,6 +40,7 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DinhLuong> DinhLuongs { get; set; }
+
         public const string TableName = "Món";
     }
 }

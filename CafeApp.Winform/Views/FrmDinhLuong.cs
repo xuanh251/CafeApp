@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CafeApp.Model.Models;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
 using System.Data.Entity;
-using DevExpress.XtraGrid;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmDinhLuong : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
-        ModelQuanLiCafeDbContext dbDinhLuong { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext dbDinhLuong { get; set; }
         private BindingList<DinhLuong> listDinhLuongs { get; set; }
+
         public FrmDinhLuong()
         {
             InitializeComponent();
@@ -26,6 +23,7 @@ namespace CafeApp.Winform.Views
             NapDVT();
             NapDuLieu();
         }
+
         private void NapDVT()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -37,6 +35,7 @@ namespace CafeApp.Winform.Views
             repositoryItemSearchLookUpEditMonDinhLuong.DataSource = db.Mons.Local.ToBindingList();
             repositoryItemSearchLookUpEditNguyenLieuDinhLuong.DataSource = db.NguyenLieux.Local.ToBindingList();
         }
+
         private void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -50,11 +49,12 @@ namespace CafeApp.Winform.Views
             gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
             gridViewNguyenLieu.RefreshData();
             gridViewNguyenLieu.BestFitColumns();
-
         }
+
         private NguyenLieu nguyenLieu;
         private Mon mon;
         private DinhLuong dinhLuong;
+
         private void gridViewMon_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             //load danh sách định lượng của món được chọn
@@ -66,6 +66,7 @@ namespace CafeApp.Winform.Views
             LblTenMon.Caption = mon.TenMon;
             NapDinhLuongChiTiet();
         }
+
         private void NapDinhLuongChiTiet()
         {
             dbDinhLuong = new ModelQuanLiCafeDbContext();
@@ -96,7 +97,6 @@ namespace CafeApp.Winform.Views
                 {
                     nl.SoLuongNguyenLieu += 1;
                 }
-
             }
             gridViewDinhLuong.RefreshData();
         }
@@ -105,9 +105,11 @@ namespace CafeApp.Winform.Views
         {
             CapNhatDinhLuong();
         }
-        int gridViewNguyenLieuRowHandle = 0;
-        int gridViewDinhLuongRowHandle = 0;
-        int gridViewMonRowHandle = 0;
+
+        private int gridViewNguyenLieuRowHandle = 0;
+        private int gridViewDinhLuongRowHandle = 0;
+        private int gridViewMonRowHandle = 0;
+
         private void LuuViTri()
         {
             //lưu vị trí hiện tại của các bảng
@@ -127,6 +129,7 @@ namespace CafeApp.Winform.Views
                 gridViewMonRowHandle = gridViewMon.LocateByValue("IdMon", mon.IdMon);
             }
         }
+
         private void NapViTri()
         {
             if (gridViewNguyenLieuRowHandle != GridControl.InvalidRowHandle)
@@ -142,6 +145,7 @@ namespace CafeApp.Winform.Views
                 gridViewMon.FocusedRowHandle = gridViewMonRowHandle;
             }
         }
+
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
@@ -154,6 +158,7 @@ namespace CafeApp.Winform.Views
                 Luu();
             }
         }
+
         private void Luu()
         {
             try
@@ -166,7 +171,6 @@ namespace CafeApp.Winform.Views
                     LuuViTri();
                     NapDuLieu();
                     NapViTri();
-
                 }
                 else
                 {
@@ -178,10 +182,12 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Định lượng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void BtnXoaNL_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XoaNL();
         }
+
         private void XoaNL()
         {
             var currNL = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
@@ -192,6 +198,7 @@ namespace CafeApp.Winform.Views
                 gridViewDinhLuong.RefreshData();
             }
         }
+
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NapDuLieu();
@@ -200,7 +207,7 @@ namespace CafeApp.Winform.Views
         private void BtnXemCongThuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var mon = (Mon)gridViewMon.GetFocusedRow();
-            if (mon==null)
+            if (mon == null)
             {
                 XtraMessageBox.Show("Chưa chọn món!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -214,7 +221,7 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (DinhLuong)gridViewDinhLuong.GetFocusedRow();
-            if (vitri.SoLuongNguyenLieu<=0)
+            if (vitri.SoLuongNguyenLieu <= 0)
             {
                 vitri.SoLuongNguyenLieu = 1;
             }

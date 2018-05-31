@@ -34,13 +34,11 @@ namespace CafeApp.Model.Models
                 .HasForeignKey(e => e.IdBan)
                 .WillCascadeOnDelete(false);
 
-
             modelBuilder.Entity<DoiTac>()
                 .HasMany(e => e.PhieuNhapKhoes)
                 .WithRequired(e => e.DoiTac)
                 .HasForeignKey(e => e.IdDoiTac)
                 .WillCascadeOnDelete(false);
-
 
             modelBuilder.Entity<DonViTinh>()
                 .HasMany(e => e.NguyenLieux)

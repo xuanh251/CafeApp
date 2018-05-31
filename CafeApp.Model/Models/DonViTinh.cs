@@ -13,6 +13,7 @@ namespace CafeApp.Model.Models
             NguyenLieux = new HashSet<NguyenLieu>();
             Mons = new HashSet<Mon>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdDVT { get; set; }
@@ -28,6 +29,7 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mon> Mons { get; set; }
+
         public const string TableName = "Đơn vị tính";
     }
 }

@@ -12,6 +12,7 @@ namespace CafeApp.Model.Models
         {
             HoaDons = new HashSet<HoaDon>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdBan { get; set; }
@@ -25,14 +26,17 @@ namespace CafeApp.Model.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+
         public const string TableName = "Bàn";
     }
+
     public class ChuyenBanModel
     {
         public int IdBan { get; set; }
         public string TenBan { get; set; }
         public string GhiChu { get; set; }
         private string thongTinBan;
+
         [NotMapped]
         public string ThongTinBan
         {
@@ -45,6 +49,5 @@ namespace CafeApp.Model.Models
                 this.thongTinBan = value;
             }
         }
-
     }
 }

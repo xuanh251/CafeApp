@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CafeApp.Model.Models;
+using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
@@ -8,10 +11,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CafeApp.Model.Models;
-using DevExpress.XtraCharts;
-using DevExpress.XtraEditors;
-using DevExpress.XtraPrinting;
 
 namespace CafeApp.Common
 {
@@ -25,12 +24,14 @@ namespace CafeApp.Common
         private static readonly string VIKey = "@1B2c3D4e5F6g7H8";
         public static int Admin = 1;
         public static int Seller = 2;
+
         public static string SetCaLamViec()
         {
             if (DateTime.Now.Hour <= 11) return CaLamViecs[0];
             if (DateTime.Now.Hour <= 17) return CaLamViecs[1];
             else return CaLamViecs[2];
         }
+
         public static string Encrypt(string plainText)
         {
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
@@ -71,6 +72,7 @@ namespace CafeApp.Common
             cryptoStream.Close();
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
         }
+
         public static void SaoLuuDuLieu()
         {
             try
@@ -95,6 +97,7 @@ namespace CafeApp.Common
                 XtraMessageBox.Show(ex.ToString(), "Sao lưu dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static void XuatHinhAnh(ChartControl chartControl)
         {
             var folder = new FolderBrowserDialog();
@@ -113,6 +116,7 @@ namespace CafeApp.Common
                 Process.Start(folder.SelectedPath);
             }
         }
+
         public static void XuatPDF(ChartControl chartControl)
         {
             var folder = new FolderBrowserDialog();
@@ -130,7 +134,6 @@ namespace CafeApp.Common
             }
         }
     }
-
 
     public class VNCurrency
     {
@@ -283,7 +286,6 @@ namespace CafeApp.Common
                     if (j > 3) j = 1;
                     if ((donvi == 1) && (chuc > 1))
                         str = "mốt " + str;
-
                     else if ((donvi == 1) && (chuc == 1))
                     {
                         str = "một " + str;
@@ -310,7 +312,6 @@ namespace CafeApp.Common
                     }
 
                     str = " " + str;
-
                 }
             }
             if (booAm) str = "Âm " + str;
@@ -321,6 +322,7 @@ namespace CafeApp.Common
             return VNString.UppercaseFirst(str) + "đồng chẵn";
         }
     }
+
     public class VNString
     {
         public static string boDauTiengViet(string str)
@@ -337,7 +339,6 @@ namespace CafeApp.Common
 
         public static string UppercaseFirst(string s)
         {
-
             char[] array = s.ToCharArray();
 
             if (array.Length >= 1)

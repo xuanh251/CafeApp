@@ -28,9 +28,9 @@ namespace CafeApp.Winform.Views
         public void NapDuLieu(int KieuLoc, int TrangThai)
         {
             //lọc trong ngày
-            if (comboBoxEditKieuLoc.SelectedIndex==0)
+            if (comboBoxEditKieuLoc.SelectedIndex == 0)
             {
-                if (comboBoxEditTrangThai.SelectedIndex!=2) //trạng thái đang sử dụng/đã tắt
+                if (comboBoxEditTrangThai.SelectedIndex != 2) //trạng thái đang sử dụng/đã tắt
                 {
                     try
                     {
@@ -38,7 +38,7 @@ namespace CafeApp.Winform.Views
                                         join tk in db.TaiKhoans
                                         on lstc.IdTaiKhoan equals tk.Id
                                         where DbFunctions.TruncateTime(lstc.ThoiDiemDangNhap) == DateTime.Today
-                                        && lstc.TrangThai  == (comboBoxEditTrangThai.SelectedIndex==0?true:false)
+                                        && lstc.TrangThai == (comboBoxEditTrangThai.SelectedIndex == 0 ? true : false)
                                         select new { lstc.Id, tk.TenDangNhap, SThoiDiemDangNhap = lstc.ThoiDiemDangNhap.ToString(), STrangThai = lstc.TrangThai == true ? "Đang sử dụng" : "Đã thoát" }).ToList();
                         gridControlLichSuTruyCap.DataSource = listData;
                         gridViewLichSuTruyCap.RefreshData();
@@ -69,11 +69,11 @@ namespace CafeApp.Winform.Views
                 }
             }
             //từ ngày đến ngày
-            else if (comboBoxEditKieuLoc.SelectedIndex==1)
+            else if (comboBoxEditKieuLoc.SelectedIndex == 1)
             {
                 var tuNgay = dateTimePickerTuNgay.Value.Date;
                 var denNgay = dateTimePickerDenNgay.Value.Date.AddDays(1);
-                if (comboBoxEditTrangThai.SelectedIndex!=2)
+                if (comboBoxEditTrangThai.SelectedIndex != 2)
                 {
                     try
                     {
@@ -114,7 +114,7 @@ namespace CafeApp.Winform.Views
             //tất cả
             else
             {
-                if (comboBoxEditTrangThai.SelectedIndex!=2)//trạng thái đã tắt/đang sử dụng
+                if (comboBoxEditTrangThai.SelectedIndex != 2)//trạng thái đã tắt/đang sử dụng
                 {
                     try
                     {
@@ -149,7 +149,7 @@ namespace CafeApp.Winform.Views
                         XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Nạp dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-            } 
+            }
         }
 
         private void BtnLoc_Click(object sender, EventArgs e)

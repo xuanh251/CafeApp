@@ -11,8 +11,8 @@ namespace CafeApp.Model.Models
         public NhomNguyenLieu()
         {
             NguyenLieux = new HashSet<NguyenLieu>();
-            
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdNhom { get; set; }
@@ -27,7 +27,6 @@ namespace CafeApp.Model.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux { get; set; }
 
-        
         public const string TableName = "Nhóm nguyên liệu";
     }
 }

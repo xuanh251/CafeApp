@@ -17,6 +17,7 @@ namespace CafeApp.Model.Models
 
         public int SoLuong { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }
+
         [NotMapped]
         public double DonGia
         {
@@ -30,13 +31,15 @@ namespace CafeApp.Model.Models
                 {
                     return 0;
                 }
-                
             }
             set { }
         }
+
         public string GhiChu { get; set; }
+
         [NotMapped]
         public int STT { get; set; }
+
         [NotMapped]
         public double Tien
         {
@@ -45,8 +48,6 @@ namespace CafeApp.Model.Models
                 return SoLuong * DonGia;
             }
         }
-
-        
 
         public virtual PhieuNhapKho PhieuNhapKho { get; set; }
         public const string TableName = "Phiếu nhập kho chi tiết";

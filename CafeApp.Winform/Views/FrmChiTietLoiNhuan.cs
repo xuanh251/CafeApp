@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CafeApp.Model.Models;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CafeApp.Model.Models;
-using DevExpress.XtraEditors;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmChiTietLoiNhuan : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmChiTietLoiNhuan()
         {
             InitializeComponent();
             BtnOK.Focus();
         }
+
         public void KhoiTao(Mon mon)
         {
             db = new ModelQuanLiCafeDbContext();
@@ -28,7 +23,7 @@ namespace CafeApp.Winform.Views
                                   join b in db.NguyenLieux
                                   on a.IdNguyenLieu equals b.IdNguyenLieu
                                   where a.IdMon == mon.IdMon
-                                  select new { a.SoLuongNguyenLieu ,b.DonGia,b.SoLuongQuyDoi}).ToList();
+                                  select new { a.SoLuongNguyenLieu, b.DonGia, b.SoLuongQuyDoi }).ToList();
             double giavon = 0;
             if (listNguyenLieu.Any())
             {
@@ -37,14 +32,12 @@ namespace CafeApp.Winform.Views
                     giavon += (item.SoLuongNguyenLieu / item.SoLuongQuyDoi) * item.DonGia;
                 }
             }
-            LblTieuDe.Text = "Lợi nhuận của món: " + mon.TenMon+"/1 món";
-            LblGiaBan.Text = "Giá món: "+giaMon.ToString("c0");
-            LblGiaVon.Text = "Tổng vốn:" +giavon.ToString("c0");
-            LblLoiNhuan.Text = "Lợi nhuận: "+(giaMon - giavon).ToString("c0")+"("+Math.Round(((giaMon-giavon)/giaMon*100),2)+"%)";
-            
-            
-
+            LblTieuDe.Text = "Lợi nhuận của món: " + mon.TenMon + "/1 món";
+            LblGiaBan.Text = "Giá món: " + giaMon.ToString("c0");
+            LblGiaVon.Text = "Tổng vốn:" + giavon.ToString("c0");
+            LblLoiNhuan.Text = "Lợi nhuận: " + (giaMon - giavon).ToString("c0") + "(" + Math.Round(((giaMon - giavon) / giaMon * 100), 2) + "%)";
         }
+
         private void BtnOK_Click(object sender, EventArgs e)
         {
             Close();

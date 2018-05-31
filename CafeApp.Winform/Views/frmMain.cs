@@ -1,13 +1,11 @@
-﻿using CafeApp.Model.Models;
+﻿using CafeApp.Common;
+using CafeApp.Model.Models;
+using CafeApp.Winform.Properties;
+using DevExpress.XtraEditors;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Common;
-using System.Diagnostics;
-using System.Data.Entity;
-using CafeApp.Winform.Properties;
 
 namespace CafeApp.Winform.Views
 {
@@ -22,6 +20,7 @@ namespace CafeApp.Winform.Views
             LoadStatusBar();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = Settings.Default.Skin;
         }
+
         public void XtraTabbedMdiManager_Add_Or_Select_ChildForm(Form pForm, System.Drawing.Image pImage = null, bool pAllowReplaceForm = false)
         {
             try
@@ -82,22 +81,20 @@ namespace CafeApp.Winform.Views
                     }
                     _Form.Show();
                 }
-
-
             }
             catch (System.Exception _Ex)
             {
                 XtraMessageBox.Show(_Ex.Message, "XtraTabbedMdiManager_Add_Or_Select_ChildForm", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
         }
+
         private void LoadStatusBar()
         {
             lblThongTin.Caption = "@" + DateTime.Now.Year + " CafeApp Manager";
             var user = db.TaiKhoans.Find(FrmDangNhap.IdTaiKhoan);
             lblUserInfo.Caption = "Phiên làm việc: " + user.HoTen + " - " + user.NhomTaiKhoan.TenNhom;
         }
+
         private void BtnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmTaiKhoan());
@@ -132,6 +129,7 @@ namespace CafeApp.Winform.Views
                 childForm.Close();
             }
         }
+
         private void BtnDoiMatKhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmDoiMatKhau f = new FrmDoiMatKhau();
@@ -168,7 +166,6 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmNguyenLieu());
         }
 
-
         private void BtnThucDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmMon());
@@ -184,17 +181,17 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmBanHang());
         }
 
-        
         private void BtnPhieuNhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmPhieuNhapKho());
         }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            if (PreClosingConfirmation() ==DialogResult.Yes)
+            if (PreClosingConfirmation() == DialogResult.Yes)
             {
-                DangXuat();   
+                DangXuat();
             }
             else
             {
@@ -210,7 +207,6 @@ namespace CafeApp.Winform.Views
 
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnSaoLuuDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -223,10 +219,6 @@ namespace CafeApp.Winform.Views
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmCauHinh());
         }
 
-        
-
-        
-
         private void BtnDoanhThu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDoanhThu());
@@ -236,8 +228,6 @@ namespace CafeApp.Winform.Views
         {
             XtraTabbedMdiManager_Add_Or_Select_ChildForm(new FrmDoanhSoBan());
         }
-
-       
 
         private void skinRibbonGalleryBarItem3_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {

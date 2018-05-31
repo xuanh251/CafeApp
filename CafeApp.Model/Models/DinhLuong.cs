@@ -10,10 +10,9 @@ namespace CafeApp.Model.Models
         public int IdNguyenLieu { get; set; }
 
         public double SoLuongNguyenLieu { get; set; }
+
         [Key, Column(Order = 2)]
-
         public int IdMon { get; set; }
-
 
         public virtual NguyenLieu NguyenLieu { get; set; }
 

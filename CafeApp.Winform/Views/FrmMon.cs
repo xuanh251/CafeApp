@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
+using System;
 using System.Data.Entity;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmMon : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmMon()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -31,6 +25,7 @@ namespace CafeApp.Winform.Views
             repositoryItemSearchLookUpEditDonViTinh.View.Columns.AddField("TenDVT").Visible = true;
             NapDuLieu();
         }
+
         private void NapDuLieu()
         {
             db.Mons.Load();
@@ -38,10 +33,12 @@ namespace CafeApp.Winform.Views
             gridViewThucDon.RefreshData();
             gridViewThucDon.BestFitColumns();
         }
+
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NapDuLieu();
         }
+
         private void Luu()
         {
             try
@@ -63,11 +60,14 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
         }
+
         private Mon vitri;
+
         private void Xoa()
         {
             try
@@ -95,6 +95,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Xoa();

@@ -12,6 +12,7 @@ namespace CafeApp.Model.Models
         {
             TaiKhoans = new HashSet<TaiKhoan>();
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdNhom { get; set; }

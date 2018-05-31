@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CafeApp.Model.Models;
+using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
 using System.Data.Entity;
-using DevExpress.XtraReports.UI;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmDoanhThu : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
         public const string TrongNgay = "Trong ngày";
         public const string TuNgayDenNgay = "Từ ngày đến ngày";
         public const string TatCa = "Tất cả";
         public string KieuLoc { get; set; } = TrongNgay;
         public DateTime TuNgay { get; set; } = DateTime.Now;
         public DateTime DenNgay { get; set; } = DateTime.Now;
+
         public FrmDoanhThu()
         {
             InitializeComponent();
@@ -46,7 +43,9 @@ namespace CafeApp.Winform.Views
             }
             NapDuLieu();
         }
+
         public BindingList<HoaDon> query;
+
         private void NapDuLieu()
         {
             try
@@ -63,14 +62,17 @@ namespace CafeApp.Winform.Views
                         var list = db.HoaDons.Local.Where(s => s.NgayTao.Date >= DateTime.Now.Date && s.NgayTao.Date <= DateTime.Now.Date).ToList();
                         query = new BindingList<HoaDon>(list);
                         break;
+
                     case TuNgayDenNgay:
                         var list1 = db.HoaDons.Local.Where(s => s.NgayTao.Date >= TuNgay.Date && s.NgayTao.Date <= DenNgay.Date).ToList();
                         query = new BindingList<HoaDon>(list1);
                         break;
+
                     case TatCa:
                         var list2 = db.HoaDons.Local.ToBindingList();
                         query = new BindingList<HoaDon>(list2);
                         break;
+
                     default:
                         break;
                 }
@@ -80,7 +82,7 @@ namespace CafeApp.Winform.Views
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu" + Environment.NewLine + ex.ToString(),"Lỗi", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                XtraMessageBox.Show("Xảy ra lỗi khi nạp dữ liệu" + Environment.NewLine + ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -88,6 +90,7 @@ namespace CafeApp.Winform.Views
         {
             NapDuLieuChiTiet();
         }
+
         private void NapDuLieuChiTiet()
         {
             var vitri = (HoaDon)gridViewHoaDon.GetFocusedRow();
@@ -125,7 +128,7 @@ namespace CafeApp.Winform.Views
 
         private void barEditItemKieuLoc_EditValueChanged(object sender, EventArgs e)
         {
-            if (barEditItemKieuLoc.EditValue.ToString()==TuNgayDenNgay)
+            if (barEditItemKieuLoc.EditValue.ToString() == TuNgayDenNgay)
             {
                 barEditItemTuNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                 barEditItemDenNgay.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;

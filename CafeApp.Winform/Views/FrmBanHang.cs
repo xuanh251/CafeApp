@@ -1,26 +1,26 @@
-﻿using System;
+﻿using CafeApp.Common;
+using CafeApp.Model.Models;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Card;
+using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using CafeApp.Model.Models;
-using System.Data.Entity;
-using CafeApp.Common;
 using System.Threading;
-using DevExpress.XtraGrid.Views.Card;
-using DevExpress.XtraGrid;
-using DevExpress.XtraReports.UI;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmBanHang : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmBanHang()
         {
             InitializeComponent();
@@ -36,7 +36,9 @@ namespace CafeApp.Winform.Views
             }
             NapDuLieu();
         }
+
         public BindingList<BanLe> query;
+
         private void NapMon()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -48,6 +50,7 @@ namespace CafeApp.Winform.Views
             gridViewMon.RefreshData();
             gridViewMon.BestFitColumns();
         }
+
         private void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -92,12 +95,12 @@ namespace CafeApp.Winform.Views
             NapMon();
             NapDuLieuChiTiet();
         }
-        
+
         private void cardViewBan_CustomDrawCardFieldValue(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             CardView view = sender as CardView;
             var data = (BanLe)view.GetRow(e.RowHandle);
-            if (data!=null)
+            if (data != null)
             {
                 if (!data.TrangThaiHoaDon)
                 {
@@ -124,11 +127,11 @@ namespace CafeApp.Winform.Views
         {
             NapDuLieu();
         }
-   
+
         private void NapDuLieuChiTiet()
         {
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
-            
+
             if (!vitri.TrangThaiHoaDon)//bàn đang có khách
             {
                 gridControlMon.Enabled = true;
@@ -150,17 +153,16 @@ namespace CafeApp.Winform.Views
                 BtnThanhToan.Enabled = false;
                 BtnChietKhau.Enabled = false;
                 simpleLabelItemGioVao.Text = Core.NullData;
-               
             }
-            if (vitri.ChietKhau!=0)
+            if (vitri.ChietKhau != 0)
             {
-                simpleLabelItemTenBan.Text = vitri.TenBan+"(Chiết khấu: "+vitri.ChietKhau+" %)";
+                simpleLabelItemTenBan.Text = vitri.TenBan + "(Chiết khấu: " + vitri.ChietKhau + " %)";
             }
             else
             {
                 simpleLabelItemTenBan.Text = vitri.TenBan;
             }
-            
+
             gridViewHoaDonChiTiet.ViewCaption = "Dữ liệu chi tiết của hoá đơn " + vitri.IdPhieu;
             var tienchuack = vitri.TongTien;
             simpleLabelItemTongTien.Text = tienchuack.ToString("0 đ");
@@ -170,12 +172,13 @@ namespace CafeApp.Winform.Views
             db = new ModelQuanLiCafeDbContext();
             db.Mons.Load();
             repositoryItemSearchLookUpEditHoaDon_Mon.DataSource = db.Mons.Local.ToBindingList();
-            
-            db.HoaDonChiTiets.Where(s=>s.IdHoaDon==vitri.IdPhieu).Load();
+
+            db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu).Load();
             gridControlHoaDonChiTiet.DataSource = db.HoaDonChiTiets.Local.ToBindingList();
             gridViewHoaDonChiTiet.RefreshData();
             gridViewHoaDonChiTiet.BestFitColumns();
         }
+
         private void cardViewBan_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             NapDuLieuChiTiet();
@@ -185,6 +188,7 @@ namespace CafeApp.Winform.Views
         {
             TaoBan();
         }
+
         private void TaoBan()
         {
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
@@ -198,13 +202,13 @@ namespace CafeApp.Winform.Views
                 NgayTao = DateTime.Now,
                 TrangThai = false,
                 CaLamViec = Core.SetCaLamViec(),
-                GhiChu=vitri.GhiChu
+                GhiChu = vitri.GhiChu
             };
             using (ModelQuanLiCafeDbContext tempDb = new ModelQuanLiCafeDbContext())
             {
                 tempDb.HoaDons.Add(hoadon);
                 var hd = tempDb.SaveChanges();
-                if (hd==1)//nếu lưu thành công
+                if (hd == 1)//nếu lưu thành công
                 {
                     NapDuLieu();
                     for (int i = 0; i < this.cardViewBan.RowCount; i++)
@@ -228,8 +232,8 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
-            var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon &&s.IdMon==vitri.IdMon).FirstOrDefault();
-            if (vitri.SoLuong<=0)
+            var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon && s.IdMon == vitri.IdMon).FirstOrDefault();
+            if (vitri.SoLuong <= 0)
             {
                 hdct.SoLuong = 1;
             }
@@ -240,32 +244,33 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             NapDuLieu_ViTri();
         }
-        private void CapNhatSLTon(Mon mon,int sl)
+
+        private void CapNhatSLTon(Mon mon, int sl)
         {
             var listDinhLuong = (from a in db.DinhLuongs
-                              join b in db.Mons
-                              on a.IdMon equals b.IdMon
-                              where a.IdMon == mon.IdMon
-                              select a).ToList();
+                                 join b in db.Mons
+                                 on a.IdMon equals b.IdMon
+                                 where a.IdMon == mon.IdMon
+                                 select a).ToList();
             //nếu món hiện tại có danh sách định lượng thì tiến hành cập nhật
             if (listDinhLuong.Any())
             {
                 foreach (var nl in listDinhLuong)
                 {
                     var selectedNL = db.NguyenLieux.Find(nl.IdNguyenLieu);
-                    selectedNL.SoLuongTon = selectedNL.SoLuongTon - sl*(nl.SoLuongNguyenLieu / selectedNL.SoLuongQuyDoi);
-
+                    selectedNL.SoLuongTon = selectedNL.SoLuongTon - sl * (nl.SoLuongNguyenLieu / selectedNL.SoLuongQuyDoi);
                 }
                 db.SaveChanges();
             }
         }
+
         private void repositoryItemButtonEditChonMon_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             db = new ModelQuanLiCafeDbContext();
             var mon = (Mon)gridViewMon.GetFocusedRow();
             var hoadon = (BanLe)cardViewBan.GetFocusedRow();
             var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == hoadon.IdPhieu && s.IdMon == mon.IdMon).FirstOrDefault();
-            if (hdct==null)//nếu món được chọn chưa có
+            if (hdct == null)//nếu món được chọn chưa có
             {
                 db.HoaDonChiTiets.Add(new HoaDonChiTiet { IdHoaDon = hoadon.IdPhieu, IdMon = mon.IdMon, SoLuong = 1, DonGia = mon.DonGia });
             }
@@ -276,14 +281,16 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             NapDuLieu_ViTri();
         }
+
         private BanLe banLe;
         private Mon mon;
-        int cardViewBanRowHandle = 0;
-        int gridViewMonRowHandle = 0;
+        private int cardViewBanRowHandle = 0;
+        private int gridViewMonRowHandle = 0;
+
         private void LuuViTri()
         {
             //lưu vị trí hiện tại của các bảng
-            banLe= (BanLe)cardViewBan.GetFocusedRow();
+            banLe = (BanLe)cardViewBan.GetFocusedRow();
             mon = (Mon)gridViewMon.GetFocusedRow();
             if (mon != null)
             {
@@ -293,8 +300,8 @@ namespace CafeApp.Winform.Views
             {
                 cardViewBanRowHandle = cardViewBan.LocateByValue("IdBan", banLe.IdBan);
             }
-           
         }
+
         private void NapViTri()
         {
             if (cardViewBanRowHandle != GridControl.InvalidRowHandle)
@@ -305,22 +312,19 @@ namespace CafeApp.Winform.Views
             {
                 gridViewMon.FocusedRowHandle = gridViewMonRowHandle;
             }
-           
-          
-            
         }
 
         private void BtnChuyenBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var oldViTri = (BanLe)cardViewBan.GetFocusedRow();
             if (oldViTri == null) return;
-            
+
             FrmChuyenBan f = new FrmChuyenBan(this);
             f.vitri_old = oldViTri.IdBan;
             f.idHoaDon = oldViTri.IdPhieu;
             f.ShowDialog();
-            
         }
+
         public void ChuyenBan(int vitricu, int vitrimoi, int idHoaDon)
         {
             db = new ModelQuanLiCafeDbContext();
@@ -339,6 +343,7 @@ namespace CafeApp.Winform.Views
         {
             XoaHoaDon();
         }
+
         private void XoaHoaDon()
         {
             try
@@ -346,7 +351,7 @@ namespace CafeApp.Winform.Views
                 db = new ModelQuanLiCafeDbContext();
                 var vitri = (BanLe)cardViewBan.GetFocusedRow();
                 if (vitri == null) return;
-                if ((XtraMessageBox.Show("Việc này sẽ xoá hoá đơn hiện tại của "+vitri.TenBan+", bạn có muốn thực hiện không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                if ((XtraMessageBox.Show("Việc này sẽ xoá hoá đơn hiện tại của " + vitri.TenBan + ", bạn có muốn thực hiện không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
                     var hd = db.HoaDons.Find(vitri.IdPhieu);
                     var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdPhieu).FirstOrDefault();
@@ -367,7 +372,7 @@ namespace CafeApp.Winform.Views
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Đã xảy ra lỗi, không xoá được!"+Environment.NewLine+ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Đã xảy ra lỗi, không xoá được!" + Environment.NewLine + ex.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -376,6 +381,7 @@ namespace CafeApp.Winform.Views
             FrmChietKhau f = new FrmChietKhau(this);
             f.ShowDialog();
         }
+
         public void CapNhatChietKhau(double chietkhau)
         {
             db = new ModelQuanLiCafeDbContext();
@@ -385,21 +391,23 @@ namespace CafeApp.Winform.Views
             db.SaveChanges();
             NapDuLieu_ViTri();
         }
+
         private int SlMon_hdct(Mon mon, int idHd)
         {
             var sl = (from a in db.Mons
-                     join b in db.HoaDonChiTiets
-                     on a.IdMon equals b.IdMon
-                     where a.IdMon == mon.IdMon
-                     && b.IdHoaDon == idHd
-                     select b.SoLuong).FirstOrDefault();
+                      join b in db.HoaDonChiTiets
+                      on a.IdMon equals b.IdMon
+                      where a.IdMon == mon.IdMon
+                      && b.IdHoaDon == idHd
+                      select b.SoLuong).FirstOrDefault();
             return sl;
         }
+
         private void BtnThanhToan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vitri = (BanLe)cardViewBan.GetFocusedRow();
             if (vitri == null) return;
-            if ((XtraMessageBox.Show("Bạn có muốn thực hiện thanh toán cho "+vitri.TenBan+" ?","Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
+            if ((XtraMessageBox.Show("Bạn có muốn thực hiện thanh toán cho " + vitri.TenBan + " ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
             {
                 //cập nhật số lượng tồn
                 db = new ModelQuanLiCafeDbContext();
@@ -428,10 +436,11 @@ namespace CafeApp.Winform.Views
                 DaThanhToan(vitri.IdPhieu);
             }
         }
+
         private void DaThanhToan(int idHD)
         {
             db = new ModelQuanLiCafeDbContext();
-            var hd=db.HoaDons.Find(idHD);
+            var hd = db.HoaDons.Find(idHD);
             hd.TrangThai = true;
             db.SaveChanges();
             NapDuLieu();
@@ -441,7 +450,7 @@ namespace CafeApp.Winform.Views
         {
             db = new ModelQuanLiCafeDbContext();
             var vitri = (HoaDonChiTiet)gridViewHoaDonChiTiet.GetFocusedRow();
-            if ((XtraMessageBox.Show("Bạn có muốn xoá món "+ vitri.Mon.TenMon +" này không?","Xác nhận xoá",MessageBoxButtons.YesNo,MessageBoxIcon.Question))==DialogResult.Yes)
+            if ((XtraMessageBox.Show("Bạn có muốn xoá món " + vitri.Mon.TenMon + " này không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
             {//xác nhận xoá
                 var hdct = db.HoaDonChiTiets.Where(s => s.IdHoaDon == vitri.IdHoaDon && s.IdMon == vitri.IdMon).FirstOrDefault();
                 db.HoaDonChiTiets.Remove(hdct);
@@ -449,20 +458,22 @@ namespace CafeApp.Winform.Views
                 NapDuLieu_ViTri();
             }
         }
+
         private void NapDuLieu_ViTri()
         {
             LuuViTri();
             NapDuLieu();
             NapViTri();
         }
-       
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             DangXuat();
         }
+
         private void DangXuat()
         {
-            if (FrmDangNhap.accType==Core.Admin)
+            if (FrmDangNhap.accType == Core.Admin)
             {
                 return;
             }
@@ -473,6 +484,7 @@ namespace CafeApp.Winform.Views
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
+
         public static void OpenFrmLogin()
         {
             Application.Run(new FrmDangNhap());

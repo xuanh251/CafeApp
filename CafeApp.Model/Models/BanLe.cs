@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CafeApp.Model;
 
 namespace CafeApp.Model.Models
 {
@@ -16,6 +12,7 @@ namespace CafeApp.Model.Models
         {
             hoaDonChiTiets = new BindingList<HoaDonChiTiet>();
         }
+
         public int IdPhieu { get; set; }
         public int IdBan { get; set; }
         public string TenBan { get; set; }
@@ -27,6 +24,7 @@ namespace CafeApp.Model.Models
         public BindingList<HoaDonChiTiet> hoaDonChiTiets { get; set; }
 
         public const string TableName = "Hoá đơn bán lẻ";
+
         [NotMapped]
         [Display(Name = "Tổng tiền")]
         public double TongTien
@@ -44,6 +42,7 @@ namespace CafeApp.Model.Models
                 }
             }
         }
+
         [NotMapped]
         [Display(Name = "Tổng tiền (text)")]
         public string TongTienText
@@ -59,10 +58,11 @@ namespace CafeApp.Model.Models
                     return "0 đ";
                 }
             }
-
         }
+
         public Ban Ban { get; set; }
         private string thongTinChung;
+
         [NotMapped]
         [Display(Name = "Thông tin chung")]
         public string ThongTinChung

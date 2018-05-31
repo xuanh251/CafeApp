@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
-using System.Data.Entity;
-using System.IO;
-using System.Diagnostics;
 using DevExpress.XtraGrid.Views.Grid;
+using System;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmNguyenLieu : DevExpress.XtraEditors.XtraForm
     {
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
+
         public FrmNguyenLieu()
         {
             InitializeComponent();
@@ -34,6 +28,7 @@ namespace CafeApp.Winform.Views
             KeyPreview = true;
             NapDuLieu();
         }
+
         private void NapDuLieu()
         {
             db = new ModelQuanLiCafeDbContext();
@@ -41,12 +36,13 @@ namespace CafeApp.Winform.Views
             gridControlNguyenLieu.DataSource = db.NguyenLieux.Local.ToBindingList();
             gridViewNguyenLieu.RefreshData();
             gridViewNguyenLieu.BestFitColumns();
-        
         }
+
         private void BtnNapDuLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NapDuLieu();
         }
+
         private void Luu()
         {
             try
@@ -68,11 +64,14 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không lưu được!" + Environment.NewLine + ex.ToString(), "Lưu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Luu();
         }
+
         private NguyenLieu vitri;
+
         private void Xoa()
         {
             try
@@ -100,6 +99,7 @@ namespace CafeApp.Winform.Views
                 XtraMessageBox.Show("Không xoá được!" + Environment.NewLine + "Lỗi: " + ex.ToString(), "Xoá", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Xoa();
@@ -145,13 +145,11 @@ namespace CafeApp.Winform.Views
             {
                 BtnXoa_ItemClick(null, null);
             }
-            if (e.Control&&e.KeyCode==Keys.Q)
+            if (e.Control && e.KeyCode == Keys.Q)
             {
                 BtnXuatExcel_ItemClick(null, null);
             }
         }
-
-        
 
         private void gridViewNguyenLieu_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -180,7 +178,6 @@ namespace CafeApp.Winform.Views
 
         private void gridControlNguyenLieu_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

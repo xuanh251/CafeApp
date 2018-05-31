@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CafeApp.Model.Models;
 using DevExpress.XtraEditors;
-using CafeApp.Model.Models;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CafeApp.Winform.Views
 {
     public partial class FrmThemBan : DevExpress.XtraEditors.XtraForm
     {
         private FrmBan _frmBan;
-        ModelQuanLiCafeDbContext db { get; set; }
+        private ModelQuanLiCafeDbContext db { get; set; }
 
         public FrmThemBan(FrmBan frmBan)
         {
@@ -59,7 +54,6 @@ namespace CafeApp.Winform.Views
                 _frmBan.NapDuLieu();
                 Close();
             }
-
         }
     }
 }

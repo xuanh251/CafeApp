@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
-using CafeApp.Winform.Properties;
 
 namespace CafeApp.Winform
 {
@@ -21,6 +20,7 @@ namespace CafeApp.Winform
             Application.Run(new Views.FrmDangNhap());
             //KhoiTaoDonVi();
         }
+
         //public static void KhoiTaoDonVi()
         //{
         //    Settings.Default.TenDonVi = "OSAKA COFFEE";
